@@ -1,0 +1,239 @@
+/* Rumo Soluções · Tokens do design system do site
+   Fonte de verdade técnica dos valores. O site importa este arquivo; não copie valores para as páginas.
+   Mudou algo aqui? Atualize na mesma entrega a versão e a seção 18 de design-system-site.md, e espelhe no Figma. */
+
+/* ============ 1. PRIMITIVAS ============ */
+:root {
+  /* Neutros escuros */
+  --color-ink-950: #050505;
+  --color-ink-925: #0B0B0B;
+  --color-ink-900: #121212;
+  --color-ink-850: #171717;
+  --color-ink-800: #1E1E1E;
+  --color-ink-750: #262626;
+  --color-ink-700: #2E2E2E;
+  --color-ink-600: #3D3D3D;
+  --color-ink-500: #858585;
+  --color-ink-400: #A1A1A1;
+  --color-ink-0:   #FFFFFF;
+
+  /* Ciano Rumo */
+  --color-rumo-400: #33BDEA;
+  --color-rumo-500: #00ACE5;
+  --color-rumo-600: #0096C7;
+  --color-rumo-700: #00759C;
+  --color-rumo-800: #005A78;
+
+  /* Neutros frios claros */
+  --color-ice-0:   #FFFFFF;
+  --color-ice-50:  #F2F8FB;
+  --color-ice-100: #EAF7FC;
+  --color-ice-150: #E4F4FA;
+  --color-ice-200: #D8E5EB;
+  --color-ice-300: #C6E8F4;
+  --color-ice-500: #5B6B73;
+  --color-ice-700: #24323A;
+  --color-ice-900: #0A1419;
+
+  /* Funcionais */
+  --color-success-500: #13C71A;
+  --color-success-700: #0B7A10;
+  --color-error-400:   #F2555A;
+  --color-error-700:   #C4262E;
+
+  /* Tipografia */
+  --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  --text-display: clamp(2.75rem, 5.6vw, 5rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.04em;
+  --text-display--font-weight: 600;
+
+  --text-h1: clamp(2.5rem, 4.4vw, 4rem);
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.035em;
+  --text-h1--font-weight: 600;
+
+  --text-h2: clamp(2rem, 3.4vw, 3rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h2--font-weight: 600;
+
+  --text-h3: clamp(1.375rem, 2vw, 1.75rem);
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.02em;
+  --text-h3--font-weight: 600;
+
+  --text-h4: clamp(1.125rem, 1.4vw, 1.25rem);
+  --text-h4--line-height: 1.3;
+  --text-h4--letter-spacing: -0.01em;
+  --text-h4--font-weight: 500;
+
+  --text-stat: clamp(2.75rem, 5vw, 4.5rem);
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.03em;
+  --text-stat--font-weight: 500;
+
+  --text-lead: clamp(1.125rem, 1.4vw, 1.25rem);
+  --text-lead--line-height: 1.55;
+  --text-lead--letter-spacing: -0.005em;
+
+  --text-body: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+  --text-body--line-height: 1.6;
+
+  --text-body-article: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --text-body-article--line-height: 1.7;
+
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.55;
+
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.5;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1;
+  --text-label--letter-spacing: 0.06em;
+  --text-label--font-weight: 500;
+
+  --text-button: 0.9375rem;
+  --text-button--line-height: 1;
+  --text-button--letter-spacing: -0.005em;
+  --text-button--font-weight: 500;
+
+  --text-mono-micro: 0.6875rem;
+  --text-mono-micro--line-height: 1;
+  --text-mono-micro--letter-spacing: 0.06em;
+
+  /* Breakpoint extra (container máximo do manual) */
+  --breakpoint-3xl: 107.5rem; /* 1720px */
+
+  /* Raios */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-panel: 24px;
+  --radius-pill: 999px;
+
+  /* Sombras (superfície clara) */
+  --shadow-sm: 0 1px 2px rgba(10, 20, 25, .06);
+  --shadow-md: 0 8px 24px -8px rgba(10, 20, 25, .12);
+  --shadow-lg: 0 24px 48px -16px rgba(10, 20, 25, .18);
+  /* Sombra de flutuação (superfície escura) */
+  --shadow-float: 0 24px 48px -12px rgba(0, 0, 0, .6);
+
+  /* Luz direcional (seção 8.8) */
+  --color-light-core: #F2FBFF;
+  --color-light-ice:  #BFEFFF;
+  --color-light-near: #7FD8F5;
+  --color-light-fall: #005A78;
+  --shadow-lit: inset 0 1px 0 rgba(255,255,255,.35), 0 2px 8px -2px rgba(127,216,245,.4), 0 10px 28px -8px rgba(0,172,229,.3);
+
+  /* Movimento */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease-in: cubic-bezier(.7, 0, .84, 0);
+
+  /* Textura de grão (seção 8.1) */
+  --grain-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ============ 2. SEMÂNTICAS ============ */
+:root,
+[data-surface="dark"] {
+  --bg:             var(--color-ink-950);
+  --bg-sunken:      var(--color-ink-925);
+  --bg-glow-from:   var(--color-ink-900);
+  --surface:        var(--color-ink-850);
+  --surface-raised: var(--color-ink-800);
+  --surface-tint:   rgba(0, 172, 229, .08);
+  --border:         var(--color-ink-750);
+  --border-strong:  var(--color-ink-700);
+  --fg:             var(--color-ink-0);
+  --fg-muted:       var(--color-ink-400);
+  --fg-subtle:      var(--color-ink-500);
+
+  --brand:          var(--color-rumo-500);
+  --brand-hover:    var(--color-rumo-400);
+  --brand-pressed:  var(--color-rumo-600);
+  --brand-text:     var(--color-rumo-500);
+  --on-brand:       var(--color-ink-950);
+  --focus-ring:     var(--color-rumo-500);
+
+  --heading-secondary: var(--color-ink-500);
+  --fg-unlit:       rgba(255, 255, 255, .22);
+  --surface-soft:   var(--color-ink-850);
+  --surface-soft-alt: var(--color-ink-800);
+  --disc:           var(--color-ink-800);
+
+  --accent:         var(--brand);
+  --accent-text:    var(--brand-text);
+  --on-accent:      var(--on-brand);
+
+  --success:        var(--color-success-500);
+  --error:          var(--color-error-400);
+
+  --grain-opacity:  .04;
+  --grain-blend:    overlay;
+}
+
+[data-surface="light"] {
+  --bg:             var(--color-ice-0);
+  --bg-sunken:      var(--color-ice-50);
+  --bg-glow-from:   var(--color-ice-0);
+  --surface:        var(--color-ice-0);
+  --surface-raised: var(--color-ice-0);
+  --surface-tint:   var(--color-ice-100);
+  --border:         var(--color-ice-200);
+  --border-strong:  var(--color-ice-300);
+  --fg:             var(--color-ice-900);
+  --fg-muted:       var(--color-ice-700);
+  --fg-subtle:      var(--color-ice-500);
+
+  --brand-text:     var(--color-rumo-700);
+  --brand-pressed:  var(--color-rumo-800);
+  --focus-ring:     var(--color-rumo-700);
+  --accent-text:    var(--brand-text);
+
+  --success:        var(--color-success-700);
+  --error:          var(--color-error-700);
+
+  --heading-secondary: var(--color-ice-500);
+  --fg-unlit:       rgba(10, 20, 25, .22);
+  --surface-soft:   var(--color-ice-100);
+  --surface-soft-alt: var(--color-ice-50);
+  --disc:           var(--color-ice-900);
+
+  --grain-opacity:  .025;
+  --grain-blend:    soft-light;
+}
+
+/* ============ 3. ACENTO DE PRODUTO ============ */
+[data-produto="pricefleet"] {
+  --accent:      #009844;
+  --accent-text: #009844;
+  --on-accent:   #050505;
+}
+[data-produto="pricefleet"] [data-surface="light"],
+[data-produto="pricefleet"][data-surface="light"] {
+  --accent-text: #007A37;
+}
+
+/* ============ 4. LAYOUT E MOVIMENTO ============ */
+:root {
+  --container-max: 1720px;
+  --page-margin:   clamp(1.5rem, 5.5vw, 5rem);
+  --gutter:        clamp(1rem, 1.6vw, 1.5rem);
+  --section-y:       clamp(6rem, 11vw, 10rem);
+  --section-y-tight: clamp(4rem, 8vw, 8rem);
+
+  --dur-instant:   100ms;
+  --dur-fast:      200ms;
+  --dur-base:      400ms;
+  --dur-slow:      750ms;
+  --dur-cinematic: 1200ms;
+
+  --z-decor: 1;  --z-raised: 10; --z-sticky: 100; --z-nav: 200;
+  --z-overlay: 300; --z-modal: 400; --z-toast: 500; --z-grain: 900;
+}

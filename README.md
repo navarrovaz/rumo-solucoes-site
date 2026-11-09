@@ -1,6 +1,6 @@
 # Rumo Soluções · Novo site
 
-Proposta da nova Home do site da Rumo Soluções, construída a partir do design system do site (v0.5).
+Proposta da nova Home do site da Rumo Soluções, construída a partir do design system do site (v0.6).
 
 **Ver online:** https://navarrovaz.github.io/rumo-solucoes-site/
 
@@ -9,7 +9,26 @@ Proposta da nova Home do site da Rumo Soluções, construída a partir do design
 | Arquivo | Conteúdo |
 |---|---|
 | `index.html` | Home · Desktop 1440 em código, com todos os efeitos funcionando |
-| `design-system/design-system-site.md` | Guia do design system do site: tokens, tipografia, luz, efeitos, componentes, seções e checklist |
+| `design-system/tokens.css` | Valores do design system, importados pelo site |
+| `design-system/design-system-site.md` | Guia do design system do site: tipografia, luz, efeitos, componentes, seções, governança e checklist |
+| `design-system/pendencias.json` | Divergências anteriores à v0.6 que aguardam decisão |
+| `scripts/check-ds.mjs` | Verificador que compara o site com o design system |
+
+## Design system
+
+Toda divergência nova entre o site e o design system gera um alerta durante a edição, no commit e no GitHub. A saída é corrigir o site ou alterar o design system na mesma entrega (guia, seção 0).
+
+Para verificar manualmente:
+
+```bash
+node scripts/check-ds.mjs
+```
+
+Para ativar o alerta de commit depois de clonar o repositório:
+
+```bash
+git config core.hooksPath .githooks
+```
 
 ## Efeitos da página
 

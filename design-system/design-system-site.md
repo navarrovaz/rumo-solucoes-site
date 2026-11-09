@@ -1,7 +1,7 @@
 # Design System: Site Rumo Soluções
 
 > **Papel:** guia de design vivo do site e dos produtos digitais da Rumo Soluções. Fonte de verdade para qualquer página, seção, componente, landing page ou peça web, consultado por designers, desenvolvedores e agentes do Rumo-cowork.
-> **Status:** v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
+> **Status:** v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
 > **Referência em código:** Home · Desktop 1440 publicada em https://navarrovaz.github.io/rumo-solucoes-site/, com todos os efeitos deste guia funcionando.
 > **Contexto visual:** este arquivo não tem imagens. Para ver cada padrão, consulte o PDF `output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (42 páginas, sumário na página 2) e o Figma [Rumo · Site · Design System](https://www.figma.com/design/5t3Mwrd1SHHL1t9K7SGZKS) (time Marketing Rumo).
 > **Escopo:** site institucional rumosolucoes.com (marca mãe Rumo Soluções, com páginas de produto) e produtos digitais.
@@ -50,13 +50,23 @@ Este é o documento de contexto para quem projeta ou desenvolve qualquer página
 
 **Regras de leitura:**
 
-- Valores de token (seção 16) são a fonte de verdade técnica. Tabelas ao longo do texto explicam o porquê.
+- Valores de token (`design-system/tokens.css`, seção 16) são a fonte de verdade técnica. Tabelas ao longo do texto explicam o porquê.
 - Itens **[EVOLUÇÃO]** marcam onde o site amplia o manual. Todos (E01 a E25) foram aprovados e aplicados ao manual em 2026-10-23.
 - Itens **[v0.5]** substituem regras anteriores deste guia. Onde uma regra antiga cita seção clara, vale a versão v0.5: o site não usa seções claras.
 - Para ver um padrão antes de aplicá-lo, abra a página correspondente do PDF (sumário na página 2) ou o Figma.
 - Mudanças aprovadas no site atualizam este arquivo, o Figma e o PDF juntos. Uma mudança de identidade (cor, tipografia, logo) também sobe para o manual.
 - Itens **[PENDENTE]** dependem de material ou decisão do usuário (seção 19).
 - Nenhum texto produzido para o site usa o travessão longo (manual, seção 14).
+
+**Governança [v0.6]:**
+
+- O site importa `design-system/tokens.css`. Nenhuma página define ou copia valores de token.
+- `node scripts/check-ds.mjs` compara o site com as regras. Ele roda a cada edição feita pelo Claude Code, a cada commit e a cada envio ao GitHub.
+- Toda divergência nova tem duas saídas: **seguir o design system** (corrigir o site) ou **mudar a rota** (alterar o design system).
+- Mudar a rota exige, na mesma entrega: alterar `tokens.css` ou este guia, subir a versão no campo Status, registrar uma evolução `E##` na seção 18 com o motivo e espelhar no Figma. Mudança de identidade (cor, tipografia, logo) também sobe para o manual.
+- `design-system/pendencias.json` lista as divergências anteriores à v0.6 que ainda aguardam decisão. A lista só pode diminuir (seção 19, P11).
+- O verificador cobre regras objetivas. Direção, composição e conteúdo continuam na revisão pelo checklist da seção 20.
+- O PDF é um retrato da v0.4 e só é reexportado em versão fechada.
 
 **Onde ver cada padrão no PDF** (`output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf`):
 
@@ -1244,227 +1254,11 @@ Regras para o 3D:
 
 ## 16. Tokens (CSS + Tailwind v4)
 
-Arquivo sugerido: `app/globals.css`.
+Os valores ficam em [`tokens.css`](tokens.css), importado por todas as páginas. É a única cópia técnica: as tabelas deste guia explicam o porquê de cada valor, e o verificador acusa quando uma cor de `tokens.css` não está documentada aqui.
+
+**Na migração para Next.js + Tailwind v4 (`app/globals.css`):** importe `tokens.css`, troque o primeiro bloco `:root` (primitivas) por `@theme` e acrescente o mapeamento semântico:
 
 ```css
-@import "tailwindcss";
-
-/* ============ 1. PRIMITIVAS ============ */
-@theme {
-  /* Neutros escuros */
-  --color-ink-950: #050505;
-  --color-ink-925: #0B0B0B;
-  --color-ink-900: #121212;
-  --color-ink-850: #171717;
-  --color-ink-800: #1E1E1E;
-  --color-ink-750: #262626;
-  --color-ink-700: #2E2E2E;
-  --color-ink-600: #3D3D3D;
-  --color-ink-500: #858585;
-  --color-ink-400: #A1A1A1;
-  --color-ink-0:   #FFFFFF;
-
-  /* Ciano Rumo */
-  --color-rumo-400: #33BDEA;
-  --color-rumo-500: #00ACE5;
-  --color-rumo-600: #0096C7;
-  --color-rumo-700: #00759C;
-  --color-rumo-800: #005A78;
-
-  /* Neutros frios claros */
-  --color-ice-0:   #FFFFFF;
-  --color-ice-50:  #F2F8FB;
-  --color-ice-100: #EAF7FC;
-  --color-ice-150: #E4F4FA;
-  --color-ice-200: #D8E5EB;
-  --color-ice-300: #C6E8F4;
-  --color-ice-500: #5B6B73;
-  --color-ice-700: #24323A;
-  --color-ice-900: #0A1419;
-
-  /* Funcionais */
-  --color-success-500: #13C71A;
-  --color-success-700: #0B7A10;
-  --color-error-400:   #F2555A;
-  --color-error-700:   #C4262E;
-
-  /* Tipografia */
-  --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, monospace;
-
-  --text-display: clamp(2.75rem, 5.6vw, 5rem);
-  --text-display--line-height: 0.92;
-  --text-display--letter-spacing: -0.04em;
-  --text-display--font-weight: 500;
-
-  --text-h1: clamp(2.5rem, 4.4vw, 4rem);
-  --text-h1--line-height: 0.98;
-  --text-h1--letter-spacing: -0.03em;
-  --text-h1--font-weight: 500;
-
-  --text-h2: clamp(2rem, 3.4vw, 3rem);
-  --text-h2--line-height: 1.04;
-  --text-h2--letter-spacing: -0.025em;
-  --text-h2--font-weight: 500;
-
-  --text-h3: clamp(1.375rem, 2vw, 1.75rem);
-  --text-h3--line-height: 1.15;
-  --text-h3--letter-spacing: -0.015em;
-  --text-h3--font-weight: 500;
-
-  --text-h4: 1.25rem;
-  --text-h4--line-height: 1.25;
-  --text-h4--letter-spacing: -0.01em;
-  --text-h4--font-weight: 500;
-
-  --text-stat: clamp(2.75rem, 5vw, 4.5rem);
-  --text-stat--line-height: 1;
-  --text-stat--letter-spacing: -0.04em;
-  --text-stat--font-weight: 400;
-
-  --text-lead: clamp(1.125rem, 1.4vw, 1.25rem);
-  --text-lead--line-height: 1.5;
-  --text-lead--letter-spacing: -0.005em;
-
-  --text-body: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
-  --text-body--line-height: 1.6;
-
-  --text-body-article: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
-  --text-body-article--line-height: 1.7;
-
-  --text-small: 0.875rem;
-  --text-small--line-height: 1.55;
-
-  --text-caption: 0.8125rem;
-  --text-caption--line-height: 1.5;
-  --text-caption--letter-spacing: 0.01em;
-
-  --text-label: 0.75rem;
-  --text-label--line-height: 1;
-  --text-label--letter-spacing: 0.12em;
-  --text-label--font-weight: 500;
-
-  --text-button: 0.9375rem;
-  --text-button--line-height: 1;
-  --text-button--font-weight: 500;
-
-  --text-mono-micro: 0.6875rem;
-  --text-mono-micro--line-height: 1;
-  --text-mono-micro--letter-spacing: 0.08em;
-
-  /* Breakpoint extra (container máximo do manual) */
-  --breakpoint-3xl: 107.5rem; /* 1720px */
-
-  /* Raios */
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-panel: 24px;
-  --radius-pill: 999px;
-
-  /* Sombras (superfície clara) */
-  --shadow-sm: 0 1px 2px rgba(10, 20, 25, .06);
-  --shadow-md: 0 8px 24px -8px rgba(10, 20, 25, .12);
-  --shadow-lg: 0 24px 48px -16px rgba(10, 20, 25, .18);
-  /* Sombra de flutuação (superfície escura) */
-  --shadow-float: 0 24px 48px -12px rgba(0, 0, 0, .6);
-
-  /* Luz direcional (seção 8.8) */
-  --color-light-core: #F2FBFF;
-  --color-light-ice:  #BFEFFF;
-  --color-light-near: #7FD8F5;
-  --color-light-fall: #005A78;
-  --shadow-lit: inset 0 1px 0 rgba(255,255,255,.35), 0 2px 8px -2px rgba(127,216,245,.4), 0 10px 28px -8px rgba(0,172,229,.3);
-
-  /* Movimento */
-  --ease-out: cubic-bezier(.16, 1, .3, 1);
-  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
-  --ease-in: cubic-bezier(.7, 0, .84, 0);
-}
-
-/* ============ 2. SEMÂNTICAS ============ */
-:root,
-[data-surface="dark"] {
-  --bg:             var(--color-ink-950);
-  --bg-sunken:      var(--color-ink-925);
-  --bg-glow-from:   var(--color-ink-900);
-  --surface:        var(--color-ink-850);
-  --surface-raised: var(--color-ink-800);
-  --surface-tint:   rgba(0, 172, 229, .08);
-  --border:         var(--color-ink-750);
-  --border-strong:  var(--color-ink-700);
-  --fg:             var(--color-ink-0);
-  --fg-muted:       var(--color-ink-400);
-  --fg-subtle:      var(--color-ink-500);
-
-  --brand:          var(--color-rumo-500);
-  --brand-hover:    var(--color-rumo-400);
-  --brand-pressed:  var(--color-rumo-600);
-  --brand-text:     var(--color-rumo-500);
-  --on-brand:       var(--color-ink-950);
-  --focus-ring:     var(--color-rumo-500);
-
-  --heading-secondary: var(--color-ink-500);
-  --fg-unlit:       rgba(255, 255, 255, .22);
-  --surface-soft:   var(--color-ink-850);
-  --surface-soft-alt: var(--color-ink-800);
-  --disc:           var(--color-ink-800);
-
-  --accent:         var(--brand);
-  --accent-text:    var(--brand-text);
-  --on-accent:      var(--on-brand);
-
-  --success:        var(--color-success-500);
-  --error:          var(--color-error-400);
-
-  --grain-opacity:  .04;
-  --grain-blend:    overlay;
-}
-
-[data-surface="light"] {
-  --bg:             var(--color-ice-0);
-  --bg-sunken:      var(--color-ice-50);
-  --bg-glow-from:   var(--color-ice-0);
-  --surface:        var(--color-ice-0);
-  --surface-raised: var(--color-ice-0);
-  --surface-tint:   var(--color-ice-100);
-  --border:         var(--color-ice-200);
-  --border-strong:  var(--color-ice-300);
-  --fg:             var(--color-ice-900);
-  --fg-muted:       var(--color-ice-700);
-  --fg-subtle:      var(--color-ice-500);
-
-  --brand-text:     var(--color-rumo-700);
-  --brand-pressed:  var(--color-rumo-800);
-  --focus-ring:     var(--color-rumo-700);
-  --accent-text:    var(--brand-text);
-
-  --success:        var(--color-success-700);
-  --error:          var(--color-error-700);
-
-  --heading-secondary: var(--color-ice-500);
-  --fg-unlit:       rgba(10, 20, 25, .22);
-  --surface-soft:   var(--color-ice-100);
-  --surface-soft-alt: var(--color-ice-50);
-  --disc:           var(--color-ice-900);
-
-  --grain-opacity:  .025;
-  --grain-blend:    soft-light;
-}
-
-/* ============ 3. ACENTO DE PRODUTO ============ */
-[data-produto="pricefleet"] {
-  --accent:      #009844;
-  --accent-text: #009844;
-  --on-accent:   #050505;
-}
-[data-produto="pricefleet"] [data-surface="light"],
-[data-produto="pricefleet"][data-surface="light"] {
-  --accent-text: #007A37;
-}
-
-/* ============ 4. UTILITÁRIOS SEMÂNTICOS NO TAILWIND ============ */
 @theme inline {
   --color-bg:             var(--bg);
   --color-bg-sunken:      var(--bg-sunken);
@@ -1487,26 +1281,11 @@ Arquivo sugerido: `app/globals.css`.
   --color-success:        var(--success);
   --color-error:          var(--error);
 }
+```
 
-/* ============ 5. LAYOUT E MOVIMENTO (variáveis CSS) ============ */
-:root {
-  --container-max: 1720px;
-  --page-margin:   clamp(1.5rem, 5.5vw, 5rem);
-  --gutter:        clamp(1rem, 1.6vw, 1.5rem);
-  --section-y:       clamp(6rem, 11vw, 10rem);
-  --section-y-tight: clamp(4rem, 8vw, 8rem);
+**Base de toda página:**
 
-  --dur-instant:   100ms;
-  --dur-fast:      200ms;
-  --dur-base:      400ms;
-  --dur-slow:      750ms;
-  --dur-cinematic: 1200ms;
-
-  --z-decor: 1;  --z-raised: 10; --z-sticky: 100; --z-nav: 200;
-  --z-overlay: 300; --z-modal: 400; --z-toast: 500; --z-grain: 900;
-}
-
-/* ============ 6. BASE ============ */
+```css
 body {
   background: var(--bg);
   color: var(--fg-muted);
@@ -1542,7 +1321,7 @@ Uso no JSX: `bg-surface border border-line text-fg rounded-lg`, `text-h2 text-fg
 
 ## 17. Biblioteca no Figma
 
-A biblioteca será construída **depois da aprovação deste documento**, espelhando os tokens da seção 16 um para um.
+A biblioteca está no arquivo do Figma citado no cabeçalho e espelha `tokens.css`. Mudanças aprovadas são aplicadas nos dois lados na mesma entrega.
 
 ### 17.1 Arquivo
 
@@ -1550,13 +1329,18 @@ A biblioteca será construída **depois da aprovação deste documento**, espelh
 
 | Página | Conteúdo |
 |---|---|
-| Capa | Nome, versão, status, link para este documento |
-| Fundamentos | Cor, tipografia, grid, espaçamento, raios, profundidade |
-| Efeitos | Grão, dot grid com spotlight, mapa da operação, rotas, HUD, luz direcional, borda acesa · Efeitos interativos (12 padrões) |
-| Ícones | Lucide 1.5px nos quatro tamanhos + regras |
-| Componentes | Um frame por componente, com todas as variantes e estados |
-| Seções | S01 a S16 montadas com componentes |
-| Templates | Home, serviço, produto, case, artigo, sobre, carreiras (desktop 1440 e mobile 375) |
+| Capa | Capa e sumário |
+| Guia de uso | Como usar o arquivo |
+| 01 · Cores | Primitivas e semânticas |
+| 02 · Tipografia | Escala e estilos de texto |
+| 03 · Grid, espaço e forma | Grid, espaçamento, raios, profundidade |
+| 04 · Ícones | Lucide 1.5px nos quatro tamanhos + regras |
+| 05 · Imagem e efeitos | Grão, dot grid com spotlight, mapa da operação, rotas, HUD, luz direcional, borda acesa · Efeitos interativos |
+| 06 · Movimento | Durações, curvas e padrões |
+| 07 · Componentes | Um frame por componente, com variantes e estados |
+| 08 · Seções | Seções da biblioteca montadas com componentes |
+| 09 · Templates | Home · Desktop 1440 · v0.5 e propostas A, B e C |
+| ⚙ Biblioteca | Componentes mestre |
 
 ### 17.2 Coleções de variáveis
 
@@ -1607,6 +1391,7 @@ Itens que mudam ou ampliam `style/manual-de-design.md`. Todos foram aprovados e 
 | E23 | Faixa de tecnologias [v0.5] | Logo wall só para clientes | Marquee com a stack logo abaixo do hero | Pedido do usuário |
 | E24 | Avaliações do Google [v0.5] | Não previsto | Seção S17 com avaliações reais do perfil | Pedido do usuário |
 | E25 | Perguntas frequentes na Home [v0.5] | FAQ só em páginas de serviço | Seção S13 na Home | Pedido do usuário |
+| E26 | Governança [v0.6] | Valores repetidos no guia, no Figma e nas páginas | `tokens.css` como única cópia técnica, verificador automático e duas saídas para toda divergência (seção 0). Inclui o token `--grain-image`. A seção 16 passou a seguir a tabela 3.3 e o Figma | Pedido do usuário: toda alteração atrelada ao design system, com alerta de divergência |
 
 ---
 
@@ -1619,11 +1404,12 @@ Itens que mudam ou ampliam `style/manual-de-design.md`. Todos foram aprovados e 
 | P3 | Sessão de fotos (lista na seção 7.2); `assets/fotos/` está vazia | Seções S09, Sobre, Carreiras |
 | P4 | Lista de clientes autorizados para logo wall, cases e depoimentos | S08, S10, depoimentos |
 | P5 | Referências de sites em Framer | Afinamento da direção (serão avaliadas contra este documento) |
-| P6 | Destino do arquivo no Figma (time ou projeto) | Construção da biblioteca |
+| P6 | ~~Destino do arquivo no Figma~~ Resolvida: arquivo `Rumo · Site · Design System` no time Marketing Rumo | |
 | P7 | Copy do site (manifesto, títulos, CTAs) | Templates com texto real |
 | P8 | ~~Aprovação das evoluções E01 a E16~~ Resolvida: E01 a E25 aplicadas ao manual em 2026-10-23 | |
 | P9 | Avaliações reais do Google: link do perfil ou prints, com nota média e total [v0.5] | Seção S17 |
 | P10 | Lista final e logos oficiais da faixa de tecnologias (o usuário citou uma imagem que não chegou; a versão atual usa a stack da base institucional, com nome escrito onde não há logo livre: COBOL, SQL Server, IBM DB2, Azure) | Seção S10b |
+| P11 | Divergências do site anteriores à v0.6, listadas em `design-system/pendencias.json`: decidir entre ajustar o site ou registrar a rota no design system | Conformidade total da Home |
 
 ---
 
@@ -1647,7 +1433,7 @@ Antes de considerar uma página pronta:
 
 **Tipografia**
 - [ ] Só Geist (+ Geist Mono em labels e HUD)?
-- [ ] Títulos em 500, tracking negativo, `text-wrap: balance`?
+- [ ] Títulos em 600 (H4 em 500), tracking negativo, `text-wrap: balance`?
 - [ ] Corpo de 16px ou mais, até 65 caracteres por linha?
 
 **Layout**

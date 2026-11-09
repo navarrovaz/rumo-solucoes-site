@@ -1,0 +1,3 @@
+#!/bin/sh
+# Impede o commit quando o site diverge do design system.
+exec node scripts/check-ds.mjs
