@@ -1,13 +1,13 @@
 # Design System: Site Rumo Soluções
 
 > **Papel:** guia de design vivo do site e dos produtos digitais da Rumo Soluções. Fonte de verdade para qualquer página, seção, componente, landing page ou peça web, consultado por designers, desenvolvedores e agentes do Rumo-cowork.
-> **Status:** v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
+> **Status:** v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
 > **Referência em código:** Home · Desktop 1440 publicada em https://navarrovaz.github.io/rumo-solucoes-site/, com todos os efeitos deste guia funcionando.
-> **Contexto visual:** este arquivo não tem imagens. Para ver cada padrão, consulte o PDF `output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (42 páginas, sumário na página 2) e o Figma [Rumo · Site · Design System](https://www.figma.com/design/5t3Mwrd1SHHL1t9K7SGZKS) (time Marketing Rumo).
+> **Contexto visual:** este arquivo não tem imagens. Para ver cada padrão, consulte o PDF `Designer Gráfico/output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (pasta Rumo-cowork do OneDrive; as saídas não estão no repositório) (42 páginas, sumário na página 2) e o Figma [Rumo · Site · Design System](https://www.figma.com/design/5t3Mwrd1SHHL1t9K7SGZKS) (time Marketing Rumo).
 > **Escopo:** site institucional rumosolucoes.com (marca mãe Rumo Soluções, com páginas de produto) e produtos digitais.
-> **Base:** `style/manual-de-design.md` (identidade atual), evoluída para web. O resumo das regras do site está no manual, seção 18.
+> **Base:** `rumo-cowork/Designer Gráfico/style/manual-de-design.md` (identidade atual), evoluída para web. O resumo das regras do site está no manual, seção 18.
 > **Plataforma alvo:** Next.js (App Router) + Tailwind CSS v4 · biblioteca espelhada no Figma
-> **Contexto institucional:** `Rumo-cowork/knowledge/rumo.md`
+> **Contexto institucional:** `rumo-cowork/knowledge/rumo.md`
 
 ---
 
@@ -45,8 +45,8 @@ Este é o documento de contexto para quem projeta ou desenvolve qualquer página
 
 1. solicitação atual do usuário;
 2. este documento, para tudo o que é específico do site;
-3. `style/manual-de-design.md`, para tudo o que este documento não cobre;
-4. `Rumo-cowork/knowledge/rumo.md`, para fatos, números, serviços e produtos.
+3. `rumo-cowork/Designer Gráfico/style/manual-de-design.md`, para tudo o que este documento não cobre;
+4. `rumo-cowork/knowledge/rumo.md`, para fatos, números, serviços e produtos.
 
 **Regras de leitura:**
 
@@ -67,8 +67,9 @@ Este é o documento de contexto para quem projeta ou desenvolve qualquer página
 - `design-system/pendencias.json` lista as divergências anteriores à v0.6 que ainda aguardam decisão. A lista só pode diminuir (seção 19, P11).
 - O verificador cobre regras objetivas. Direção, composição e conteúdo continuam na revisão pelo checklist da seção 20.
 - O PDF é um retrato da v0.4 e só é reexportado em versão fechada.
+- A arquitetura de comunicação e marketing (base institucional, manuais, regras editoriais, skills) está no submódulo privado `rumo-cowork/`. Nada dele é copiado para fora do submódulo, porque este repositório é público (ver `CLAUDE.md`).
 
-**Onde ver cada padrão no PDF** (`output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf`):
+**Onde ver cada padrão no PDF** (`Designer Gráfico/output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (pasta Rumo-cowork do OneDrive; as saídas não estão no repositório)):
 
 | Seção deste documento | Páginas do PDF |
 |---|---|
@@ -147,7 +148,7 @@ A direção pede um site no padrão dos melhores templates e sites feitos em Fra
 
 1. **Uma ideia por dobra.** Cada viewport tem um protagonista.
 2. **Escuro com profundidade, nunca chapado.** Degradê radial curto + grão em todo fundo escuro.
-3. **O ciano aponta.** Ele guia o olho para a ação, o ícone, a rota e uma palavra do manifesto. Não preenche áreas e não entra no título (o título usa dois tons).
+3. **O ciano aponta.** Ele guia o olho para a ação, o ícone, a rota e a frase final do manifesto [v0.7]. Não preenche áreas e não entra no título (o título usa dois tons).
 4. **Movimento com função.** Toda animação revela hierarquia, mostra causa e efeito ou dá retorno a uma ação.
 5. **Prova antes de promessa.** Números reais, cases reais, fotos reais, produtos reais.
 
@@ -170,6 +171,8 @@ Registro das reprovações do usuário em peças anteriores que se aplicam ao si
 - cinza claro opaco brigando com o preto ("usar o preto direito");
 - selo dentro de tarja ou caixa escura;
 - clip-art (chips, robôs, cadeados genéricos).
+
+**Exceção [v0.7]:** o fundo da S03 passa a ciano enquanto a seção fica travada na tela, por decisão do usuário (E30). Fora desse efeito, o ciano continua proibido como fundo chapado.
 
 ---
 
@@ -277,6 +280,7 @@ São estes nomes que os componentes usam. Cada um muda de valor conforme a super
 |---|---|
 | Seções escuras | 75% fundos `ink` · 18% textos (branco e cinzas) · 5% ciano · 2% funcionais |
 | Página inteira [v0.5] | 100% no preto infinito. Nenhuma seção clara: o ritmo entre seções vem de espaço, fios de 1px que esmaecem nas pontas e mudanças de densidade dos efeitos |
+| S03 travada [v0.7] | Exceção: durante o pin, o fundo vai do preto ao ciano e volta ao preto antes de soltar. Sobre o ciano, texto em `on-brand` (#050505), frase final em branco, provas pretas (E30) |
 
 ### 2.4 Contrastes verificados (WCAG 2.2)
 
@@ -309,7 +313,7 @@ O acento substitui o ciano **somente** em: eyebrow e tags da página, ícones de
 | Produto | `accent` (sobre escuro) | `accent-text` (sobre claro) | `on-accent` | Status |
 |---|---|---|---|---|
 | Rumo (padrão) | `#00ACE5` | `#00759C` | `#050505` | Definido |
-| PriceFleet | `#009844` | `#007A37` | `#050505` | Definido a partir da identidade do produto (`knowledge/rumo.md` 14.1). Apoio: `#2C3E4F` |
+| PriceFleet | `#009844` | `#007A37` | `#050505` | Definido a partir da identidade do produto (`rumo-cowork/knowledge/rumo.md` 14.1). Apoio: `#2C3E4F` |
 | Rumo AI | `#00ACE5` | `#00759C` | `#050505` | Usa a identidade da marca mãe até haver assets próprios **[PENDENTE]** |
 | Sófi | a definir | a definir | a definir | **[PENDENTE]** |
 | Genial | a definir | a definir | a definir | **[PENDENTE]** |
@@ -334,6 +338,33 @@ Regras:
 | Fio que esmaece | linear `rumo-500` 100% → 0% em linha de 1px | Divisores de destaque, linhas de rota |
 
 Proibidos: ciano → verde em área grande, azuis antigos, arco-íris, mesh colorido, qualquer degradê que use roxo ou laranja.
+
+
+### 2.7 Cores originais das tecnologias [v0.7]
+
+Os logos da faixa de tecnologias (S10b) aparecem na cor oficial de cada marca, por decisão do usuário (E29). As cores valem só para o logo da faixa (`.tech`); o nome da tecnologia segue em cinza e vai para branco no hover. O verificador recusa o uso em qualquer outro lugar. Tecnologias sem logo livre (COBOL, SQL Server, IBM DB2, Azure) mantêm o ícone genérico em cinza.
+
+| Token | Cor | Tecnologia |
+|---|---|---|
+| `logo-java` | `#ED8B00` | Java |
+| `logo-dotnet` | `#512BD4` | .NET |
+| `logo-python` | `#3776AB` | Python |
+| `logo-javascript` | `#F7DF1E` | JavaScript |
+| `logo-php` | `#777BB4` | PHP |
+| `logo-angular` | `#DD0031` | Angular |
+| `logo-react` | `#61DAFB` | React |
+| `logo-oracle` | `#F80000` | Oracle |
+| `logo-mysql` | `#4479A1` | MySQL |
+| `logo-mongodb` | `#47A248` | MongoDB |
+| `logo-postgresql` | `#4169E1` | PostgreSQL |
+| `logo-aws` | `#FF9900` | AWS |
+| `logo-googlecloud` | `#4285F4` | Google Cloud |
+| `logo-docker` | `#2496ED` | Docker |
+| `logo-kubernetes` | `#326CE5` | Kubernetes |
+| `logo-n8n` | `#EA4B71` | n8n |
+| `logo-claude` | `#D97757` | Claude |
+| `logo-gemini` | `#8E75B2` | Gemini |
+| `logo-redis` | `#DC382D` | Redis |
 
 ---
 
@@ -919,7 +950,7 @@ Molas (spring) só sem overshoot (amortecimento crítico), por exemplo em elemen
 | **M01** | Entrada de bloco | Opacidade 0 → 1 + `translateY(24px)` → 0, `dur-slow`, `ease-out` |
 | **M02** | Título por linha | Cada linha em máscara (`overflow: hidden`), sobe de 100% → 0, 900ms, stagger 80ms (a sequência inteira cabe em 1200ms) |
 | **M03** | Manifesto que acende | Parágrafo do manifesto começa em `fg-unlit` (22%) e cada palavra vai a `fg` ligada ao scroll (começa com a seção a 80% da tela, termina a 30%). Uma palavra-chave termina em `brand-text`. Movimento reduzido: texto já aceso |
-| **M04** | Contador | Número sobe de 0 ao valor real em 1600ms, `ease-out`, números tabulares. Só números de `knowledge/rumo.md` |
+| **M04** | Contador | Número sobe de 0 ao valor real em 1600ms, `ease-out`, números tabulares. Só números de `rumo-cowork/knowledge/rumo.md` |
 | **M05** | Rota desenhada | Linha de rota ligada ao scroll (`stroke-dashoffset`); nós acendem quando a linha passa por eles |
 | **M06** | Narrativa sticky | Seção travada; o texto da esquerda troca por etapa e o visual da direita se transforma. Índice `01 / 05` em `mono-micro` |
 | **M07** | Parallax leve | Camadas de fundo (grade, mapa de rede, luz) a 0.1 a 0.4 da velocidade do scroll. Nunca em texto |
@@ -1086,7 +1117,7 @@ Seis propostas aprovadas em 2026-10-22 depois da análise de quatro referências
 Regras comuns:
 
 - Mini-interfaces e filas de chamados são **ilustrativas**: status genéricos, nenhum número inventado.
-- A cadeia só usa fatos de `knowledge/rumo.md`.
+- A cadeia só usa fatos de `rumo-cowork/knowledge/rumo.md`.
 - A luz do card luminoso segue a anatomia da seção 8.8 (fonte, núcleo, corpo, queda). Continua proibido brilho em logo, símbolo, ícone ou texto.
 - Ao trocar o ícone de um `Card/Tonal` no Figma, reaplique `brand` no traço (a troca volta o ícone para `fg-muted`).
 
@@ -1100,7 +1131,7 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 |---|---|---|---|---|
 | **S01** | Hero | Display centralizado + barra de pergunta | Escura | Mapa de rede vivo, véu central, HUD (relógio, metadados, contador) |
 | **S02** | Hero de página interna | `h1` + visual | Escura | Dot grid ou foto com fade |
-| **S03** | Manifesto e prova | Manifesto que acende + cadeia de números | Escura | M03, M18 |
+| **S03** | Manifesto e prova | Manifesto que acende + faixa de provas | Escura; ciano durante o pin [v0.7] | No desktop: seção travada (pin) por cerca de 2,4 telas de rolagem, fundo preto → ciano → preto, palavras acendem com a rolagem, provas com contador e luz. No celular: sem pin, fundo preto (E30) |
 | **S03b** | Faixa de prova (alternativa) | Stats reais + selos | Escura | Contadores (M04) |
 | **S04** | Serviços em bento | O grid | Escura | Spotlight |
 | **S05** | Narrativa sticky | Etapas | Escura | Rota (M05), índice mono |
@@ -1109,14 +1140,15 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 | **S08** | Cases | Carrossel ou grid de cases | Escura ou clara | Hover de card |
 | **S09** | Pessoas e cultura | Fotografia real | Escura | Fade radial |
 | **S10** | Diferenciais | Quatro cards de diferencial | Escura [v0.5] | Spotlight nos cards |
-| **S10b** | Faixa de tecnologias [v0.5] | Logos da stack (`knowledge/rumo.md`, seção 5.1) em marquee | Escura | M09. Na Home, logo abaixo do hero |
+| **S10b** | Faixa de tecnologias [v0.5] | Logos da stack (`rumo-cowork/knowledge/rumo.md`, seção 5.1) em marquee | Escura | M09. Na Home, logo abaixo do hero |
 | **S11** | Diagnóstico gratuito | Oferta + CTA | Escura | Luz de topo no painel, HUD |
 | **S12** | Conteúdo (blog) | Cards de artigo | Escura [v0.5] | Hover de card |
-| **S13** | Perguntas frequentes [v0.5] | Acordeão à direita; título, lead e link para especialista fixos à esquerda | Escura | Nenhum. Respostas só com fatos de `knowledge/rumo.md` |
+| **S13** | Perguntas frequentes [v0.5] | Acordeão à direita; título, lead e link para especialista fixos à esquerda | Escura | Nenhum. Respostas só com fatos de `rumo-cowork/knowledge/rumo.md` |
 | **S14** | CTA final | `h1` + um CTA | Escura | Dot grid com spotlight + luz de topo |
 | **S15** | Linha do tempo | Rota 1997 → hoje | Escura | M05 |
 | **S16** | Corpo de leitura | Texto 720px | Escura [v0.5] | Nenhum |
 | **S17** | Avaliações do Google [v0.5] | Resumo do perfil (nota e total reais) + três cards de avaliação | Escura | Spotlight nos cards |
+| **S18** | Especialistas [v0.7] | Áreas como abas à esquerda (índice, nome em `h3`, contagem e descrição) e painel à direita só com os perfis da área escolhida, selecionáveis + barra "Seu time" que leva os perfis ao formulário | Escura | Máximo de interação da Home: abas com aro aceso, perfis entram em sequência, luz e marca no hover, seleção acesa, spotlight. Uma área por vez, para haver hierarquia. Perfis só de `rumo-cowork/knowledge/rumo.md` 5.1 |
 
 ---
 
@@ -1152,17 +1184,17 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 
 | # | Seção | Conteúdo (a definir na etapa de copy) |
 |---|---|---|
-| 1 | S01 Hero manifesto | Título em dois tons + lead + barra de pergunta (ação principal) + chips de sugestão + link "agende um diagnóstico gratuito". Composição centralizada sobre o mapa de rede, com HUD nos cantos |
-| 2 | S10b Faixa de tecnologias [v0.5] | Logos da stack em marquee |
-| 3 | S03 Manifesto e prova | Manifesto que acende + cadeia de números |
-| 4 | S04 Serviços em bento | Outsourcing na célula maior; demais serviços em cards luminosos; CTA em todos |
-| 5 | S05 Narrativa sticky | Como a Rumo trabalha: diagnóstico → seleção técnica → operação → corresponsabilidade → evolução |
-| 6 | S10 Diferenciais | Quatro cards de diferencial no escuro |
-| 7 | S17 Avaliações do Google [v0.5] | Avaliações reais do perfil (pendente, P9) |
-| 8 | S12 Conteúdo | Últimos artigos |
-| 9 | S13 Perguntas frequentes [v0.5] | Sete perguntas com respostas da base institucional |
-| 10 | S11 Diagnóstico gratuito | Formulário de conversão |
-| 11 | S14 CTA final | Diagnóstico gratuito |
+| 1 | S01 Hero | Display "Seu time de TI, sem complicações." + lead (profissionais certos, senioridade e fit cultural, custos e escala da equipe) + barra de pergunta + chips + "fale com um especialista" |
+| 2 | S10b Faixa de tecnologias [v0.5] | Logos da stack em marquee, nas cores originais (2.7) |
+| 3 | S03 Manifesto e prova | Argumento da estratégia (criar uma aplicação ficou fácil; fazê-la funcionar na empresa, não). No desktop a seção trava, o fundo vai do preto ao ciano e volta, a frase final "É nessa diferença que a Rumo trabalha desde 1997." fica em destaque e as cinco provas entram com contador |
+| 4 | S04 Serviços em bento | Outsourcing (célula maior), Infraestrutura e Cibersegurança, Desenvolvimento e Rumo AI. Mesma estrutura em todos os cards (visual em quadro preto em cima, texto embaixo), animações em sequência. O card sob o cursor ganha destaque e os outros recuam; sem cursor, o destaque é do Outsourcing |
+| 5 | S18 Especialistas [v0.7] | Perfis por área, selecionáveis, que montam o pedido do formulário |
+| 6 | S17 Avaliações do Google [v0.5] | Avaliações reais do perfil (pendente, P9) |
+| 7 | S12 Conteúdo | Últimos artigos, Outsourcing primeiro |
+| 8 | S13 Perguntas frequentes [v0.5] | Sete perguntas com respostas da base institucional |
+| 9 | S11 Diagnóstico gratuito | Formulário de conversão |
+| 10 | S14 CTA final | Assinatura da estratégia: "Não estamos presentes apenas na entrega. Estamos presentes na continuidade." |
+| Fora da Home [v0.7] | S05 Narrativa sticky · S10 Diferenciais | Vão para a página de Outsourcing: na Home quebravam o fluxo de leitura (E27) |
 | Fase 2 | S06 Rumo AI · S07 Produtos · S08 Cases · S09 Pessoas | Entram quando houver assets, cases autorizados e fotos reais |
 
 ### 12.3 Página de serviço
@@ -1210,10 +1242,10 @@ S02 com foto real → cultura, DNA remoto e híbrido → Rumo Academy → GPTW �
 
 ## 14. Conteúdo e microcopy
 
-- **Tom:** consultivo, humano, sem "tecniquês" excessivo (`knowledge/rumo.md` 14.2). A copy do site é uma etapa à parte e segue a skill `copy-social-media` adaptada para web ou um briefing próprio.
+- **Tom:** consultivo, humano, sem "tecniquês" excessivo (`rumo-cowork/knowledge/rumo.md` 14.2). A copy do site é uma etapa à parte e segue a skill `copy-social-media` (`rumo-cowork/.claude/skills/copy-social-media/`) adaptada para web ou um briefing próprio.
 - **CTA primário global:** "Agendar diagnóstico gratuito". Secundários: "Ver cases", "Conhecer serviços", "Falar com um especialista".
 - **Evitar** "Saiba mais" e "Clique aqui". O rótulo diz o que acontece.
-- **Números:** só os de `knowledge/rumo.md` seção 1.2, conferidos com a seção 16.3 antes de publicar. Para tempo de mercado, preferir **"desde 1997"**, que não vence (em 2026 já são 29 anos, e a base ainda diz "+28 anos").
+- **Números:** só os de `rumo-cowork/knowledge/rumo.md` seção 1.2, conferidos com a seção 16.3 antes de publicar. Para tempo de mercado, preferir **"desde 1997"**, que não vence (em 2026 já são 29 anos, e a base ainda diz "+28 anos").
 - **Clientes e cases:** só com autorização para uso de nome e logo.
 - **Travessão longo:** proibido em todo texto do site, inclusive `alt`, metadados e mensagens de erro.
 - **Mensagens de sistema:** humanas e curtas ("Recebemos seu pedido. Um especialista responde em até 1 dia útil." somente se o prazo for real).
@@ -1339,14 +1371,14 @@ A biblioteca está no arquivo do Figma citado no cabeçalho e espelha `tokens.cs
 | 06 · Movimento | Durações, curvas e padrões |
 | 07 · Componentes | Um frame por componente, com variantes e estados |
 | 08 · Seções | Seções da biblioteca montadas com componentes |
-| 09 · Templates | Home · Desktop 1440 · v0.5 e propostas A, B e C |
+| 09 · Templates | Home · Desktop 1440 · v0.7 e propostas A, B e C |
 | ⚙ Biblioteca | Componentes mestre |
 
 ### 17.2 Coleções de variáveis
 
 | Coleção | Modos | Conteúdo |
 |---|---|---|
-| **Primitivas** | (nenhum) | `ink/*`, `rumo/*`, `ice/*`, `success/*`, `error/*` |
+| **Primitivas** | (nenhum) | `ink/*`, `rumo/*`, `ice/*`, `success/*`, `error/*`, `logo/*` (cores originais das tecnologias, seção 2.7) |
 | **Tema** | Dark · Light | Todas as semânticas da seção 2.2 (`bg`, `surface`, `fg`, `brand`...), apontando para Primitivas |
 | **Produto** | Rumo · PriceFleet · Sófi · Genial · SGAE · Startvet | `accent`, `accent-text`, `on-accent` |
 | **Dimensões** | (nenhum) | Espaçamento, raios, larguras de borda, tamanhos de ícone |
@@ -1355,14 +1387,14 @@ A biblioteca está no arquivo do Figma citado no cabeçalho e espelha `tokens.cs
 ### 17.3 Estilos
 
 - **Texto:** um estilo por nível da escala (seção 3.3), em Geist, com `label` e `mono-micro` em Geist Mono.
-- **Efeitos:** `elevation/2`, `elevation/3`, `shadow/sm`, `shadow/md`, `shadow/lg`, `focus-ring`, `glow/brand` (controle aceso). Componentes de luz: `Light/Top Edge` e `Light/Rim`.
+- **Efeitos:** `elevation/2`, `elevation/3`, `shadow/sm`, `shadow/md`, `shadow/lg`, `focus-ring`, `glow/brand` (controle aceso), `Glow/Neon` e `Glow/Neon Strong` (containers neon, E28). Componentes de luz: `Light/Top Edge` e `Light/Rim`.
 - **Componentes com variantes:** Botão (variante × tamanho × estado × tema), Input (estado × tema), Tag, Status, Cards (tipo × tema), Navegação (estado), Acordeão, Abas, Stat, Rodapé.
 
 ---
 
 ## 18. Evoluções propostas para o manual
 
-Itens que mudam ou ampliam `style/manual-de-design.md`. Todos foram aprovados e aplicados ao manual em 2026-10-23; a tabela fica como registro da origem de cada regra.
+Itens que mudam ou ampliam `rumo-cowork/Designer Gráfico/style/manual-de-design.md`. Todos foram aprovados e aplicados ao manual em 2026-10-23; a tabela fica como registro da origem de cada regra.
 
 | # | Tema | Manual hoje | Proposta | Motivo |
 |---|---|---|---|---|
@@ -1392,6 +1424,10 @@ Itens que mudam ou ampliam `style/manual-de-design.md`. Todos foram aprovados e 
 | E24 | Avaliações do Google [v0.5] | Não previsto | Seção S17 com avaliações reais do perfil | Pedido do usuário |
 | E25 | Perguntas frequentes na Home [v0.5] | FAQ só em páginas de serviço | Seção S13 na Home | Pedido do usuário |
 | E26 | Governança [v0.6] | Valores repetidos no guia, no Figma e nas páginas | `tokens.css` como única cópia técnica, verificador automático e duas saídas para toda divergência (seção 0). Inclui o token `--grain-image`. A seção 16 passou a seguir a tabela 3.3 e o Figma | Pedido do usuário: toda alteração atrelada ao design system, com alerta de divergência |
+| E27 | Home pela estratégia de posicionamento [v0.7] | Home com a IA em destaque, narrativa sticky e diferenciais; ciano em uma palavra do manifesto | Home reordenada pela estratégia de 2026-11-12: S18 Especialistas entra, S05 e S10 saem da Home, a frase final do manifesto fica em ciano e as provas viram faixa de Stat | Estratégia de posicionamento e revisão do roteiro pelo usuário: fluxo de leitura e mensagem comercial |
+| E28 | Containers no preto com borda neon [v0.7] | Cards em grafite (#131416 a #0D0E0F) com borda acesa discreta | Cards em `ink-925` → `ink-950`, borda acesa em ciano nas quatro laterais (mais forte no topo) e halo ciano suave; no hover, borda e halo se intensificam. Quadros internos no `bg` | Pedido do usuário: containers "bem mais dark, preto escuro, com efeitos neon" |
+| E29 | Logos da stack nas cores originais [v0.7] | Logos em cinza (#6B6B6B), monocromáticos | Logos maiores (32px) na cor oficial de cada marca, só na faixa de tecnologias (2.7) | Pedido do usuário |
+| E30 | Manifesto travado com fundo ciano [v0.7] | Site 100% no preto; ciano como fundo chapado reprovado (1.5) | Na S03, no desktop, a seção trava e o fundo vai do preto ao ciano e volta ao preto; texto preto sobre o ciano e frase final em branco. Atenção: branco sobre ciano tem contraste de 2,6:1, abaixo do AA (seção 2.4) | Pedido do usuário: destacar só o conteúdo da seção com transição de cor de fundo |
 
 ---
 
@@ -1425,9 +1461,9 @@ Antes de considerar uma página pronta:
 
 **Cor**
 - [ ] Componentes usam só tokens semânticos?
-- [ ] Ciano só aponta (CTA, ícones, rotas, brilho de card, uma palavra do manifesto)?
+- [ ] Ciano só aponta (CTA, ícones, rotas, brilho de card, a frase final do manifesto [v0.7])?
 - [ ] Títulos em dois tons, sem ciano?
-- [ ] Nenhum bloco de ciano chapado, nenhum card branco sobre preto?
+- [ ] Nenhum bloco de ciano chapado (exceto o fundo da S03 travada, E30), nenhum card branco sobre preto?
 - [ ] Verde só em status real? Vermelho só em erro?
 - [ ] Contrastes AA conferidos? Nenhuma seção clara no site [v0.5]?
 
@@ -1457,7 +1493,7 @@ Antes de considerar uma página pronta:
 **Conteúdo**
 - [ ] Um CTA primário por seção? Todo card de serviço com CTA alinhado no pé [v0.5]?
 - [ ] Avaliações e depoimentos só reais, com autorização?
-- [ ] Números e cases conferidos em `knowledge/rumo.md`?
+- [ ] Números e cases conferidos em `rumo-cowork/knowledge/rumo.md`?
 - [ ] Nenhum travessão longo?
 
 **Técnico**

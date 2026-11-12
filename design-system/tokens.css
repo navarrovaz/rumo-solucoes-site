@@ -220,6 +220,29 @@
   --accent-text: #007A37;
 }
 
+/* ============ CORES ORIGINAIS DAS TECNOLOGIAS (guia, seção 2.7). Uso restrito à faixa .tech ============ */
+:root {
+  --logo-java: #ED8B00;
+  --logo-dotnet: #512BD4;
+  --logo-python: #3776AB;
+  --logo-javascript: #F7DF1E;
+  --logo-php: #777BB4;
+  --logo-angular: #DD0031;
+  --logo-react: #61DAFB;
+  --logo-oracle: #F80000;
+  --logo-mysql: #4479A1;
+  --logo-mongodb: #47A248;
+  --logo-postgresql: #4169E1;
+  --logo-aws: #FF9900;
+  --logo-googlecloud: #4285F4;
+  --logo-docker: #2496ED;
+  --logo-kubernetes: #326CE5;
+  --logo-n8n: #EA4B71;
+  --logo-claude: #D97757;
+  --logo-gemini: #8E75B2;
+  --logo-redis: #DC382D;
+}
+
 /* ============ 4. LAYOUT E MOVIMENTO ============ */
 :root {
   --container-max: 1720px;

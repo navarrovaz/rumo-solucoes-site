@@ -2,6 +2,17 @@
 
 Toda alteração no site segue o design system em `design-system/`.
 
+## Comunicação, marketing e base institucional
+
+A arquitetura de comunicação da Rumo fica em `rumo-cowork/`, um submódulo do repositório privado `navarrovaz/rumo-cowork`. Comece por `rumo-cowork/CLAUDE.md`, que roteia artigos, posts e peças visuais.
+
+- **Fatos:** números, serviços, produtos, história, missão, visão e valores vêm só de `rumo-cowork/knowledge/rumo.md`. Não invente e não crie cópias da base.
+- **Texto do site:** tom da seção 14.2 da base, skill `rumo-cowork/.claude/skills/copy-social-media/` adaptada para web e regras de `rumo-cowork/Artigos Linkedin - BLOG/style/manual-de-redacao.md.txt`.
+- **Identidade:** `rumo-cowork/Designer Gráfico/style/manual-de-design.md`. No que é específico do site, prevalece `design-system/design-system-site.md`.
+- **Nunca publique no site** o que a base marca como [DIRECIONAMENTO ESTRATÉGICO] (SWOT, concorrentes, personas, lógica de preço), nem clientes e cases sem autorização confirmada (seção 16 da base).
+- **Nunca copie arquivos de `rumo-cowork/` para fora do submódulo.** Este repositório é público e o GitHub Pages publica o que está nele.
+- **Mudanças no Rumo-cowork** são commits dentro de `rumo-cowork/`, enviados ao repositório privado. Depois, atualize o ponteiro do submódulo neste repositório.
+
 ## Antes de alterar uma página
 
 - Consulte a seção pertinente de `design-system/design-system-site.md` e os valores em `design-system/tokens.css`.

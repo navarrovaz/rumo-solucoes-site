@@ -17,7 +17,7 @@ const TOKENS = 'design-system/tokens.css';
 const GUIA = 'design-system/design-system-site.md';
 export const PENDENCIAS = 'design-system/pendencias.json';
 
-const FORA_DA_VARREDURA = new Set(['.git', '.claude', '.github', '.githooks', 'node_modules', '_fonte', 'design-system', 'scripts']);
+const FORA_DA_VARREDURA = new Set(['.git', '.claude', '.github', '.githooks', 'node_modules', '_fonte', 'design-system', 'scripts', 'rumo-cowork']);
 // Variáveis definidas em tempo de execução pelo JavaScript dos efeitos (cursor).
 const VARIAVEIS_DE_EXECUCAO = new Set(['x', 'mx', 'my']);
 const PESOS_PERMITIDOS = new Set([400, 500, 600]);
@@ -30,6 +30,7 @@ const PROPRIEDADES_DE_TIPO = { 'line-height': 'line-height', 'letter-spacing': '
 
 const ONDE_NO_GUIA = {
   'cor-fora-da-paleta': 'seção 2 (Cor)',
+  'cor-restrita': 'seção 2.7',
   'use-o-token': 'seção 2 (Cor) e checklist: só tokens semânticos',
   'token-inexistente': 'tokens.css',
   'token-local': 'tokens.css: valores não são definidos nas páginas',
@@ -134,6 +135,8 @@ export function carregarTokens() {
       nomes.add(nome);
       if (!claro && !produto) brutos.set(nome, d.valor);
       if (produto || nome === 'grain-image') continue;
+      // Cores de marcas de terceiros: documentadas no guia, mas fora da paleta do site.
+      if (/^logo-/.test(nome)) { for (const c of coresEm(d.valor)) hexes.add(c.rgb); continue; }
       for (const c of coresEm(d.valor)) {
         if (!paleta.has(c.rgb)) paleta.set(c.rgb, nome);
         if (!c.comAlfa) hexes.add(c.rgb);
@@ -150,6 +153,7 @@ export function carregarTokens() {
   // Tokens exatos: o semântico tem preferência sobre o primitivo na sugestão.
   const exatos = new Map();
   for (const nome of brutos.keys()) {
+    if (/^logo-/.test(nome)) continue;
     const v = resolver(nome);
     if (!v || !/^#[0-9a-f]{3,8}$/i.test(v)) continue;
     const rgb = normalizaHex(v);
@@ -216,6 +220,9 @@ function verificarDeclaracao(d, seletor, linha, arquivo, tokens, add) {
     if (!tokens.nomes.has(m[1]) && !VARIAVEIS_DE_EXECUCAO.has(m[1]) && m[1] !== 'gut') {
       reg('token-inexistente', `--${m[1]}`, `--${m[1]} não existe em tokens.css`);
     }
+  }
+  if (/var\(--logo-/.test(valor) && !seletor.startsWith('.tech')) {
+    reg('cor-restrita', valor, `${valor} em ${seletor}: as cores --logo-* só valem nos logos da faixa de tecnologias`);
   }
   if (!/mask/.test(prop)) {
     for (const c of coresEm(valor)) {

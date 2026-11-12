@@ -1,6 +1,6 @@
 # Rumo Soluções · Novo site
 
-Proposta da nova Home do site da Rumo Soluções, construída a partir do design system do site (v0.6).
+Proposta da nova Home do site da Rumo Soluções, construída a partir do design system do site (v0.7).
 
 **Ver online:** https://navarrovaz.github.io/rumo-solucoes-site/
 
@@ -13,6 +13,7 @@ Proposta da nova Home do site da Rumo Soluções, construída a partir do design
 | `design-system/design-system-site.md` | Guia do design system do site: tipografia, luz, efeitos, componentes, seções, governança e checklist |
 | `design-system/pendencias.json` | Divergências anteriores à v0.6 que aguardam decisão |
 | `scripts/check-ds.mjs` | Verificador que compara o site com o design system |
+| `rumo-cowork/` | Submódulo privado com a arquitetura de comunicação e marketing da Rumo (base institucional, manuais, regras editoriais, skills) |
 
 ## Design system
 
@@ -22,6 +23,12 @@ Para verificar manualmente:
 
 ```bash
 node scripts/check-ds.mjs
+```
+
+Para baixar também o submódulo privado `rumo-cowork/` (exige acesso a `navarrovaz/rumo-cowork`):
+
+```bash
+git submodule update --init
 ```
 
 Para ativar o alerta de commit depois de clonar o repositório:

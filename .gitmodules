@@ -1,0 +1,4 @@
+[submodule "rumo-cowork"]
+	path = rumo-cowork
+	url = https://github.com/navarrovaz/rumo-cowork.git
+	branch = main
