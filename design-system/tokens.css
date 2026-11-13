@@ -243,6 +243,15 @@
   --logo-redis: #DC382D;
 }
 
+/* ============ WORDMARK EM VIDRO (guia, seção 2.8). Uso restrito à S19 (.vb) ============ */
+:root {
+  --font-wordmark: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+  --wordmark-from: #F2F2F4;
+  --wordmark-to: #9A9CA3;
+  --wordmark-sub: #8D8F96;
+  --wordmark-size: clamp(64px, 22vw, 330px);
+}
+
 /* ============ 4. LAYOUT E MOVIMENTO ============ */
 :root {
   --container-max: 1720px;

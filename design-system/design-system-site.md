@@ -1,7 +1,7 @@
 # Design System: Site Rumo Soluções
 
 > **Papel:** guia de design vivo do site e dos produtos digitais da Rumo Soluções. Fonte de verdade para qualquer página, seção, componente, landing page ou peça web, consultado por designers, desenvolvedores e agentes do Rumo-cowork.
-> **Status:** v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
+> **Status:** v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
 > **Referência em código:** Home · Desktop 1440 publicada em https://navarrovaz.github.io/rumo-solucoes-site/, com todos os efeitos deste guia funcionando.
 > **Contexto visual:** este arquivo não tem imagens. Para ver cada padrão, consulte o PDF `Designer Gráfico/output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (pasta Rumo-cowork do OneDrive; as saídas não estão no repositório) (42 páginas, sumário na página 2) e o Figma [Rumo · Site · Design System](https://www.figma.com/design/5t3Mwrd1SHHL1t9K7SGZKS) (time Marketing Rumo).
 > **Escopo:** site institucional rumosolucoes.com (marca mãe Rumo Soluções, com páginas de produto) e produtos digitais.
@@ -366,6 +366,19 @@ Os logos da faixa de tecnologias (S10b) aparecem na cor oficial de cada marca, p
 | `logo-gemini` | `#8E75B2` | Gemini |
 | `logo-redis` | `#DC382D` | Redis |
 
+
+### 2.8 Wordmark em vidro [v0.8]
+
+Usado só na S19, por decisão do usuário (E31). Vem do arquivo `logo-3d-vidro/index.html` entregue por ele: letras RUMO em texto com degradê prateado e o símbolo em vidro 3D (WebGL). Os tokens ficam em `tokens.css` e o verificador recusa o uso fora de `.vb`.
+
+| Token | Valor | Uso |
+|---|---|---|
+| `font-wordmark` | Plus Jakarta Sans 500 | Letras RUMO e "Soluções" do wordmark |
+| `wordmark-from` | `#F2F2F4` | Topo do degradê das letras |
+| `wordmark-to` | `#9A9CA3` | Base do degradê das letras |
+| `wordmark-sub` | `#8D8F96` | "Soluções" |
+| `wordmark-size` | `clamp(64px, 22vw, 330px)` | Lado do quadro do símbolo; as letras medem 0,78 desse valor |
+
 ---
 
 ## 3. Tipografia
@@ -622,7 +635,7 @@ Para os seis serviços, pode existir um conjunto próprio desenhado sobre o grid
 - temperatura neutra a fria; luz ciano só quando vier de fonte real (monitor, luminária);
 - vinheta suave e grão por cima, alinhado ao grão do site;
 - integração ao fundo com fade radial (nunca foto em caixa rígida sem motivo, manual 10.6);
-- texto sobre foto: overlay `#050505` de 40% a 70% (manual 10.2).
+- texto sobre foto: overlay `#050505` de 40% a 70% (manual 10.2). **Exceção [v0.8]:** nas imagens dos cards de serviço da S19, o degradê vai de 0% no topo a 97% na base, por pedido do usuário (E35).
 
 **Tratamento (seções claras):** natural, levemente dessaturado, sem overlay escuro, cantos `radius-lg`.
 
@@ -650,7 +663,7 @@ Evitar: aperto de mão, sorriso posado para a câmera, reunião encenada, foto c
 | Iluminação | Low-key, luz de recorte lateral, sombra projetada de verdade |
 | Objetos aprovados | Símbolo da Rumo extrudado monocromático (capa isométrica aprovada). O globo saiu na v0.4 |
 | Proibido | Glow ou contorno no símbolo; blobs coloridos; robôs humanoides; esferas cromadas sem conceito; 3D "fofo" |
-| Entrega | Tempo real (React Three Fiber) no hero; renders estáticos ou vídeo `webm` nas demais seções |
+| Entrega | Tempo real (React Three Fiber) no hero; renders estáticos ou vídeo `webm` nas demais seções. **Exceção [v0.8]:** o símbolo em vidro da S19 roda em tempo real (Three.js), carregado só perto da seção, com resolução de no máximo 1.5x, pausado fora da tela e trocado pelo símbolo plano no celular (E31) |
 
 ### 7.4 Imagens geradas por IA
 
@@ -1007,11 +1020,10 @@ Todo componente tem os estados: padrão, hover, foco visível, pressionado e des
 
 | Tamanho | Altura | Padding horizontal | Texto | Ícone |
 |---|---|---|---|---|
-| `sm` | 36px | 14px | 14px / 500 | 16px |
-| `md` | 44px | 20px | 15px / 500 | 16px |
-| `lg` | 52px | 24px | 16px / 500 | 20px |
+| Padrão [v0.8] | 52px | 26px | 15px / 500 (`button`) | 16px |
+| `sm` [v0.8] | 40px | 18px | 14px / 500 | 16px |
 
-Raio `radius-md`. Ícone à direita (seta), gap de 8px.
+Raio `radius-pill` em todos os botões [v0.8] (E34). Um tamanho só nas seções; o `sm` fica para o menu e o verso dos cards. Ícone à direita (seta), gap de 8px.
 
 | Variante | Padrão | Hover | Pressionado | Desabilitado |
 |---|---|---|---|---|
@@ -1147,7 +1159,8 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 | **S14** | CTA final | `h1` + um CTA | Escura | Dot grid com spotlight + luz de topo |
 | **S15** | Linha do tempo | Rota 1997 → hoje | Escura | M05 |
 | **S16** | Corpo de leitura | Texto 720px | Escura [v0.5] | Nenhum |
-| **S17** | Avaliações do Google [v0.5] | Resumo do perfil (nota e total reais) + três cards de avaliação | Escura | Spotlight nos cards |
+| **S17** | Avaliações do Google [v0.8] | Só as duas fileiras de cards em loop, em sentidos opostos, com as bordas sumindo (sem título visível) | Escura | M09, pausa sob o cursor. Card escuro; borda em degradê neon azul só com o cursor sobre ele; avatar ilustrado vetorial e colorido (E33), nome, cargo e depoimento. **[PENDENTE]** Os depoimentos atuais são ilustrativos (pessoas e textos fictícios, marcados "Ilustrativo" no card) e precisam ser trocados por depoimentos reais autorizados antes de publicar |
+| **S19** | Marca em vidro, história e serviços [v0.8] | Wordmark em vidro (2.8) → linha do tempo → serviços em cards laterais → encerramento na ampulheta de pixels, com o símbolo em vidro como fio condutor | Escura | O símbolo sai do vão do wordmark passando por baixo das letras, fica no centro-direita enquanto os anos deslizam (linha com ponto e etiqueta do estágio: início, ascensão, expansão, premiados, reconhecimento), vai ao centro e desce em linha reta entre os cards dos serviços, e para no gargalo de uma ampulheta de pixels de uma tela (efeito do hero da Sluice), com o CTA do diagnóstico logo abaixo, subindo com a página; em seguida vem a S17 Avaliações. Giro contínuo no eixo Y, uma volta a cada 9 s; o canvas usa mescla `screen` para o preto do vidro não cobrir o conteúdo. Cards dos serviços com imagem conceitual gerada por IA (7.4), ícone, título `h3` e "Ver detalhes": o card gira no eixo Y (passar o cursor ou clicar) e o verso traz descrição, tópicos e CTA. No celular: símbolo plano no wordmark e conteúdo em lista (E31) |
 | **S18** | Especialistas [v0.7] | Áreas como abas à esquerda (índice, nome em `h3`, contagem e descrição) e painel à direita só com os perfis da área escolhida, selecionáveis + barra "Seu time" que leva os perfis ao formulário | Escura | Máximo de interação da Home: abas com aro aceso, perfis entram em sequência, luz e marca no hover, seleção acesa, spotlight. Uma área por vez, para haver hierarquia. Perfis só de `rumo-cowork/knowledge/rumo.md` 5.1 |
 
 ---
@@ -1187,14 +1200,12 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 | 1 | S01 Hero | Display "Seu time de TI, sem complicações." + lead (profissionais certos, senioridade e fit cultural, custos e escala da equipe) + barra de pergunta + chips + "fale com um especialista" |
 | 2 | S10b Faixa de tecnologias [v0.5] | Logos da stack em marquee, nas cores originais (2.7) |
 | 3 | S03 Manifesto e prova | Argumento da estratégia (criar uma aplicação ficou fácil; fazê-la funcionar na empresa, não). No desktop a seção trava, o fundo vai do preto ao ciano e volta, a frase final "É nessa diferença que a Rumo trabalha desde 1997." fica em destaque e as cinco provas entram com contador |
-| 4 | S04 Serviços em bento | Outsourcing (célula maior), Infraestrutura e Cibersegurança, Desenvolvimento e Rumo AI. Mesma estrutura em todos os cards (visual em quadro preto em cima, texto embaixo), animações em sequência. O card sob o cursor ganha destaque e os outros recuam; sem cursor, o destaque é do Outsourcing |
-| 5 | S18 Especialistas [v0.7] | Perfis por área, selecionáveis, que montam o pedido do formulário |
+| 4 | S19 Marca em vidro, história e serviços [v0.8] | Wordmark em vidro; linha do tempo (1997, 2004, 2009, 2011 e hoje, texto do usuário); os cinco serviços em cards que giram; encerramento na ampulheta de pixels com o símbolo. Substitui a S04 e a S18 na Home (E31) |
 | 6 | S17 Avaliações do Google [v0.5] | Avaliações reais do perfil (pendente, P9) |
-| 7 | S12 Conteúdo | Últimos artigos, Outsourcing primeiro |
+| 7 | S12 Notícias [v0.8] | "Acontece na Rumo. Novidades e conquistas.", em cards escuros separados: novidades, eventos e conquistas (ISO 9001, GPTW, Rumo AI), com imagens conceituais geradas no Figma no padrão dos serviços |
 | 8 | S13 Perguntas frequentes [v0.5] | Sete perguntas com respostas da base institucional |
-| 9 | S11 Diagnóstico gratuito | Formulário de conversão |
 | 10 | S14 CTA final | Assinatura da estratégia: "Não estamos presentes apenas na entrega. Estamos presentes na continuidade." |
-| Fora da Home [v0.7] | S05 Narrativa sticky · S10 Diferenciais | Vão para a página de Outsourcing: na Home quebravam o fluxo de leitura (E27) |
+| Fora da Home [v0.7] | S05 Narrativa sticky · S10 Diferenciais · S18 Especialistas [v0.8] | Vão para a página de Outsourcing: na Home quebravam o fluxo de leitura (E27) |
 | Fase 2 | S06 Rumo AI · S07 Produtos · S08 Cases · S09 Pessoas | Entram quando houver assets, cases autorizados e fotos reais |
 
 ### 12.3 Página de serviço
@@ -1233,7 +1244,7 @@ S02 com foto real → cultura, DNA remoto e híbrido → Rumo Academy → GPTW �
 | Altura | 28px a 32px no header desktop, mínimo 24px (manual 11.4) |
 | Respiro | Altura do "R" em todos os lados (manual 11.3) |
 | Favicon | Símbolo oficial (`SIMBOLO DO LOGO rumo.svg`) em 32px, 180px (Apple) e SVG |
-| Proibido | Glow, contorno, sombra, gradiente, animação que deforme o logo, símbolo gigante solto como decoração |
+| Proibido | Glow, contorno, sombra, gradiente, animação que deforme o logo, símbolo gigante solto como decoração. **Exceção [v0.8]:** na S19, o wordmark em vidro (2.8) tem letras com degradê prateado e o símbolo gira no eixo Y e se desloca como fio condutor dos serviços (E31) |
 | Selos | ISO 9001 e GPTW pequenos, juntos, direto no fundo, sem caixa escura; preferencialmente no rodapé e na faixa de prova |
 
 **[PENDENTE] Cor do logo:** os SVGs oficiais em `assets/logos/` usam `#05AAE2` (azul da identidade antiga), enquanto o manual define `#00ACE5`. A diferença é quase imperceptível, mas precisa de decisão: reexportar os arquivos oficiais com `#00ACE5` ou confirmar o `#05AAE2` como cor do logo. Até lá, o logo é usado exatamente como está no arquivo.
@@ -1428,6 +1439,10 @@ Itens que mudam ou ampliam `rumo-cowork/Designer Gráfico/style/manual-de-design
 | E28 | Containers no preto com borda neon [v0.7] | Cards em grafite (#131416 a #0D0E0F) com borda acesa discreta | Cards em `ink-925` → `ink-950`, borda acesa em ciano nas quatro laterais (mais forte no topo) e halo ciano suave; no hover, borda e halo se intensificam. Quadros internos no `bg` | Pedido do usuário: containers "bem mais dark, preto escuro, com efeitos neon" |
 | E29 | Logos da stack nas cores originais [v0.7] | Logos em cinza (#6B6B6B), monocromáticos | Logos maiores (32px) na cor oficial de cada marca, só na faixa de tecnologias (2.7) | Pedido do usuário |
 | E30 | Manifesto travado com fundo ciano [v0.7] | Site 100% no preto; ciano como fundo chapado reprovado (1.5) | Na S03, no desktop, a seção trava e o fundo vai do preto ao ciano e volta ao preto; texto preto sobre o ciano e frase final em branco. Atenção: branco sobre ciano tem contraste de 2,6:1, abaixo do AA (seção 2.4) | Pedido do usuário: destacar só o conteúdo da seção com transição de cor de fundo |
+| E31 | Símbolo em vidro como fio condutor [v0.8] | Logo só como arquivo oficial, sem degradê nem animação; 3D em tempo real só no hero (13 e 7.3) | Na S19, wordmark do arquivo do usuário (Plus Jakarta Sans e degradê prateado) e símbolo em vidro 3D que sai do wordmark, passa pela linha do tempo, desce entre os cards dos cinco serviços e para numa ampulheta de pixels antes das Avaliações, girando no eixo Y. A S18 sai da Home. Mudança de identidade: o manual de design precisa registrar a exceção | Pedido do usuário, com a Volg (volg.framer.website) como referência de movimento |
+| E33 | Avatares ilustrados nas avaliações [v0.8] | Pessoas geradas não representam depoimentos (7.4) | Na S17, cada avaliador ganha um avatar vetorial colorido feito no Figma, claramente ilustrado e sem pretender retratar a pessoa; cards com borda em degradê neon azul no hover | Pedido do usuário |
+| E34 | Botões em pílula e padronização da página [v0.8] | Botões com `radius-md` em três tamanhos; logos da stack em 32px | Botões em pílula num tamanho só (52px; 40px no menu e no verso dos cards); títulos de seção em `h2`, subtítulos em `lead`, espaçamento `section-y` entre as seções. Sai o formulário do Diagnóstico da Home: os CTAs levam à futura página de contato | Pedido do usuário |
+| E35 | Base das imagens de serviço quase preta [v0.8] | Overlay sobre foto entre 40% e 70% (7.2) | Nos cards de serviço da S19, degradê preto de 0% no topo a 55% na metade, 88% a dois terços e 97% na base, para o título e o botão ficarem legíveis | Pedido do usuário: escurecer mais a parte inferior |
 
 ---
 

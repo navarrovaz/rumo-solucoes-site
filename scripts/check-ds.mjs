@@ -21,7 +21,7 @@ const FORA_DA_VARREDURA = new Set(['.git', '.claude', '.github', '.githooks', 'n
 // Variáveis definidas em tempo de execução pelo JavaScript dos efeitos (cursor).
 const VARIAVEIS_DE_EXECUCAO = new Set(['x', 'mx', 'my']);
 const PESOS_PERMITIDOS = new Set([400, 500, 600]);
-const FONTES_PERMITIDAS = new Set(['Geist', 'Geist Mono']);
+const FONTES_PERMITIDAS = new Set(['Geist', 'Geist Mono', 'Plus Jakarta Sans']); // Plus Jakarta Sans: só no wordmark em vidro (S19, guia 2.8)
 const SELETORES_DE_TIPO = {
   '.display': 'display', '.h1': 'h1', '.h2': 'h2', '.h3': 'h3', '.h4': 'h4',
   'h1,h2,h3,h4': 'h1', '.label': 'label', '.micro': 'mono-micro', '.lead': 'lead',
@@ -31,6 +31,7 @@ const PROPRIEDADES_DE_TIPO = { 'line-height': 'line-height', 'letter-spacing': '
 const ONDE_NO_GUIA = {
   'cor-fora-da-paleta': 'seção 2 (Cor)',
   'cor-restrita': 'seção 2.7',
+  'wordmark-restrito': 'seção 2.8',
   'use-o-token': 'seção 2 (Cor) e checklist: só tokens semânticos',
   'token-inexistente': 'tokens.css',
   'token-local': 'tokens.css: valores não são definidos nas páginas',
@@ -136,7 +137,7 @@ export function carregarTokens() {
       if (!claro && !produto) brutos.set(nome, d.valor);
       if (produto || nome === 'grain-image') continue;
       // Cores de marcas de terceiros: documentadas no guia, mas fora da paleta do site.
-      if (/^logo-/.test(nome)) { for (const c of coresEm(d.valor)) hexes.add(c.rgb); continue; }
+      if (/^(logo|wordmark)-/.test(nome)) { for (const c of coresEm(d.valor)) hexes.add(c.rgb); continue; }
       for (const c of coresEm(d.valor)) {
         if (!paleta.has(c.rgb)) paleta.set(c.rgb, nome);
         if (!c.comAlfa) hexes.add(c.rgb);
@@ -153,7 +154,7 @@ export function carregarTokens() {
   // Tokens exatos: o semântico tem preferência sobre o primitivo na sugestão.
   const exatos = new Map();
   for (const nome of brutos.keys()) {
-    if (/^logo-/.test(nome)) continue;
+    if (/^(logo|wordmark)-/.test(nome)) continue;
     const v = resolver(nome);
     if (!v || !/^#[0-9a-f]{3,8}$/i.test(v)) continue;
     const rgb = normalizaHex(v);
@@ -224,6 +225,9 @@ function verificarDeclaracao(d, seletor, linha, arquivo, tokens, add) {
   if (/var\(--logo-/.test(valor) && !seletor.startsWith('.tech')) {
     reg('cor-restrita', valor, `${valor} em ${seletor}: as cores --logo-* só valem nos logos da faixa de tecnologias`);
   }
+  if (/var\(--(wordmark-|font-wordmark)/.test(valor) && !seletor.startsWith('.vb')) {
+    reg('wordmark-restrito', valor, `${valor} em ${seletor}: a fonte e as cores do wordmark em vidro só valem na S19 (.vb)`);
+  }
   if (!/mask/.test(prop)) {
     for (const c of coresEm(valor)) {
       if (!tokens.paleta.has(c.rgb)) {
@@ -233,7 +237,7 @@ function verificarDeclaracao(d, seletor, linha, arquivo, tokens, add) {
       }
     }
   }
-  if (prop === 'font-family' && !/^(var\(--font-(sans|mono)\)|inherit)$/.test(valor)) {
+  if (prop === 'font-family' && !/^(var\(--font-(sans|mono|wordmark)\)|inherit)$/.test(valor)) {
     reg('fonte-nao-permitida', valor, `font-family ${valor}`, 'use var(--font-sans) ou var(--font-mono)');
   }
   if (prop === 'font-size') {
