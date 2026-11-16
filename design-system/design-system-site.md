@@ -1,7 +1,7 @@
 # Design System: Site Rumo Soluções
 
 > **Papel:** guia de design vivo do site e dos produtos digitais da Rumo Soluções. Fonte de verdade para qualquer página, seção, componente, landing page ou peça web, consultado por designers, desenvolvedores e agentes do Rumo-cowork.
-> **Status:** v0.8.1 de 2026-11-16: guia alinhado à Home publicada, que é a versão oficial (navegação sem mega menu, rodapé, vidro, S12 Notícias, S17 e numeração da Home; S18 em revisão; evolução E36). v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
+> **Status:** v0.8.2 de 2026-11-16: listas de Serviços (Terceirização, Software, Aplicativos Mobile, Inteligência Artificial, Infraestrutura) e Produtos (PriceFleet, DataCar, SGAE, Genial) na navegação, com mapa do site atualizado (10.5, 12.1, evolução E37). v0.8.1 de 2026-11-16: guia alinhado à Home publicada, que é a versão oficial (navegação sem mega menu, rodapé, vidro, S12 Notícias, S17 e numeração da Home; S18 em revisão; evolução E36). v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
 > **Referência em código:** Home · Desktop 1440 publicada em https://navarrovaz.github.io/rumo-solucoes-site/, com todos os efeitos deste guia funcionando.
 > **Contexto visual:** este arquivo não tem imagens. Para ver cada padrão, consulte o PDF `Designer Gráfico/output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (pasta Rumo-cowork do OneDrive; as saídas não estão no repositório) (42 páginas, sumário na página 2) e o Figma [Rumo · Site · Design System](https://www.figma.com/design/5t3Mwrd1SHHL1t9K7SGZKS) (time Marketing Rumo).
 > **Escopo:** site institucional rumosolucoes.com (marca mãe Rumo Soluções, com páginas de produto) e produtos digitais.
@@ -1077,7 +1077,8 @@ Formulário principal: **Diagnóstico Técnico Gratuito** (nome, e-mail corporat
 | Logo | Canto superior esquerdo (manual 11.5), altura de 28px (mínimo 24px) |
 | Links [v0.8.1] | Serviços, Produtos, Cases, Sobre, Carreiras e Blog; 14px, branco a 78% → `fg` no hover; Serviços e Produtos com seta para baixo; sem indicador de página ativa |
 | Direita | Link "Rumo AI ↗" + botão primário `sm` "Diagnóstico gratuito" |
-| Painel de Serviços e Produtos [v0.8.1] | Em aberto: o mega menu foi recusado em 2026-11-13 e nenhum painel está publicado (E36) |
+| Lista de Serviços e Produtos [v0.8.2] | Lista simples, só com os nomes das subpáginas, nada de ícone, descrição ou card de destaque (o mega menu foi recusado, E36). Serviços: Terceirização, Software, Aplicativos Mobile, Inteligência Artificial, Infraestrutura. Produtos: PriceFleet, DataCar, SGAE, Genial. Painel `bg-sunken`, `radius-lg`, fio interno `border` e `shadow-float`, a 18px abaixo do link; itens de 14px em `fg-muted`, com fundo branco a 4% e `fg` no hover. Abre ao passar o cursor ou no clique, uma lista por vez; fecha ao sair, com Esc ou clicando fora. Entrada em `dur-fast` (E37) |
+| Lista no celular [v0.8.2] | No overlay, os itens aparecem recuados 16px abaixo de Serviços e de Produtos, em `h4` / 500 `fg-muted`; o overlay rola se não couber e fecha ao tocar num link |
 | Mobile [v0.8.1] | Botão de menu abre overlay em tela cheia quase preto (97%), links em 28px / 600 e botão primário "Diagnóstico gratuito" logo abaixo dos links |
 
 ### 10.6 Cards
@@ -1170,19 +1171,19 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 
 ```
 /                               Home
-/servicos                       Hub de serviços
-  /outsourcing-de-ti            Outsourcing de TI (carro-chefe)
-  /fabrica-de-software          Fábrica de Software e Desenvolvimento Sob Medida
-  /sustentacao                  Sustentação de Sistemas e Infraestrutura Crítica
-  /inteligencia-artificial      IA Enterprise (Rumo AI) + link para rumoai.io
-  /ciberseguranca               Cibersegurança e Compliance
+/servicos                       Hub de serviços (itens e ordem do menu, v0.8.2)
+  /terceirizacao                Terceirização (Outsourcing de TI, carro-chefe)
+  /software                     Software (desenvolvimento sob medida)
+  /aplicativos-mobile           Aplicativos Mobile
+  /inteligencia-artificial      Inteligência Artificial (Rumo AI) + link para rumoai.io
+  /infraestrutura               Infraestrutura (e Cibersegurança)
 /diagnostico-gratuito           Landing de conversão (CTA global)
-/produtos                       Hub de produtos
+/produtos                       Hub de produtos (itens e ordem do menu, v0.8.2)
   /pricefleet                   → página resumo + link pricefleet.com.br
-  /sofi
-  /genial
+  /datacar
   /sgae
-  /startvet
+  /genial
+  /sofi, /startvet              Fora do menu por ora; seguem no rodapé
 /cases                          Hub de cases (filtro por setor)
   /[case]                       Case
 /sobre                          História, missão, cultura, ISO, GPTW
@@ -1445,6 +1446,7 @@ Itens que mudam ou ampliam `rumo-cowork/Designer Gráfico/style/manual-de-design
 | E34 | Botões em pílula e padronização da página [v0.8] | Botões com `radius-md` em três tamanhos; logos da stack em 32px | Botões em pílula num tamanho só (52px; 40px no menu e no verso dos cards); títulos de seção em `h2`, subtítulos em `lead`, espaçamento `section-y` entre as seções. Sai o formulário do Diagnóstico da Home: os CTAs levam à futura página de contato | Pedido do usuário |
 | E35 | Base das imagens de serviço quase preta [v0.8] | Overlay sobre foto entre 40% e 70% (7.2) | Nos cards de serviço da S19, degradê preto de 0% no topo a 55% na metade, 88% a dois terços e 97% na base, para o título e o botão ficarem legíveis | Pedido do usuário: escurecer mais a parte inferior |
 | E36 | Guia alinhado ao site publicado [v0.8.1] | Mega menu com card de destaque (10.5); vidro em três casos (5.5); navegação que se esconde ao rolar; rodapé com redes sociais; S18 em abas na Home | A versão oficial é a publicada em https://navarrovaz.github.io/rumo-solucoes-site/. O guia passa a descrever a navegação, o rodapé e o vidro como estão no ar; o painel de Serviços e Produtos fica em aberto; a S18 fica em revisão (só tipos de profissionais e níveis de senioridade); páginas novas exigem esboço aprovado antes de construir. O rascunho v0.9 (página de Outsourcing recusada) não entra no guia | Decisão do usuário em 2026-11-16 |
+| E37 | Listas de Serviços e Produtos na navegação [v0.8.2] | Painel de Serviços e Produtos em aberto (E36) | Lista simples só com os nomes, aprovada pelo usuário em 2026-11-13 e estendida a Produtos; itens e endereços definidos pelo usuário. As subpáginas ainda não existem: os links apontam para os endereços do mapa (12.1) | Pedido do usuário em 2026-11-16 |
 
 ---
 

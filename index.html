@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500&display=swap">
 <link rel="stylesheet" href="design-system/tokens.css">
 <style>
-/* Layout: página escura de 1440px (grid de 12 colunas, margens de 80px, seções de 160px). Valores em design-system/tokens.css · design system v0.8.1. */
+/* Layout: página escura de 1440px (grid de 12 colunas, margens de 80px, seções de 160px). Valores em design-system/tokens.css · design system v0.8.2. */
 :root{color-scheme:dark;--gut:clamp(16px,5.5vw,80px)}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -65,9 +65,22 @@ p{margin:0}
 .nav-right .ai:hover{color:var(--fg)}
 .menu-btn{display:none;background:none;border:0;width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer}
 .menu-btn .ico{width:22px;height:22px}
-.mobile-menu{position:fixed;inset:0;z-index:150;background:rgba(5,5,5,.97);padding:96px max(24px,env(safe-area-inset-right,0px)) 40px max(24px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:20px}
+.mobile-menu{position:fixed;inset:0;z-index:150;background:rgba(5,5,5,.97);padding:96px max(24px,env(safe-area-inset-right,0px)) 40px max(24px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:20px;overflow-y:auto;overscroll-behavior:contain}
 .mobile-menu a{font-size:28px;font-weight:600;letter-spacing:-.02em}
+.mobile-menu a.sub{font-size:var(--text-h4);font-weight:500;letter-spacing:0;color:var(--fg-muted);padding-left:16px;margin-top:-8px}
 .mobile-menu .close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px))}
+
+/* ---------- Serviços e Produtos: lista simples ao passar o cursor ---------- */
+.nav-dd{position:relative;display:flex;align-items:center}
+.nav-dd-btn{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;transition:color var(--dur-fast)}
+.nav-dd-btn:hover,.nav-dd-btn[aria-expanded="true"]{color:var(--fg)}
+.nav-dd-btn .ico{transition:transform var(--dur-fast) var(--ease-out)}
+.nav-dd-btn[aria-expanded="true"] .ico{transform:rotate(180deg)}
+.nav-dd-list{position:absolute;top:calc(100% + 18px);left:-14px;min-width:240px;margin:0;padding:8px;list-style:none;border-radius:var(--radius-lg);background:var(--bg-sunken);box-shadow:inset 0 0 0 1px var(--border),var(--shadow-float);animation:ddIn var(--dur-fast) var(--ease-out)}
+.nav-dd-list::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
+@keyframes ddIn{from{opacity:0;transform:translateY(-4px)}}
+.nav-links .nav-dd-list a{display:block;padding:10px 12px;border-radius:var(--radius-md);color:var(--fg-muted);white-space:nowrap;transition:background-color var(--dur-fast),color var(--dur-fast)}
+.nav-links .nav-dd-list a:hover,.nav-links .nav-dd-list a:focus-visible{background:rgba(255,255,255,.04);color:var(--fg)}
 
 /* ---------- hero ---------- */
 .hero{position:relative;height:900px;overflow:hidden;isolation:isolate}
@@ -536,8 +549,25 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding-block:96px 40px}
 <path d="M835.575 225.039L837.647 221.094C839.984 222.75 843.721 223.951 847.297 223.951C851.914 223.951 853.835 222.551 853.835 220.214C853.835 214.036 836.455 219.381 836.455 208.435C836.455 203.506 840.864 200.185 847.922 200.185C851.498 200.185 855.547 201.122 857.931 202.673L855.803 206.619C853.314 205.01 850.561 204.443 847.865 204.443C843.503 204.443 841.375 206.051 841.375 208.227C841.375 214.708 858.811 209.419 858.811 220.11C858.811 225.086 854.241 228.256 846.928 228.256C842.358 228.256 837.846 226.856 835.565 225.039H835.575Z" fill="white"/>
 </svg></a>
     <nav class="nav-links" aria-label="Principal">
-      <a href="#servicos">Serviços <svg class="ico" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
-      <a href="#servicos">Produtos <svg class="ico" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+      <div class="nav-dd">
+        <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ddServicos">Serviços <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <ul class="nav-dd-list" id="ddServicos" hidden>
+          <li><a href="servicos/terceirizacao/">Terceirização</a></li>
+          <li><a href="servicos/software/">Software</a></li>
+          <li><a href="servicos/aplicativos-mobile/">Aplicativos Mobile</a></li>
+          <li><a href="servicos/inteligencia-artificial/">Inteligência Artificial</a></li>
+          <li><a href="servicos/infraestrutura/">Infraestrutura</a></li>
+        </ul>
+      </div>
+      <div class="nav-dd">
+        <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ddProdutos">Produtos <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <ul class="nav-dd-list" id="ddProdutos" hidden>
+          <li><a href="produtos/pricefleet/">PriceFleet</a></li>
+          <li><a href="produtos/datacar/">DataCar</a></li>
+          <li><a href="produtos/sgae/">SGAE</a></li>
+          <li><a href="produtos/genial/">Genial</a></li>
+        </ul>
+      </div>
       <a href="#conteudo">Cases</a>
       <a href="#sobre">Sobre</a>
       <a href="#top">Carreiras</a>
@@ -552,7 +582,11 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding-block:96px 40px}
 </header>
 <div class="mobile-menu" id="mobileMenu" hidden>
   <button class="menu-btn close" id="menuClose" aria-label="Fechar menu"><svg class="ico" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
-  <a href="#servicos">Serviços</a><a href="#servicos">Produtos</a><a href="#conteudo">Cases</a><a href="#sobre">Sobre</a><a href="#top">Carreiras</a><a href="#conteudo">Blog</a>
+  <a href="#servicos">Serviços</a>
+  <a class="sub" href="servicos/terceirizacao/">Terceirização</a><a class="sub" href="servicos/software/">Software</a><a class="sub" href="servicos/aplicativos-mobile/">Aplicativos Mobile</a><a class="sub" href="servicos/inteligencia-artificial/">Inteligência Artificial</a><a class="sub" href="servicos/infraestrutura/">Infraestrutura</a>
+  <a href="#servicos">Produtos</a>
+  <a class="sub" href="produtos/pricefleet/">PriceFleet</a><a class="sub" href="produtos/datacar/">DataCar</a><a class="sub" href="produtos/sgae/">SGAE</a><a class="sub" href="produtos/genial/">Genial</a>
+  <a href="#conteudo">Cases</a><a href="#sobre">Sobre</a><a href="#top">Carreiras</a><a href="#conteudo">Blog</a>
   <a class="btn btn-primary lg" href="contato/" style="margin-top:16px;font-size:16px">Diagnóstico gratuito</a>
 </div>
 
@@ -889,8 +923,27 @@ const onScroll = () => nav.classList.toggle('scrolled', (window.scrollY || 0) > 
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
 const menu = $('#mobileMenu'), menuBtn = $('#menuBtn');
 function closeMenu(){ menu.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); }
-menuBtn.addEventListener('click', () => { menu.hidden = false; menuBtn.setAttribute('aria-expanded', 'true'); if (hasGsap && !reduce) gsap.from($$('a', menu), { y: 16, opacity: 0, stagger: .06, duration: .5, ease: 'power3.out' }); });
+menuBtn.addEventListener('click', () => { menu.hidden = false; menuBtn.setAttribute('aria-expanded', 'true'); if (hasGsap && !reduce) gsap.from($$('a', menu), { y: 16, opacity: 0, stagger: { amount: .5 }, duration: .5, ease: 'power3.out' }); });
 $('#menuClose').addEventListener('click', closeMenu);
+$$('a', menu).forEach(a => a.addEventListener('click', closeMenu));
+
+/* ---------- Serviços e Produtos: lista simples (cursor, clique, Esc fecha) ---------- */
+$$('.nav-dd').forEach(caixa => {
+  const btn = caixa.querySelector('.nav-dd-btn'), lista = caixa.querySelector('.nav-dd-list');
+  const fino = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  let t = 0;
+  const fechar = () => { clearTimeout(t); lista.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
+  const abrir = () => {
+    clearTimeout(t);
+    $$('.nav-dd').forEach(o => { if (o !== caixa) { o.querySelector('.nav-dd-list').hidden = true; o.querySelector('.nav-dd-btn').setAttribute('aria-expanded', 'false'); } });
+    lista.hidden = false; btn.setAttribute('aria-expanded', 'true');
+  };
+  btn.addEventListener('click', e => { if (fino && e.detail) abrir(); else if (lista.hidden) abrir(); else fechar(); });
+  if (fino) { caixa.addEventListener('pointerenter', abrir); caixa.addEventListener('pointerleave', () => { t = setTimeout(fechar, 160); }); }
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !lista.hidden) { fechar(); btn.focus(); } });
+  caixa.addEventListener('focusout', e => { if (!caixa.contains(e.relatedTarget)) fechar(); });
+  document.addEventListener('pointerdown', e => { if (!caixa.contains(e.target)) fechar(); });
+});
 
 /* ---------- relógio BRT ---------- */
 const clock = $('#clock');
