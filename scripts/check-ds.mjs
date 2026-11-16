@@ -192,7 +192,7 @@ function maisProxima(rgb, tokens) {
 }
 
 function versaoDoGuia(guia) {
-  const m = /\*\*Status:\*\*\s*v(\d+\.\d+)/.exec(guia);
+  const m = /\*\*Status:\*\*\s*v(\d+\.\d+(?:\.\d+)?)/.exec(guia);
   return m ? m[1] : null;
 }
 const totalDeEvolucoes = (guia) => (guia.match(/^\| E\d+ \|/gm) || []).length;
@@ -361,7 +361,7 @@ function verificarHtml(html, arquivo, tokens, guia, add) {
   for (const m of html.matchAll(/—/g)) {
     add({ arquivo, linha: linhaDe(html, m.index), regra: 'travessao-longo', valor: '—', contexto: 'texto', msg: 'o site não usa travessão longo', sugestao: 'reescreva com vírgula, dois-pontos ou ponto' });
   }
-  const marcador = /design system v(\d+\.\d+)/.exec(html);
+  const marcador = /design system v(\d+\.\d+(?:\.\d+)?)/.exec(html);
   if (marcador && marcador[1] !== versao) {
     add({ arquivo, linha: linhaDe(html, marcador.index), regra: 'versao-desatualizada', valor: `v${marcador[1]}`, contexto: 'comentário', msg: `a página cita a v${marcador[1]}, o guia está na v${versao}` });
   }
@@ -425,7 +425,7 @@ export function analisar({ base } = {}) {
     else verificarCss(texto, arq, texto, 0, tokens, add);
   }
   if (existsSync(join(RAIZ, 'README.md'))) {
-    const m = /design system do site \(v(\d+\.\d+)\)/.exec(ler('README.md'));
+    const m = /design system do site \(v(\d+\.\d+(?:\.\d+)?)\)/.exec(ler('README.md'));
     if (m && m[1] !== versaoDoGuia(guia)) {
       add({ arquivo: 'README.md', linha: 3, regra: 'versao-desatualizada', valor: `v${m[1]}`, contexto: 'README', msg: `o README cita a v${m[1]}, o guia está na v${versaoDoGuia(guia)}` });
     }
