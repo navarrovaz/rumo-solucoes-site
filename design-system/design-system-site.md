@@ -1,7 +1,7 @@
 # Design System: Site Rumo Soluções
 
 > **Papel:** guia de design vivo do site e dos produtos digitais da Rumo Soluções. Fonte de verdade para qualquer página, seção, componente, landing page ou peça web, consultado por designers, desenvolvedores e agentes do Rumo-cowork.
-> **Status:** v0.8.2 de 2026-11-16: listas de Serviços (Terceirização, Software, Aplicativos Mobile, Inteligência Artificial, Infraestrutura) e Produtos (PriceFleet, DataCar, SGAE, Genial) na navegação, com mapa do site atualizado (10.5, 12.1, evolução E37). v0.8.1 de 2026-11-16: guia alinhado à Home publicada, que é a versão oficial (navegação sem mega menu, rodapé, vidro, S12 Notícias, S17 e numeração da Home; S18 em revisão; evolução E36). v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
+> **Status:** v0.8.3 aprovada em 2026-11-19 (página de Terceirização revisada pelo usuário): primeira página de serviço publicada (12.3), neon verde e violeta nos cards de modelo de contratação (2.9), enxame de cursores que constrói a página e contorno neon que segue o cursor (M19, M20), itens do menu sem página apontando para a Home (evolução E38). v0.8.2 de 2026-11-16: listas de Serviços (Terceirização, Software, Aplicativos Mobile, Inteligência Artificial, Infraestrutura) e Produtos (PriceFleet, DataCar, SGAE, Genial) na navegação, com mapa do site atualizado (10.5, 12.1, evolução E37). v0.8.1 de 2026-11-16: guia alinhado à Home publicada, que é a versão oficial (navegação sem mega menu, rodapé, vidro, S12 Notícias, S17 e numeração da Home; S18 em revisão; evolução E36). v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
 > **Referência em código:** Home · Desktop 1440 publicada em https://navarrovaz.github.io/rumo-solucoes-site/, com todos os efeitos deste guia funcionando.
 > **Contexto visual:** este arquivo não tem imagens. Para ver cada padrão, consulte o PDF `Designer Gráfico/output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (pasta Rumo-cowork do OneDrive; as saídas não estão no repositório) (42 páginas, sumário na página 2) e o Figma [Rumo · Site · Design System](https://www.figma.com/design/5t3Mwrd1SHHL1t9K7SGZKS) (time Marketing Rumo).
 > **Escopo:** site institucional rumosolucoes.com (marca mãe Rumo Soluções, com páginas de produto) e produtos digitais.
@@ -378,6 +378,22 @@ Usado só na S19, por decisão do usuário (E31). Vem do arquivo `logo-3d-vidro/
 | `wordmark-to` | `#9A9CA3` | Base do degradê das letras |
 | `wordmark-sub` | `#8D8F96` | "Soluções" |
 | `wordmark-size` | `clamp(64px, 22vw, 330px)` | Lado do quadro do símbolo; as letras medem 0,78 desse valor |
+
+### 2.9 Neon dos modelos de contratação [v0.8.3]
+
+Usado só nos cards de modelo de contratação da página de Terceirização, por decisão do usuário (E38). Cada card é preto profundo e tem um neon próprio no lugar do ciano: eyebrow, ícone do cabeçalho, checks da lista, destaque do painel de exemplo, CTA primário e contorno.
+
+| Token | Valor | Card |
+|---|---|---|
+| `brand` | `#00ACE5` | Alocação individual |
+| `color-neon-green` | `#3DDC97` | Squad dedicada |
+| `color-neon-violet` | `#9B8CFF` | Escopo fechado |
+
+Regras:
+
+- Texto sobre o neon: `#050505` (verde 11,5:1; violeta 7,4:1). Sobre o preto, os dois passam de 7:1.
+- O verde não é status: não usar `success` nesses cards nem o neon verde para indicar estado.
+- Fora desses três cards, o site segue só no ciano.
 
 ---
 
@@ -977,6 +993,8 @@ Molas (spring) só sem overshoot (amortecimento crítico), por exemplo em elemen
 | **M16** | Digitação da barra de pergunta | Placeholder digita a 40ms por caractere, pausa 1,8s, apaga a 20ms por caractere e passa para a próxima sugestão. Para quando o campo recebe foco |
 | **M17** | Luz do card luminoso | A luz de topo passa de Default a Strong, a borda clareia no topo e o card ganha elevação, em `dur-base`. O centro da luz segue o cursor no eixo x |
 | **M18** | Cadeia de números | Pílulas entram com stagger de 60ms; as setas entre elas desenham da esquerda para a direita |
+| **M19** | Enxame de cursores [v0.8.3] | Só na página de Terceirização. Cursores com etiqueta de perfil constroem cada seção quando ela entra na tela: escrevem os títulos e pintam os blocos (molas criticamente amortecidas, sem overshoot). Cada seção revela sozinha em até 4,2 s; Esc pula a construção; com movimento reduzido, a página já aparece pronta. O cursor do visitante não muda |
+| **M20** | Contorno neon que segue o cursor [v0.8.3] | Borda de 1px apagada; sob o cursor, o trecho mais próximo acende (radial de 260 a 280px) e, com o cursor sobre o card, o contorno inteiro acende com brilho, em `dur-base`. Nos modelos de contratação, a luz percorre a borda uma vez ao entrar na tela (`dur-cinematic`). Sem loop contínuo (9.5) |
 
 ### 9.5 Proibido
 
@@ -1205,12 +1223,14 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 | 6 | S12 Notícias [v0.8] | "Acontece na Rumo. Novidades e conquistas.", em cards escuros separados: novidades, eventos e conquistas (ISO 9001, GPTW, Rumo AI), com imagens conceituais geradas no Figma no padrão dos serviços |
 | 7 | S13 Perguntas frequentes [v0.5] | Sete perguntas com respostas da base institucional |
 | 8 | S14 CTA final | Assinatura da estratégia: "Não estamos presentes apenas na entrega. Estamos presentes na continuidade." |
-| Fora da Home [v0.7] | S05 Narrativa sticky · S10 Diferenciais · S18 Especialistas [v0.8] | Na Home quebravam o fluxo de leitura (E27). Ficam para a página de Outsourcing, que ainda não está publicada [v0.8.1] |
+| Fora da Home [v0.7] | S05 Narrativa sticky · S10 Diferenciais · S18 Especialistas [v0.8] | Na Home quebravam o fluxo de leitura (E27). Ficam para a página de Terceirização, publicada na v0.8.3 (12.3) |
 | Fase 2 | S06 Rumo AI · S07 Produtos · S08 Cases · S09 Pessoas | Entram quando houver assets, cases autorizados e fotos reais |
 
 ### 12.3 Página de serviço
 
-Nenhuma página de serviço está publicada [v0.8.1]. A de Outsourcing está em revisão: antes de construir, o esboço da página inteira (ordem dos blocos e layout de cada um no grid de 12 colunas) precisa ser aprovado, com todo o conteúdo alinhado ao `.wrap` e pouca variação visual entre as seções (E36). O roteiro abaixo é ponto de partida, não template obrigatório.
+**Terceirização (`/servicos/terceirizacao/`), publicada na v0.8.3 (E38).** Ordem: S02 hero centralizado com bento de seis cards (foto de profissional real e autorizado, contorno neon da S17 no hover) → S10b clientes em marquee (M09, logos autorizados) → modelos de contratação em pilha fixa, cards pretos com um neon por card (2.9, M20) → S18 lista dos 16 perfis em quatro colunas, só texto → S10 seis diferenciais em 3 × 2 com contorno neon que segue o cursor (M20) → S05 como funciona em quatro etapas interativas (abas com setas do teclado) → S13 perguntas frequentes → S11 formulário de proposta (perfil, senioridade travada quando o perfil é "Ainda não sei", formato, contato e mensagem; o envio abre o e-mail do visitante com o pedido pronto até haver serviço de formulário, P12). A página inteira é construída pelo enxame de cursores (M19).
+
+Para as próximas páginas de serviço, o roteiro abaixo continua como ponto de partida. Antes de construir, o esboço da página inteira (ordem dos blocos e layout de cada um no grid de 12 colunas) precisa ser aprovado, com todo o conteúdo alinhado ao `.wrap` e pouca variação visual entre as seções (E36). O roteiro abaixo é ponto de partida, não template obrigatório.
 
 S02 hero (label do serviço, `h1`, lead, CTA diagnóstico) → dor da persona → S05 como funciona → modelos de contratação (ex.: Time & Materials e Escopo Fechado no Outsourcing) → S10 stack → S08 case relacionado → S13 FAQ → S14 CTA final.
 
@@ -1446,7 +1466,8 @@ Itens que mudam ou ampliam `rumo-cowork/Designer Gráfico/style/manual-de-design
 | E34 | Botões em pílula e padronização da página [v0.8] | Botões com `radius-md` em três tamanhos; logos da stack em 32px | Botões em pílula num tamanho só (52px; 40px no menu e no verso dos cards); títulos de seção em `h2`, subtítulos em `lead`, espaçamento `section-y` entre as seções. Sai o formulário do Diagnóstico da Home: os CTAs levam à futura página de contato | Pedido do usuário |
 | E35 | Base das imagens de serviço quase preta [v0.8] | Overlay sobre foto entre 40% e 70% (7.2) | Nos cards de serviço da S19, degradê preto de 0% no topo a 55% na metade, 88% a dois terços e 97% na base, para o título e o botão ficarem legíveis | Pedido do usuário: escurecer mais a parte inferior |
 | E36 | Guia alinhado ao site publicado [v0.8.1] | Mega menu com card de destaque (10.5); vidro em três casos (5.5); navegação que se esconde ao rolar; rodapé com redes sociais; S18 em abas na Home | A versão oficial é a publicada em https://navarrovaz.github.io/rumo-solucoes-site/. O guia passa a descrever a navegação, o rodapé e o vidro como estão no ar; o painel de Serviços e Produtos fica em aberto; a S18 fica em revisão (só tipos de profissionais e níveis de senioridade); páginas novas exigem esboço aprovado antes de construir. O rascunho v0.9 (página de Outsourcing recusada) não entra no guia | Decisão do usuário em 2026-11-16 |
-| E37 | Listas de Serviços e Produtos na navegação [v0.8.2] | Painel de Serviços e Produtos em aberto (E36) | Lista simples só com os nomes, aprovada pelo usuário em 2026-11-13 e estendida a Produtos; itens e endereços definidos pelo usuário. As subpáginas ainda não existem: os links apontam para os endereços do mapa (12.1) | Pedido do usuário em 2026-11-16 |
+| E37 | Listas de Serviços e Produtos na navegação [v0.8.2] | Painel de Serviços e Produtos em aberto (E36) | Lista simples só com os nomes, aprovada pelo usuário em 2026-11-13 e estendida a Produtos; itens e endereços definidos pelo usuário. As subpáginas ainda não existem: os links apontam para os endereços do mapa (12.1). Na v0.8.3, só a Terceirização tem página; os demais itens apontam para a Home (E38) | Pedido do usuário em 2026-11-16 |
+| E38 | Página de Terceirização publicada [v0.8.3] | Site só no ciano (2.3); nenhuma página de serviço; menu apontando para subpáginas que não existem (E37) | Primeira página de serviço (12.3). Cards de modelo de contratação pretos, cada um com um neon no lugar do ciano: ciano, verde `#3DDC97` e violeta `#9B8CFF` (2.9). Enxame de cursores que constrói a página (M19) e contorno neon que segue o cursor, sem loop contínuo (M20). Itens do menu sem página apontam para o card do serviço na Home (Software, Inteligência Artificial, Infraestrutura, Aplicativos Mobile) ou para a seção de serviços (produtos) até a subpágina existir | Pedido e aprovação do usuário em 2026-11-19 |
 
 ---
 
@@ -1465,6 +1486,8 @@ Itens que mudam ou ampliam `rumo-cowork/Designer Gráfico/style/manual-de-design
 | P9 | Avaliações reais do Google: link do perfil ou prints, com nota média e total [v0.5] | Seção S17 |
 | P10 | Lista final e logos oficiais da faixa de tecnologias (o usuário citou uma imagem que não chegou; a versão atual usa a stack da base institucional, com nome escrito onde não há logo livre: COBOL, SQL Server, IBM DB2, Azure) | Seção S10b |
 | P11 | Divergências do site anteriores à v0.6, listadas em `design-system/pendencias.json`: decidir entre ajustar o site ou registrar a rota no design system | Conformidade total da Home |
+| P12 | Envio do formulário de proposta da Terceirização: hoje abre o e-mail do visitante com o pedido pronto; ligar um serviço de formulários ou CRM [v0.8.3] | Medição de conversão da página |
+| P13 | Espelhar a v0.8.3 no Figma (tokens neon, M19, M20 e a página de Terceirização): a conexão do Figma precisa ser autorizada | Paridade Figma e código |
 
 ---
 

@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500&display=swap">
 <link rel="stylesheet" href="design-system/tokens.css">
 <style>
-/* Layout: página escura de 1440px (grid de 12 colunas, margens de 80px, seções de 160px). Valores em design-system/tokens.css · design system v0.8.2. */
+/* Layout: página escura de 1440px (grid de 12 colunas, margens de 80px, seções de 160px). Valores em design-system/tokens.css · design system v0.8.3. */
 :root{color-scheme:dark;--gut:clamp(16px,5.5vw,80px)}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -553,19 +553,19 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding-block:96px 40px}
         <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ddServicos">Serviços <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
         <ul class="nav-dd-list" id="ddServicos" hidden>
           <li><a href="servicos/terceirizacao/">Terceirização</a></li>
-          <li><a href="servicos/software/">Software</a></li>
-          <li><a href="servicos/aplicativos-mobile/">Aplicativos Mobile</a></li>
-          <li><a href="servicos/inteligencia-artificial/">Inteligência Artificial</a></li>
-          <li><a href="servicos/infraestrutura/">Infraestrutura</a></li>
+          <li><a href="#software">Software</a></li>
+          <li><a href="#aplicativos">Aplicativos Mobile</a></li>
+          <li><a href="#ia">Inteligência Artificial</a></li>
+          <li><a href="#infraestrutura">Infraestrutura</a></li>
         </ul>
       </div>
       <div class="nav-dd">
         <button class="nav-dd-btn" type="button" aria-expanded="false" aria-controls="ddProdutos">Produtos <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
         <ul class="nav-dd-list" id="ddProdutos" hidden>
-          <li><a href="produtos/pricefleet/">PriceFleet</a></li>
-          <li><a href="produtos/datacar/">DataCar</a></li>
-          <li><a href="produtos/sgae/">SGAE</a></li>
-          <li><a href="produtos/genial/">Genial</a></li>
+          <li><a href="#servicos">PriceFleet</a></li>
+          <li><a href="#servicos">DataCar</a></li>
+          <li><a href="#servicos">SGAE</a></li>
+          <li><a href="#servicos">Genial</a></li>
         </ul>
       </div>
       <a href="#conteudo">Cases</a>
@@ -583,9 +583,9 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding-block:96px 40px}
 <div class="mobile-menu" id="mobileMenu" hidden>
   <button class="menu-btn close" id="menuClose" aria-label="Fechar menu"><svg class="ico" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
   <a href="#servicos">Serviços</a>
-  <a class="sub" href="servicos/terceirizacao/">Terceirização</a><a class="sub" href="servicos/software/">Software</a><a class="sub" href="servicos/aplicativos-mobile/">Aplicativos Mobile</a><a class="sub" href="servicos/inteligencia-artificial/">Inteligência Artificial</a><a class="sub" href="servicos/infraestrutura/">Infraestrutura</a>
+  <a class="sub" href="servicos/terceirizacao/">Terceirização</a><a class="sub" href="#software">Software</a><a class="sub" href="#aplicativos">Aplicativos Mobile</a><a class="sub" href="#ia">Inteligência Artificial</a><a class="sub" href="#infraestrutura">Infraestrutura</a>
   <a href="#servicos">Produtos</a>
-  <a class="sub" href="produtos/pricefleet/">PriceFleet</a><a class="sub" href="produtos/datacar/">DataCar</a><a class="sub" href="produtos/sgae/">SGAE</a><a class="sub" href="produtos/genial/">Genial</a>
+  <a class="sub" href="#servicos">PriceFleet</a><a class="sub" href="#servicos">DataCar</a><a class="sub" href="#servicos">SGAE</a><a class="sub" href="#servicos">Genial</a>
   <a href="#conteudo">Cases</a><a href="#sobre">Sobre</a><a href="#top">Carreiras</a><a href="#conteudo">Blog</a>
   <a class="btn btn-primary lg" href="contato/" style="margin-top:16px;font-size:16px">Diagnóstico gratuito</a>
 </div>

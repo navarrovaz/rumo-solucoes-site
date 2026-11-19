@@ -130,6 +130,10 @@
   --color-light-fall: #005A78;
   --shadow-lit: inset 0 1px 0 rgba(255,255,255,.35), 0 2px 8px -2px rgba(127,216,245,.4), 0 10px 28px -8px rgba(0,172,229,.3);
 
+  /* Neon dos modelos de contratação (seção 2.9, v0.8.3): só nos cards de modelo da Terceirização, um por card */
+  --color-neon-green:  #3DDC97;
+  --color-neon-violet: #9B8CFF;
+
   /* Movimento */
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --ease-in-out: cubic-bezier(.65, 0, .35, 1);
