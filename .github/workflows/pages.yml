@@ -32,6 +32,7 @@ jobs:
           mkdir _site
           cp -r index.html .nojekyll design-system _site/
           [ -d assets ] && cp -r assets _site/ || true
+          [ -d servicos ] && cp -r servicos _site/ || true
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
