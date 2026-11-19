@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="../../design-system/tokens.css">
-<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('sw-on');setTimeout(function(){if(!window.__enxame)document.documentElement.classList.remove('sw-on')},4000)}</script>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('sw-on');setTimeout(function(){if(!window.__enxame)document.documentElement.classList.remove('sw-on')},2500)}</script>
 <style>
 /* Terceirização de TI: blocagem e interações de referência (Samfund, Ofspace) no escuro da Rumo, grid de 12 colunas do .wrap (1440px). Valores em design-system/tokens.css · design system v0.8.3. */
 :root{color-scheme:dark}
@@ -842,11 +842,8 @@ form.addEventListener('submit', e => {
   const linhas = [['Perfil', val('#fPerfil')], ['Senioridade', $('#fNivel').disabled ? 'A definir na conversa' : val('#fNivel')], ['Formato', fmt], ['Nome', val('#fNome')], ['Empresa', val('#fEmp')], ['E-mail', val('#fEmail')], ['Telefone', val('#fTel')]]
     .filter(([, v]) => v).map(([k, v]) => k + ': ' + v);
   const msg = val('#fMsg');
-  const corpo = linhas.join('
-') + (msg ? '
-
-Mensagem:
-' + msg : '');
+  const NL = String.fromCharCode(10);
+  const corpo = linhas.join(NL) + (msg ? NL + NL + 'Mensagem:' + NL + msg : '');
   location.href = 'mailto:' + DESTINO + '?subject=' + encodeURIComponent('Proposta de terceirização · ' + val('#fEmp')) + '&body=' + encodeURIComponent(corpo);
   [...form.children].forEach(c => { if (c.id !== 'ok') c.hidden = true; });
   $('#ok').hidden = false;
@@ -919,7 +916,7 @@ Mensagem:
     a.cx = r.left + x; a.cy = r.top + l.top; a.ch = l.bottom - l.top;
   }
   const ease = t => t < .5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
-  Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 700))]).then(() => setTimeout(() => { iniciado = true; }, 250));
+  Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 300))]).then(() => { iniciado = true; });
 
   const heroEl = $('#hero'), painel = $('#panel'), formEl = $('#form');
   const ang = a => { while (a > Math.PI) a -= Math.PI * 2; while (a < -Math.PI) a += Math.PI * 2; return a; };
@@ -927,6 +924,8 @@ Mensagem:
   const anel = (a, idx, n, cx, cy, raio, k) => { const e = giro + idx / n * Math.PI * 2; a.tx = cx + Math.cos(e) * raio; a.ty = cy + Math.sin(e) * raio; a.k = k; a.want = (Math.hypot(a.vx, a.vy) > 140 ? Math.atan2(a.vy, a.vx) : Math.atan2(cy - a.y, cx - a.x)) - OFF; };
   const sair = (a, y) => { a.tx = W + 60; a.ty = y; a.k = 120; a.want = Math.atan2(a.vy, a.vx) - OFF; a.tagAlvo = 0; };
   const construindoHero = () => iniciado && jobs.some(j => j.obra === heroObra && j.estado < 2);
+  // o hero nunca espera mais de 2,6 s, mesmo se o navegador segurar os quadros da animação
+  setTimeout(() => { if (jobs.some(j => j.obra === heroObra && j.estado < 2)) { heroObra.aberta = true; concluirObra(heroObra, performance.now()); } }, 2600);
 
   function quadro(t){
     const n = ags.length;
@@ -934,7 +933,7 @@ Mensagem:
     if (iniciado) obras.forEach(o => {
       const r = o.sec.getBoundingClientRect();
       if (!o.aberta && (o === heroObra || (r.top < H * .78 && r.bottom > 0))) { o.aberta = true; o.t = t; }
-      if (o.aberta && t - o.t > 4200) concluirObra(o, t);
+      if (o.aberta && t - o.t > (o === heroObra ? 2400 : 3600)) concluirObra(o, t);
       if (o.aberta && o !== heroObra && r.bottom < 0) concluirObra(o, t);
     });
     if (heroObra.aberta && heroEl.getBoundingClientRect().bottom < H * .2) concluirObra(heroObra, t);
@@ -955,17 +954,17 @@ Mensagem:
       const j = a.job; if (!j) continue;
       const r = j.el.getBoundingClientRect();
       a.want = 0; a.tagAlvo = 1;
-      if (a.fase === 'ir') { a.tx = r.left; a.ty = r.top; a.k = 300; if (Math.hypot(a.x - r.left, a.y - r.top) < 12 || t - a.t0 > 420) { a.fase = 'caixa'; a.t0 = t; } }
+      if (a.fase === 'ir') { a.tx = r.left; a.ty = r.top; a.k = 300; if (Math.hypot(a.x - r.left, a.y - r.top) < 12 || t - a.t0 > 320) { a.fase = 'caixa'; a.t0 = t; } }
       else if (a.fase === 'caixa') {
-        const q = Math.min(1, (t - a.t0) / 300), e = ease(q); j.p = e;
+        const q = Math.min(1, (t - a.t0) / 220), e = ease(q); j.p = e;
         a.tx = r.left + r.width * e; a.ty = r.top + r.height * e; a.k = 1100;
         if (q >= 1) { if (j.tipo === 'text') { j.linhas = linhasDe(j.el); digitar(j, a, 0, r); j.el.removeAttribute('data-b'); a.fase = 'digita'; a.beam = true; a.t0 = t; } else { j.el.style.clipPath = 'inset(0 100% 0 0)'; j.el.removeAttribute('data-b'); a.fase = 'pinta'; a.t0 = t; } }
       } else if (a.fase === 'digita') {
-        const dur = Math.min(700, Math.max(260, j.chars * 9)), q = Math.min(1, (t - a.t0) / dur);
+        const dur = Math.min(520, Math.max(220, j.chars * 7)), q = Math.min(1, (t - a.t0) / dur);
         digitar(j, a, q, r); a.tx = a.cx + 3; a.ty = a.cy + a.ch * .5; a.k = 1100;
         if (q >= 1) liberar(a, t);
       } else if (a.fase === 'pinta') {
-        const q = ease(Math.min(1, (t - a.t0) / 320));
+        const q = ease(Math.min(1, (t - a.t0) / 260));
         j.el.style.clipPath = 'inset(0 ' + (100 - q * 100) + '% 0 0)'; a.tx = r.left + r.width * q; a.ty = r.top + r.height * .5; a.k = 900;
         if (q >= 1) liberar(a, t);
       }
