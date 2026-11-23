@@ -17,12 +17,11 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# Dois jobs (modelo oficial do GitHub Pages): o deploy só começa depois que o pacote
+# enviado pelo job "montar" já está disponível na API de artefatos.
 jobs:
-  publicar:
+  montar:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -37,5 +36,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+
+  publicar:
+    needs: montar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
       - id: deploy
         uses: actions/deploy-pages@v5
