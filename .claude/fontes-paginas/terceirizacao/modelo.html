@@ -1,0 +1,899 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Terceirização de TI · Rumo Soluções</title>
+<meta name="description" content="Aloque desenvolvedores, analistas, gestores e especialistas de infraestrutura no seu projeto. A Rumo faz o hunting, capacita e acompanha cada profissional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../design-system/tokens.css">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('sw-on');setTimeout(function(){if(!window.__enxame)document.documentElement.classList.remove('sw-on')},2500)}</script>
+<style>
+/* Terceirização de TI: blocagem e interações de referência (Samfund, Ofspace) no escuro da Rumo, grid de 12 colunas do .wrap (1440px). Valores em design-system/tokens.css · design system v0.8.4. */
+:root{color-scheme:dark}
+/*CSS_BASE*/
+
+/* ---------- estrutura comum ---------- */
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.sec{position:relative;background:var(--bg);padding-block:var(--section-y)}
+.sec+.sec::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08) 20%,rgba(255,255,255,.08) 80%,transparent)}
+.cab{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;max-width:820px;margin:0 auto 64px}
+.cab .lead{max-width:620px}
+.micro-l{font-family:var(--font-mono);font-size:var(--text-label);letter-spacing:var(--text-label--letter-spacing);text-transform:uppercase;color:var(--fg-muted);display:inline-flex;align-items:center;gap:10px}
+.micro-l::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand)}
+.tag{font-family:var(--font-mono);font-size:var(--text-mono-micro);letter-spacing:var(--text-mono-micro--letter-spacing);text-transform:uppercase;color:var(--fg-subtle)}
+.ico{width:16px;height:16px}
+/* container no preto profundo, sem efeito de luz (retirado a pedido do usuário em 2026-11-19) */
+.cd{position:relative;border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--color-ink-925) 0%,var(--color-ink-950) 100%);overflow:hidden;isolation:isolate;transition:box-shadow var(--dur-base) var(--ease-out)}
+.cd.tint{background:linear-gradient(180deg,rgba(0,172,229,.12),rgba(0,172,229,.03)),var(--color-ink-950)}
+/* hero: o mesmo contorno neon dos depoimentos da Home (S17), aceso sob o cursor */
+.bento .cd:hover{box-shadow:0 0 0 1px rgba(0,172,229,.08),0 0 32px -10px rgba(0,172,229,.45)}
+.bento .cd::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;z-index:3;background:linear-gradient(135deg,rgba(191,239,255,.75),rgba(0,172,229,.55) 35%,rgba(0,90,120,.25) 65%,rgba(127,216,245,.6));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity var(--dur-base) var(--ease-out)}
+.bento .cd:hover::before{opacity:1}
+.niv{display:flex;gap:4px;align-items:center}
+.niv i{width:20px;height:3px;border-radius:var(--radius-xs);background:var(--border-strong)}
+.niv i.on{background:var(--color-light-near)}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--color-ink-800);box-shadow:0 0 0 2px var(--color-ink-925),inset 0 0 0 1px var(--border-strong);font-family:var(--font-mono);font-size:var(--text-mono-micro);color:var(--fg-muted);flex:none}
+
+/* ---------- enxame de cursores (canvas sobre a página, sem capturar o mouse) ---------- */
+#swarm{position:fixed;inset:0;width:100%;height:100%;z-index:90;pointer-events:none}
+.sw-on [data-b]{clip-path:inset(0 100% 100% 0)}
+
+/* ---------- S02 · hero: título central, um CTA e o bento de cartões ---------- */
+.th{position:relative;padding:150px 0 var(--section-y-tight);background:var(--bg);overflow:hidden;isolation:isolate}
+.th-bg{position:absolute;inset:0 0 auto;height:760px;z-index:-1;pointer-events:none;background:radial-gradient(50% 60% at 50% 0%,var(--bg-glow-from) 0%,var(--bg) 70%)}
+.th .cab{margin-bottom:56px;max-width:1040px}
+.pill{display:inline-flex;align-items:center;gap:10px;height:32px;padding:0 14px;border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);background:var(--bg-sunken);font-family:var(--font-mono);font-size:var(--text-mono-micro);letter-spacing:.06em;text-transform:uppercase;color:var(--fg-muted)}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--brand)}
+.th h1 .ln{display:block}
+.acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:230px 230px;gap:16px}
+.bento .cd{padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.b-areas{grid-column:1/4;grid-row:1}
+.b-num{grid-column:1/4;grid-row:2}
+.b-foto{grid-column:4/7;grid-row:1/3;padding:0!important}
+.b-prazo{grid-column:7/10;grid-row:1}
+.b-erro{grid-column:10/13;grid-row:1}
+.b-squad{grid-column:7/13;grid-row:2}
+.ics{display:flex;gap:8px}
+.ics span{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,var(--color-ink-800),var(--color-ink-950) 70%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 6px 16px -6px rgba(5,5,5,.9);color:var(--fg)}
+.bento h3{font-size:var(--text-h4);font-weight:500;letter-spacing:var(--text-h4--letter-spacing);line-height:var(--text-h4--line-height)}
+.bento p{font-size:var(--text-small);color:var(--fg-muted);margin-top:6px}
+.big{font-size:var(--text-stat);font-weight:var(--text-stat--font-weight);letter-spacing:var(--text-stat--letter-spacing);line-height:var(--text-stat--line-height)}
+.b-prazo .big{color:var(--brand-text);font-size:var(--text-h2);letter-spacing:var(--text-h2--letter-spacing);line-height:var(--text-h2--line-height)}
+.b-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%}
+.b-foto::after{content:"";position:absolute;inset:0;height:auto;opacity:1;mix-blend-mode:normal;z-index:0;background:linear-gradient(180deg,rgba(5,5,5,.1) 0,rgba(5,5,5,0) 40%,rgba(5,5,5,.85) 100%)}
+.b-foto .pill{position:absolute;left:16px;top:16px;z-index:2;background:rgba(11,11,11,.8)}
+.fl-ficha{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;padding:14px 16px;border-radius:var(--radius-md);background:rgba(11,11,11,.92);box-shadow:inset 0 0 0 1px rgba(0,172,229,.35),0 18px 40px -18px rgba(5,5,5,.9);display:flex;flex-direction:column;gap:10px}
+.fl-ficha .r{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:var(--text-small)}
+.fl-ficha b{font-weight:500}
+.avs{display:flex}
+.avs .av+.av{margin-left:-8px}
+.b-squad .top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+
+/* ---------- S10b · clientes em marquee, o mesmo movimento da faixa de tecnologias da Home (M09) ---------- */
+.logos{padding:24px 0 88px;background:var(--bg)}
+.logos .cab{margin-bottom:36px;gap:14px}
+.logos .cab p{color:var(--fg);max-width:620px}
+.marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;width:max-content;animation:marquee 56s linear infinite}
+.track .set{display:flex;align-items:center;gap:80px;padding-right:80px}
+.marquee:hover .track{animation-play-state:paused}
+.set img{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.5;transition:opacity var(--dur-fast) var(--ease-out)}
+.set img:hover{opacity:1}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}}
+
+/* modelos de contratação: preto profundo em três variações; cada card com um neon (ciano, verde, violeta) no lugar do ciano. Verde e violeta: tokens neon da seção 2.9 (v0.8.3) */
+.pc.c1{background:linear-gradient(180deg,var(--color-ink-925),var(--color-ink-950))}
+.pc.c2{background:radial-gradient(120% 90% at 100% 0%,var(--color-ink-900),var(--color-ink-950) 62%)}
+.pc.c3{background:radial-gradient(circle,rgba(255,255,255,.045) 1px,transparent 1.6px) 0 0/22px 22px,linear-gradient(180deg,var(--color-ink-950),var(--color-ink-925))}
+.pc{transition:box-shadow var(--dur-base) var(--ease-out)}
+.pc::before,.pc::after,.dif::before,.dif::after{content:"";position:absolute;inset:0;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.pc::before,.dif::before{transition:background-color var(--dur-base) var(--ease-out),opacity var(--dur-base) var(--ease-out)}
+.pc::after,.dif::after{opacity:0;transition:opacity var(--dur-base) var(--ease-out)}
+.pc.luz::after,.dif.luz::after{opacity:1}
+.pc .pc-h .btn-primary:hover{filter:brightness(1.1)}
+.pc.c1::before{background:linear-gradient(180deg,rgba(0,172,229,.24),rgba(0,172,229,.08))}
+.pc.c1::after{background:radial-gradient(280px circle at var(--mx,50%) var(--my,0%),rgba(242,251,255,.95),rgba(0,172,229,.9) 24%,rgba(0,172,229,0) 70%)}
+.pc.c1.hov::before{background:rgba(0,172,229,.7)}
+.pc.c1.hov{box-shadow:0 0 0 1px rgba(0,172,229,.12),0 0 44px -12px rgba(0,172,229,.6)}
+.pc.c1 .micro-l,.pc.c1 .pc-h .q,.pc.c1 .pc-t li .ico,.pc.c1 .mini-r .ok{color:var(--brand)}
+.pc.c1 .micro-l::before{background:var(--brand)}
+.pc.c1 .pc-h .q{box-shadow:inset 0 0 0 1px rgba(0,172,229,.45),0 0 18px -6px rgba(0,172,229,.6)}
+.pc.c1 .pc-h .btn-primary{background:var(--brand);color:var(--on-brand)}
+.pc.c2::before{background:linear-gradient(180deg,rgba(61,220,151,.24),rgba(61,220,151,.08))}
+.pc.c2::after{background:radial-gradient(280px circle at var(--mx,50%) var(--my,0%),rgba(242,251,255,.95),rgba(61,220,151,.9) 24%,rgba(61,220,151,0) 70%)}
+.pc.c2.hov::before{background:rgba(61,220,151,.7)}
+.pc.c2.hov{box-shadow:0 0 0 1px rgba(61,220,151,.12),0 0 44px -12px rgba(61,220,151,.6)}
+.pc.c2 .micro-l,.pc.c2 .pc-h .q,.pc.c2 .pc-t li .ico,.pc.c2 .mini-r .ok{color:var(--color-neon-green)}
+.pc.c2 .micro-l::before{background:var(--color-neon-green)}
+.pc.c2 .pc-h .q{box-shadow:inset 0 0 0 1px rgba(61,220,151,.45),0 0 18px -6px rgba(61,220,151,.6)}
+.pc.c2 .pc-h .btn-primary{background:var(--color-neon-green);color:var(--on-brand)}
+.pc.c3::before{background:linear-gradient(180deg,rgba(155,140,255,.24),rgba(155,140,255,.08))}
+.pc.c3::after{background:radial-gradient(280px circle at var(--mx,50%) var(--my,0%),rgba(242,251,255,.95),rgba(155,140,255,.9) 24%,rgba(155,140,255,0) 70%)}
+.pc.c3.hov::before{background:rgba(155,140,255,.7)}
+.pc.c3.hov{box-shadow:0 0 0 1px rgba(155,140,255,.12),0 0 44px -12px rgba(155,140,255,.6)}
+.pc.c3 .micro-l,.pc.c3 .pc-h .q,.pc.c3 .pc-t li .ico,.pc.c3 .mini-r .ok{color:var(--color-neon-violet)}
+.pc.c3 .micro-l::before{background:var(--color-neon-violet)}
+.pc.c3 .pc-h .q{box-shadow:inset 0 0 0 1px rgba(155,140,255,.45),0 0 18px -6px rgba(155,140,255,.6)}
+.pc.c3 .pc-h .btn-primary{background:var(--color-neon-violet);color:var(--on-brand)}
+/* ---------- S07 · modelos em cartões empilhados (pilha fixa ao rolar) ---------- */
+.pilha{position:relative}
+.pc{position:sticky;display:block;margin-bottom:28px;min-height:480px}
+.pc:nth-child(1){top:96px}.pc:nth-child(2){top:168px}.pc:nth-child(3){top:240px}
+.pc-h{display:flex;align-items:center;gap:14px;height:72px;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.08)}
+.pc-h .q{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,var(--color-ink-800),var(--color-ink-950) 70%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 6px 16px -6px rgba(5,5,5,.9);color:var(--fg)}
+.pc-h b{font-weight:500}
+.pc-h .tag{margin-left:8px}
+.pc-h .btn{margin-left:auto}
+.pc-b{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:48px 48px 56px;align-items:center}
+.pc-t{grid-column:1/7;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.pc-t p{color:var(--fg-muted);max-width:460px}
+.pc-t ul{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;color:var(--fg-muted)}
+.pc-t li{display:flex;gap:10px;align-items:center}
+.pc-t li .ico{color:var(--brand)}
+.pc-v{grid-column:8/13;display:flex;justify-content:center}
+.mini{width:100%;max-width:380px;padding:18px 20px;border-radius:var(--radius-lg);background:var(--color-ink-950);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 30px 60px -24px rgba(5,5,5,.9);transform:rotate(-5deg)}
+.mini-h{display:flex;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.mini-r{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);font-size:var(--text-small);color:var(--fg-muted)}
+.mini-r:last-child{border-bottom:0}
+.mini-r b{font-weight:500;color:var(--fg)}
+.mini-r .ok{color:var(--brand-text)}
+
+/* ---------- S18 · profissionais: só a lista, em quatro colunas no grid, sem ícones nem caixas ---------- */
+.lista{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:72px;row-gap:56px}
+.col h3{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:18px;margin:0 0 10px;border-bottom:1px solid var(--border);font-size:var(--text-h4);font-weight:500;line-height:var(--text-h4--line-height)}
+.col h3 .tag{flex:none}
+.col ul{list-style:none;margin:0;padding:0}
+.col li{position:relative;padding:12px 0;color:var(--fg-muted);transition:color var(--dur-fast) var(--ease-out),transform var(--dur-base) var(--ease-out)}
+.col li::before{content:"";position:absolute;left:-14px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--brand);opacity:0;transition:opacity var(--dur-fast) var(--ease-out)}
+.col li:hover{color:var(--fg);transform:translateX(14px)}
+.col li:hover::before{opacity:1}
+
+/* ---------- S10 · por que a Rumo: quatro diferenciais que não aparecem em outra seção ---------- */
+.difs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.dif{padding:36px 32px;min-height:300px;display:flex;flex-direction:column;gap:14px}
+.dif::before{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
+.dif::after{background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(242,251,255,.95),rgba(0,172,229,.9) 24%,rgba(0,172,229,0) 70%)}
+.dif.hov::before{background:rgba(0,172,229,.35)}
+.dif.hov{box-shadow:0 0 44px -14px rgba(0,172,229,.5)}
+.dif .topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.dif .cir{width:56px;height:56px;border-radius:50%;flex:none;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,var(--color-ink-800),var(--color-ink-950) 70%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);color:var(--brand);transition:transform var(--dur-base) var(--ease-out),background-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),box-shadow var(--dur-base) var(--ease-out)}
+.dif .cir .ico{width:22px;height:22px}
+.dif .cir .ico *{stroke-dasharray:1;stroke-dashoffset:0}
+.dif.hov .cir{background:var(--brand);color:var(--on-brand);box-shadow:0 0 0 6px rgba(0,172,229,.12),0 0 28px -6px rgba(0,172,229,.7)}
+.dif.hov .cir .ico *{animation:traca var(--dur-slow) var(--ease-out)}
+@keyframes traca{from{stroke-dashoffset:1}}
+.dif .n{font-family:var(--font-mono);font-size:var(--text-label);color:var(--fg-subtle);transition:color var(--dur-fast)}
+.dif.hov .n{color:var(--brand-text)}
+.dif h3{font-size:var(--text-h4);font-weight:500;line-height:var(--text-h4--line-height);max-width:380px}
+.dif p{color:var(--fg-muted);max-width:440px}
+
+/* ---------- S05 · como funciona: quatro etapas interativas; cada etapa abre o seu painel ---------- */
+.cf-nav{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-bottom:28px}
+.cf-linha{position:absolute;top:24px;left:24px;right:calc((100% - 72px) / 4 - 24px);height:1px;background:var(--border)}
+.cf-linha i{position:absolute;inset:0;background:var(--brand);transform:scaleX(0);transform-origin:left;transition:transform var(--dur-slow) var(--ease-out)}
+.cf-s{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:0;background:none;border:0;text-align:left;font-size:var(--text-body);font-weight:500;color:var(--fg-muted);cursor:pointer;transition:color var(--dur-fast) var(--ease-out)}
+.cf-s .n{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--color-ink-950);box-shadow:inset 0 0 0 1px var(--border-strong);font-family:var(--font-mono);font-size:var(--text-label);font-weight:400;color:var(--fg-muted);transition:background-color var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out),color var(--dur-base) var(--ease-out)}
+.cf-s .tag{font-weight:400}
+.cf-s:hover{color:var(--fg)}
+.cf-s:hover .n{box-shadow:inset 0 0 0 1px var(--brand)}
+.cf-s:focus-visible{outline:0}
+.cf-s:focus-visible .n{box-shadow:0 0 0 3px rgba(0,172,229,.4)}
+.cf-s.feito .n{color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.cf-s[aria-selected="true"]{color:var(--fg)}
+.cf-s[aria-selected="true"] .n{background:var(--brand);color:var(--on-brand);box-shadow:0 0 0 6px rgba(0,172,229,.12),0 0 24px -4px rgba(0,172,229,.6)}
+.cf-p{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:48px;align-items:center;min-height:400px}
+.cf-p[hidden]{display:none}
+.cf-p.in{animation:cfEntra var(--dur-base) var(--ease-out)}
+@keyframes cfEntra{from{opacity:0;transform:translateY(8px)}}
+.cf-t{grid-column:1/6;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.cf-t .num{font-family:var(--font-mono);font-size:var(--text-label);color:var(--brand-text)}
+.cf-t p{color:var(--fg-muted)}
+.cf-v{grid-column:7/13}
+.cf-card{padding:8px 24px;border-radius:var(--radius-lg);background:var(--color-ink-950);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.cf-hd{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.cf-r{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;border-bottom:1px solid var(--border);font-size:var(--text-small);color:var(--fg-muted)}
+.cf-r:last-child{border-bottom:0}
+.cf-r b{font-weight:500;color:var(--fg)}
+.cf-r .l{display:flex;align-items:center;gap:12px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.chips i{font-style:normal;height:28px;padding:0 12px;border-radius:var(--radius-pill);display:inline-flex;align-items:center;box-shadow:inset 0 0 0 1px var(--border);font-size:var(--text-caption);color:var(--fg-subtle)}
+.chips i.on{background:var(--brand);color:var(--on-brand);box-shadow:none}
+.ck{width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--border-strong);color:var(--on-brand);transition:background-color var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out)}
+.ck .ico{width:12px;height:12px;opacity:0;transition:opacity var(--dur-base) var(--ease-out)}
+.cf-p.in .ck{background:var(--brand);box-shadow:none}
+.cf-p.in .ck .ico{opacity:1}
+
+/* ---------- S13 · perguntas frequentes em pílulas ---------- */
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.qa{border-radius:var(--radius-lg);background:linear-gradient(180deg,var(--color-ink-925),var(--color-ink-950));box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.qa.open{box-shadow:inset 0 0 0 1px rgba(127,216,245,.28),inset 0 -1px 0 rgba(242,251,255,.5)}
+.qa h3{margin:0;font:inherit;letter-spacing:normal}
+.qa-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 24px;background:none;border:0;text-align:left;font-size:var(--text-body);font-weight:500;color:var(--fg);cursor:pointer}
+.qa-q .pm{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex:none;color:var(--fg-muted);transition:transform var(--dur-base) var(--ease-out),color var(--dur-fast)}
+.qa.open .pm{transform:rotate(45deg);color:var(--brand)}
+.qa-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--dur-base) var(--ease-out)}
+.qa.open .qa-a{grid-template-rows:1fr}
+.qa-a>div{overflow:hidden}
+.qa-a p{padding:0 24px 22px;color:var(--fg-muted)}
+
+/* ---------- S11 · CTA final com o formulário ---------- */
+.fim .cab{margin-bottom:48px}
+.panel{max-width:880px;margin:0 auto}
+.form{padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.f{display:flex;flex-direction:column;gap:8px;min-width:0}
+.f.full,.form .send,.form .ok{grid-column:1/-1}
+.f>label,.f .lbl{font-size:var(--text-small);font-weight:500;color:var(--fg-muted)}
+.f textarea{width:100%;min-height:140px;padding:12px 14px;border-radius:var(--radius-md);background:var(--color-ink-950);border:1px solid var(--border);font-size:var(--text-body);line-height:1.5;color:var(--fg);outline:0;resize:vertical;transition:border-color var(--dur-fast),box-shadow var(--dur-fast)}
+.f textarea:hover{border-color:var(--border-strong)}
+.f textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(0,172,229,.16)}
+.f textarea::placeholder{color:var(--fg-subtle)}
+.f .trava{display:none;vertical-align:-2px;margin-left:4px;color:var(--fg-subtle)}
+.f .trava .ico{width:13px;height:13px}
+.f.travado .trava{display:inline-block}
+.f.travado select{opacity:.45;cursor:not-allowed}
+.f.travado select:hover{border-color:var(--border)}
+.f .hint{font-size:var(--text-caption);color:var(--fg-subtle)}
+.f input,.f select{width:100%;height:48px;padding:0 14px;border-radius:var(--radius-md);background:var(--color-ink-950);border:1px solid var(--border);font-size:var(--text-body);color:var(--fg);outline:0;transition:border-color var(--dur-fast),box-shadow var(--dur-fast)}
+.f select{appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23A1A1A1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center}
+.f select option,.f select optgroup{background:var(--surface);color:var(--fg)}
+.f input:hover,.f select:hover{border-color:var(--border-strong)}
+.f input:focus,.f select:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(0,172,229,.16)}
+.f [aria-invalid="true"]{border-color:var(--error)}
+.err{display:flex;align-items:center;gap:6px;font-size:var(--text-caption);color:var(--error)}
+.err .ico{width:14px;height:14px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);border-radius:var(--radius-md);background:var(--color-ink-950);box-shadow:inset 0 0 0 1px var(--border)}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt span{display:flex;align-items:center;justify-content:center;height:48px;font-size:var(--text-small);color:var(--fg-muted);cursor:pointer;border-radius:var(--radius-md);transition:box-shadow var(--dur-fast),color var(--dur-fast),background-color var(--dur-fast)}
+.opt span:hover{color:var(--fg)}
+.opt input:checked+span{background:rgba(0,172,229,.08);box-shadow:inset 0 0 0 1px rgba(0,172,229,.28);color:var(--fg)}
+.opt input:focus-visible+span{outline:2px solid var(--focus-ring);outline-offset:-2px}
+.send{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:6px}
+.send small{font-size:var(--text-caption);color:var(--fg-subtle);max-width:300px}
+.ok{display:flex;flex-direction:column;gap:12px}
+.ok p{color:var(--fg-muted)}
+
+/*CSS_RODAPE*/
+
+/* ---------- revelação ---------- */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity var(--dur-slow) var(--ease-out),transform var(--dur-slow) var(--ease-out)}
+.js .rv.in{opacity:1;transform:none}
+
+/* ---------- responsivo ---------- */
+@media (max-width:1100px){
+  .nav-links{display:none}
+  .foot{grid-template-columns:1fr 1fr 1fr}
+  .foot .brand{grid-column:1/-1}
+  .bento{grid-template-rows:auto;grid-auto-rows:220px}
+  .b-areas{grid-column:1/7;grid-row:auto}.b-num{grid-column:7/13;grid-row:auto}.b-foto{grid-column:1/7;grid-row:span 2}.b-prazo{grid-column:7/13;grid-row:auto}.b-erro{grid-column:7/13;grid-row:auto}.b-squad{grid-column:1/13;grid-row:auto}
+  .lista{grid-template-columns:1fr 1fr;column-gap:48px}
+  .difs{grid-template-columns:1fr 1fr}
+}
+@media (max-width:960px){
+  .pc-t,.pc-v,.cf-t,.cf-v{grid-column:1/-1}
+  .cf-v{margin-top:28px}
+  .cf-p{padding:28px;min-height:0}
+  .cf-nav{grid-template-columns:1fr 1fr;row-gap:28px}
+  .cf-linha{display:none}
+  .dif{padding:28px;min-height:0}
+  .pc-v{margin-top:32px}
+  .pc{position:relative;top:auto!important;min-height:0}
+  .pc-b{padding:28px}
+  .pc-h .tag{display:none}
+}
+@media (max-width:640px){
+  .nav-right .ai,.nav-right .btn{display:none}
+  .menu-btn{display:inline-flex}
+  .nav .wrap{gap:16px}
+  .bento .b-areas,.bento .b-num,.bento .b-foto,.bento .b-prazo,.bento .b-erro,.bento .b-squad{grid-column:1/-1}
+  .b-foto{grid-row:span 2}
+  .pc-h .btn{display:none}
+  .difs,.lista{grid-template-columns:1fr}
+  .lista{row-gap:40px}
+  .chips i{padding:0 10px}
+  .form{padding:24px;grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style></head><body>
+
+<div class="texture" aria-hidden="true"><span class="lines"></span><span class="grain"></span></div>
+<!--MENU-->
+
+<main id="top">
+
+<!-- S02 · Hero de página interna -->
+<section class="th" id="hero" aria-labelledby="thT" data-obra>
+  <div class="th-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="cab">
+      <span class="pill" data-b="fill"><i aria-hidden="true"></i>Terceirização de TI</span>
+      <h1 class="display" id="thT"><span class="ln" data-b="text">Você escolhe o profissional.</span><span class="ln tone" data-b="text">A Rumo cuida do resto.</span></h1>
+      <p class="lead" data-b="text">Aloque desenvolvedores, analistas, gestores e especialistas de infraestrutura no seu projeto. A Rumo faz o hunting, capacita e acompanha cada profissional.</p>
+      <div class="acts">
+        <a class="btn btn-primary" href="#proposta" data-b="fill">Solicitar proposta <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn btn-secondary" href="#profissionais" data-b="fill">Ver profissionais</a>
+      </div>
+    </div>
+    <div class="bento">
+      <div class="cd b-areas" data-b="fill">
+        <div class="ics" aria-hidden="true">
+          <span><svg class="ico" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></span>
+          <span><svg class="ico" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="7" rx="1"/><rect x="2" y="14" width="20" height="7" rx="1"/></svg></span>
+          <span><svg class="ico" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
+          <span><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M17 11h5"/></svg></span>
+        </div>
+        <div><h3>16 perfis em 4 áreas</h3><p>Desenvolvimento, infraestrutura, análise e gestão.</p></div>
+      </div>
+      <div class="cd b-num" data-b="fill"><span class="big">+70 mil</span><span class="tag">Demandas técnicas entregues</span></div>
+      <div class="cd b-foto" data-b="fill">
+        <img src="../../assets/terceirizacao/hero-profissional.webp" alt="" width="788" height="1000" fetchpriority="high" decoding="async">
+        <span class="pill"><i aria-hidden="true"></i>Profissional alocado</span>
+        <div class="fl-ficha">
+          <div class="r"><b>Dev Back-end</b><span class="tag">Remoto</span></div>
+          <div class="r"><span class="niv"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="tag">Sênior</span></div>
+        </div>
+      </div>
+      <div class="cd tint b-prazo" data-b="fill"><span class="big">3 a 10 dias</span><span class="tag">Para alocar depois da definição do perfil</span></div>
+      <div class="cd b-erro" data-b="fill"><span class="big">&lt; 2%</span><span class="tag">Taxa de erro na operação</span></div>
+      <div class="cd raised b-squad" data-b="fill">
+        <div class="top"><div><h3>De um talento a uma squad completa</h3><p>Equipe que cresce ou diminui junto com o projeto, sem vínculo trabalhista com a sua empresa.</p></div>
+          <div class="avs" aria-hidden="true"><span class="av">SM</span><span class="av">PO</span><span class="av">BE</span><span class="av">FE</span><span class="av">QA</span><span class="av">DO</span></div></div>
+        <span class="tag">Scrum Master · Product Owner · devs · QA · DevOps</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S10b · Clientes que confiam na Rumo -->
+<section class="logos" aria-labelledby="clT">
+  <div class="wrap">
+    <div class="cab rv">
+      <span class="micro-l">Clientes</span>
+      <p id="clT" class="h4">Empresas que confiam na Rumo <span class="tone">para manter seus times de tecnologia em movimento.</span></p>
+    </div>
+  </div>
+  <div class="marquee">
+    <div class="track">
+      <div class="set">
+          <img src="../../assets/clientes/mercantil.png" alt="Banco Mercantil" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/santander.png" alt="Santander" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/bs2.png" alt="Banco BS2" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/ole-consignado.png" alt="Olé Consignado" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/mrv.png" alt="MRV Engenharia" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/grupo-barigui.png" alt="Grupo Barigui" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/hexagon.png" alt="Hexagon" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/carbel.png" alt="Carbel" width="154" height="36" loading="lazy">
+          <img src="../../assets/clientes/augusto-cury.png" alt="Augusto Cury" width="155" height="36" loading="lazy">
+      </div>
+      <div class="set" aria-hidden="true">
+          <img src="../../assets/clientes/mercantil.png" alt="" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/santander.png" alt="" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/bs2.png" alt="" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/ole-consignado.png" alt="" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/mrv.png" alt="" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/grupo-barigui.png" alt="" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/hexagon.png" alt="" width="155" height="36" loading="lazy">
+          <img src="../../assets/clientes/carbel.png" alt="" width="154" height="36" loading="lazy">
+          <img src="../../assets/clientes/augusto-cury.png" alt="" width="155" height="36" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S07 · Cards: modelos de contratação em pilha -->
+<section class="sec" id="modelos" aria-labelledby="mdT" data-obra>
+  <div class="wrap">
+    <div class="cab rv">
+      <span class="micro-l">Modelos de contratação</span>
+      <h2 class="h2" id="mdT" data-b="text">Do jeito que a sua <span class="tone">operação precisa.</span></h2>
+      <p class="lead">Toda contratação começa com uma conversa sobre o perfil e o momento do seu projeto.</p>
+    </div>
+    <div class="pilha">
+      <article class="pc cd c1">
+        <div class="pc-h"><span class="q"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span><b>Alocação individual</b><span class="tag">Time &amp; Materials</span><a class="btn btn-secondary sm" href="#proposta">Solicitar proposta</a></div>
+        <div class="pc-b">
+          <div class="pc-t"><span class="micro-l">01 · Um profissional</span><h3 class="h2">Um profissional<br><span class="tone">no seu time.</span></h3><p>Desenvolvedores, DBAs, arquitetos, analistas de QA e tech leads inseridos na sua equipe.</p>
+            <ul><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Remoto, presencial ou híbrido</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Curto ou longo prazo</li></ul></div>
+          <div class="pc-v"><div class="mini" data-b="fill"><div class="mini-h"><span class="tag">// alocação · exemplo</span><span class="tag">em andamento</span></div>
+            <div class="mini-r"><span>Perfil</span><b>Dev Back-end</b></div><div class="mini-r"><span>Senioridade</span><b>Sênior</b></div><div class="mini-r"><span>Formato</span><b>Remoto</b></div></div></div>
+        </div>
+      </article>
+      <article class="pc cd c2">
+        <div class="pc-h"><span class="q"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><circle cx="17" cy="7" r="3"/><path d="M17 14c3 0 5 2 5 5"/></svg></span><b>Squad dedicada</b><span class="tag">Ponta a ponta</span><a class="btn btn-primary sm" href="#proposta">Montar minha squad</a></div>
+        <div class="pc-b">
+          <div class="pc-t"><span class="micro-l">02 · Um time completo</span><h3 class="h2">Um time completo<br><span class="tone">para o seu projeto.</span></h3><p>Uma equipe completa e dedicada, para tocar o seu projeto do início ao fim.</p>
+            <ul><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Equipe multidisciplinar</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ampliada ou reduzida quando você quiser</li></ul></div>
+          <div class="pc-v"><div class="mini" data-b="fill"><div class="mini-h"><span class="tag">// squad · exemplo</span><span class="tag">7 pessoas</span></div>
+            <div class="mini-r"><span>Scrum Master</span><b>1</b></div><div class="mini-r"><span>Product Owner</span><b>1</b></div><div class="mini-r"><span>Devs front-end e back-end</span><b>3</b></div><div class="mini-r"><span>QA</span><b>1</b></div><div class="mini-r"><span>DevOps</span><b>1</b></div></div></div>
+        </div>
+      </article>
+      <article class="pc cd c3">
+        <div class="pc-h"><span class="q"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg></span><b>Escopo fechado</b><span class="tag">Entregáveis definidos</span><a class="btn btn-secondary sm" href="#proposta">Solicitar proposta</a></div>
+        <div class="pc-b">
+          <div class="pc-t"><span class="micro-l">03 · Entregáveis definidos</span><h3 class="h2">Escopo e prazo<br><span class="tone">definidos no contrato.</span></h3><p>Para quem prefere tudo combinado desde o início.</p>
+            <ul><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Entregáveis combinados no contrato</li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Por período ou por projeto</li></ul></div>
+          <div class="pc-v"><div class="mini" data-b="fill"><div class="mini-h"><span class="tag">// entregáveis · exemplo</span><span class="tag">2 de 4</span></div>
+            <div class="mini-r"><span>Levantamento</span><b class="ok">concluído</b></div><div class="mini-r"><span>Desenvolvimento</span><b class="ok">concluído</b></div><div class="mini-r"><span>Homologação</span><b>em andamento</b></div><div class="mini-r"><span>Entrega</span><b>a seguir</b></div></div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- S18 · Especialistas: a lista dos perfis disponíveis, por área -->
+<section class="sec" id="profissionais" aria-labelledby="prT" data-obra>
+  <div class="wrap">
+    <div class="cab rv">
+      <span class="micro-l">Profissionais disponíveis</span>
+      <h2 class="h2" id="prT" data-b="text">Do júnior ao especialista, <span class="tone">pronto para o seu time.</span></h2>
+      <p class="lead">Escolha o perfil e a senioridade. A busca pela pessoa certa fica com a Rumo.</p>
+    </div>
+    <div class="lista">
+      <div class="col rv"><h3><span data-b="text">Desenvolvimento</span><span class="tag">06</span></h3><ul><li>Engenheiro de Software</li><li>Arquiteto de Sistemas e Software</li><li>Desenvolvedor Back-end</li><li>Desenvolvedor Front-end</li><li>Desenvolvedor Mobile (iOS e Android)</li><li>Desenvolvedor de RPA</li></ul></div>
+      <div class="col rv"><h3><span data-b="text">Infraestrutura</span><span class="tag">04</span></h3><ul><li>Administrador de Redes</li><li>Especialista em Cloud (AWS, Azure, GCP)</li><li>Suporte Técnico Especializado</li><li>Administrador de Banco de Dados (DBA)</li></ul></div>
+      <div class="col rv"><h3><span data-b="text">Análise</span><span class="tag">03</span></h3><ul><li>Analista de Sistemas</li><li>Analista de Testes (QA)</li><li>Analista de BI</li></ul></div>
+      <div class="col rv"><h3><span data-b="text">Gestão</span><span class="tag">03</span></h3><ul><li>Gerente de Projetos</li><li>Scrum Master</li><li>Agile Coach</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- S10 · Diferenciais: por que a Rumo -->
+<section class="sec" id="por-que-a-rumo" aria-labelledby="dfT" data-obra>
+  <div class="wrap">
+    <div class="cab rv">
+      <span class="micro-l">Por que a Rumo</span>
+      <h2 class="h2" id="dfT" data-b="text">Por que escolher <span class="tone">a Rumo.</span></h2>
+    </div>
+    <div class="difs">
+      <article class="dif cd rv"><div class="topo"><span class="cir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><span class="n">01</span></div><h3>Processo de hunting ágil e criterioso</h3><p>Processo seletivo com validação técnica, para encontrar quem tem as competências e o perfil que o seu time pede.</p></article>
+      <article class="dif cd rv"><div class="topo"><span class="cir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2"/><path d="M9 15l-3-3a15 15 0 0 1 12-9 15 15 0 0 1-9 12z"/><circle cx="14.5" cy="9.5" r="1.5"/></svg></span><span class="n">02</span></div><h3>Onboarding e capacitação incluídos</h3><p>Integração e preparação no seu ambiente, para o profissional se adaptar mais rápido.</p></article>
+      <article class="dif cd rv"><div class="topo"><span class="cir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="n">03</span></div><h3>Equipes remotas ou alocadas, conforme sua realidade</h3><p>Trabalho 100% remoto, presencial ou híbrido, no modelo que a sua operação pede.</p></article>
+      <article class="dif cd rv"><div class="topo"><span class="cir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span class="n">04</span></div><h3>Acompanhamento de performance e feedbacks estruturados</h3><p>Acompanhamos a performance e apoiamos a evolução de cada profissional. Se alguém não performar, a substituição é rápida e sem burocracia.</p></article>
+      <article class="dif cd rv"><div class="topo"><span class="cir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span><span class="n">05</span></div><h3>Contratos flexíveis e escaláveis</h3><p>Time &amp; Materials ou escopo fechado, por período ou por projeto.</p></article>
+      <article class="dif cd rv"><div class="topo"><span class="cir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><circle cx="17" cy="7" r="3"/><path d="M17 14c3 0 5 2 5 5"/></svg></span><span class="n">06</span></div><h3>De um talento a uma squad completa</h3><p>Um especialista para reforçar o seu time ou uma squad com Scrum Master, Product Owner, devs, QA e DevOps.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- S05 · Narrativa: como funciona, em quatro etapas interativas -->
+<section class="sec" id="como-funciona" aria-labelledby="hwT" data-obra>
+  <div class="wrap">
+    <div class="cab rv">
+      <span class="micro-l">Como funciona</span>
+      <h2 class="h2" id="hwT" data-b="text">Do perfil ao profissional <span class="tone">no seu time.</span></h2>
+      <p class="lead">Quatro etapas, com a Rumo ao seu lado em cada uma. Clique para ver o que acontece.</p>
+    </div>
+    <div class="cf-nav rv" role="tablist" aria-label="Etapas"><span class="cf-linha" aria-hidden="true"><i id="cfLinha"></i></span><button class="cf-s" type="button" role="tab" id="cfS1" aria-controls="cfP1" aria-selected="true" tabindex="0"><span class="n">01</span><span>Você define o perfil</span><span class="tag">Você</span></button><button class="cf-s" type="button" role="tab" id="cfS2" aria-controls="cfP2" aria-selected="false" tabindex="-1"><span class="n">02</span><span>Hunting com validação técnica</span><span class="tag">Rumo</span></button><button class="cf-s" type="button" role="tab" id="cfS3" aria-controls="cfP3" aria-selected="false" tabindex="-1"><span class="n">03</span><span>Onboarding e capacitação</span><span class="tag">Rumo</span></button><button class="cf-s" type="button" role="tab" id="cfS4" aria-controls="cfP4" aria-selected="false" tabindex="-1"><span class="n">04</span><span>Acompanhamento contínuo</span><span class="tag">Contínuo</span></button></div>
+    <div class="cd" data-b="fill">
+      <div class="cf-p" role="tabpanel" id="cfP1" aria-labelledby="cfS1"><div class="cf-t"><span class="num">01 / 04</span><h3 class="h3">Você define o perfil</h3><p>Você conta qual profissional o seu time precisa e em qual senioridade. É o ponto de partida de toda a busca.</p></div><div class="cf-v"><div class="cf-card"><div class="cf-hd"><span class="tag">// pedido · exemplo</span><span class="tag">Você</span></div><div class="cf-r"><span>Perfil</span><b>Dev Back-end</b></div><div class="cf-r"><span>Senioridade</span><span class="chips"><i>Júnior</i><i>Pleno</i><i class="on">Sênior</i><i>Especialista</i></span></div></div></div></div>
+      <div class="cf-p" role="tabpanel" id="cfP2" aria-labelledby="cfS2" hidden><div class="cf-t"><span class="num">02 / 04</span><h3 class="h3">Hunting com validação técnica</h3><p>Recrutamento especializado para encontrar quem tem as competências técnicas e o perfil que o seu time pede.</p></div><div class="cf-v"><div class="cf-card"><div class="cf-hd"><span class="tag">// seleção · exemplo</span><span class="tag">Rumo</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Competências técnicas</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Aderência ao seu time</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Validação técnica aprovada</span></div></div></div></div>
+      <div class="cf-p" role="tabpanel" id="cfP3" aria-labelledby="cfS3" hidden><div class="cf-t"><span class="num">03 / 04</span><h3 class="h3">Onboarding e capacitação</h3><p>Integração e preparação no seu ambiente, para o profissional se adaptar mais rápido.</p></div><div class="cf-v"><div class="cf-card"><div class="cf-hd"><span class="tag">// onboarding · exemplo</span><span class="tag">Rumo</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Acessos e ambiente liberados</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Integração com o seu time</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Capacitação no seu ambiente</span></div></div></div></div>
+      <div class="cf-p" role="tabpanel" id="cfP4" aria-labelledby="cfS4" hidden><div class="cf-t"><span class="num">04 / 04</span><h3 class="h3">Acompanhamento contínuo</h3><p>Monitoramento de performance, feedbacks estruturados e apoio na evolução. Se alguém não performar, a substituição é rápida e sem burocracia.</p></div><div class="cf-v"><div class="cf-card"><div class="cf-hd"><span class="tag">// acompanhamento · exemplo</span><span class="tag">Contínuo</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Monitoramento de performance</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Feedbacks estruturados</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Apoio na evolução do profissional</span></div><div class="cf-r"><span class="l"><span class="ck"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>Substituição rápida, se precisar</span></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S13 · Perguntas frequentes -->
+<section class="sec" id="faq" aria-labelledby="fqT">
+  <div class="wrap">
+    <div class="cab rv"><span class="micro-l">Perguntas frequentes</span><h2 class="h2" id="fqT">Perguntas, <span class="tone">respondidas.</span></h2></div>
+    <div class="faq rv">
+      <div class="qa open"><h3><button class="qa-q" type="button" aria-expanded="true" aria-controls="a0">Quanto tempo leva para alocar um profissional?<span class="pm" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></button></h3><div class="qa-a" id="a0" role="region"><div><p>De 3 a 10 dias depois da definição do perfil.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a1">Vocês oferecem capacitação para os profissionais?<span class="pm" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></button></h3><div class="qa-a" id="a1" role="region"><div><p>Sim. A Rumo faz o onboarding, a capacitação no seu ambiente e o acompanhamento contínuo de cada profissional.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a2">Qual é o modelo de contrato?<span class="pm" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></button></h3><div class="qa-a" id="a2" role="region"><div><p>Parceria flexível, de curto ou longo prazo: Time &amp; Materials (sob demanda) ou escopo fechado, com entregáveis predefinidos.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a3">E se o profissional não performar?<span class="pm" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></button></h3><div class="qa-a" id="a3" role="region"><div><p>A performance é acompanhada de forma contínua. Quando é preciso, a substituição é rápida e sem burocracia.</p></div></div></div>
+      <div class="qa"><h3><button class="qa-q" type="button" aria-expanded="false" aria-controls="a4">Os profissionais têm vínculo com a minha empresa?<span class="pm" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg></span></button></h3><div class="qa-a" id="a4" role="region"><div><p>Não. Os profissionais não têm vínculo trabalhista com a sua empresa, e a equipe pode ser ampliada ou reduzida quando você quiser.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S11 · Diagnóstico gratuito (CTA final com o formulário de proposta) -->
+<section class="sec fim" id="proposta" aria-labelledby="pdT" data-obra>
+  <div class="wrap">
+    <div class="cab rv"><span class="micro-l">Proposta de terceirização</span><h2 class="h1" id="pdT" data-b="text">Vamos montar <span class="tone">o seu time.</span></h2><p class="lead">Conte o perfil que você precisa. A Rumo retorna com uma proposta para o seu cenário.</p></div>
+    <div class="panel cd lit" id="panel" data-b="fill">
+      <!-- ENVIO POR E-MAIL (P12 do guia): o site está no GitHub Pages, sem servidor. O envio abre o e-mail do visitante com o pedido pronto, endereçado a DESTINO (no script). Trocar por serviço de formulários ou CRM quando houver. -->
+      <form class="form" id="form" novalidate>
+        <div class="f"><label for="fPerfil">Perfil</label><select id="fPerfil" name="perfil">
+          <option value="">Escolha um perfil</option>
+          <optgroup label="Desenvolvimento"><option>Engenheiro de Software</option><option>Arquiteto de Sistemas e Software</option><option>Desenvolvedor Back-end</option><option>Desenvolvedor Front-end</option><option>Desenvolvedor Mobile</option><option>Desenvolvedor de RPA</option></optgroup>
+          <optgroup label="Infraestrutura"><option>Administrador de Redes</option><option>Especialista em Cloud</option><option>Suporte Técnico Especializado</option><option>Administrador de Banco de Dados</option></optgroup>
+          <optgroup label="Análise"><option>Analista de Sistemas</option><option>Analista de Testes (QA)</option><option>Analista de BI</option></optgroup>
+          <optgroup label="Gestão"><option>Gerente de Projetos</option><option>Scrum Master</option><option>Agile Coach</option></optgroup>
+          <optgroup label="Outros"><option>Squad completa</option><option>Ainda não sei</option></optgroup>
+        </select></div>
+        <div class="f" id="fNivelBox"><label for="fNivel">Senioridade <span class="trava" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span></label><select id="fNivel" name="senioridade" aria-describedby="hNivel">
+          <option value="">Escolha um nível</option><option>Júnior</option><option>Pleno</option><option>Sênior</option><option>Especialista</option><option>Mais de um nível</option>
+        </select><span class="hint" id="hNivel" hidden>A senioridade fica para a conversa com o especialista.</span></div>
+        <div class="f full" role="radiogroup" aria-labelledby="lFmt"><span class="lbl" id="lFmt">Formato</span><div class="seg">
+          <label class="opt"><input type="radio" name="formato" value="Remoto"><span>Remoto</span></label>
+          <label class="opt"><input type="radio" name="formato" value="Presencial"><span>Presencial</span></label>
+          <label class="opt"><input type="radio" name="formato" value="Híbrido"><span>Híbrido</span></label>
+        </div></div>
+        <div class="f"><label for="fNome">Nome</label><input id="fNome" name="nome" autocomplete="name" required aria-describedby="eNome"><span class="err" id="eNome" hidden></span></div>
+        <div class="f"><label for="fEmp">Empresa</label><input id="fEmp" name="empresa" autocomplete="organization" required aria-describedby="eEmp"><span class="err" id="eEmp" hidden></span></div>
+        <div class="f"><label for="fEmail">E-mail corporativo</label><input id="fEmail" name="email" type="email" autocomplete="email" required aria-describedby="eEmail"><span class="err" id="eEmail" hidden></span></div>
+        <div class="f"><label for="fTel">Telefone</label><input id="fTel" name="telefone" type="tel" autocomplete="tel"></div>
+        <div class="f full"><label for="fMsg">Mensagem</label><textarea id="fMsg" name="mensagem" rows="5" placeholder="Conte um pouco sobre o seu projeto ou o que o seu time precisa"></textarea></div>
+        <div class="send"><small>Seus dados servem só para responder a este pedido, conforme a LGPD.</small><button class="btn btn-primary" type="submit">Solicitar proposta <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></div>
+        <div class="ok" id="ok" hidden role="status"><p class="h4">Seu pedido está pronto no seu e-mail.</p><p>Abrimos o seu programa de e-mail com tudo preenchido. É só enviar, e um especialista da Rumo responde.</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<canvas id="swarm" aria-hidden="true"></canvas>
+
+<!--RODAPE-->
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const $ = (s, r=document) => r.querySelector(s), $$ = (s, r=document) => [...r.querySelectorAll(s)];
+if (!reduce) document.documentElement.classList.add('js');
+
+/* ---------- scroll suave (Lenis) ---------- */
+let lenis = null;
+if (!reduce && fine && window.Lenis) { try { lenis = new Lenis({ lerp: 0.1 }); } catch(e) { lenis = null; } }
+if (lenis) { const raf = t => { lenis.raf(t); requestAnimationFrame(raf); }; requestAnimationFrame(raf); }
+function goTo(el){ if (!el) return; if (lenis) lenis.scrollTo(el, { offset: -24, duration: 1.2 }); else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+
+/* ---------- navegação ---------- */
+const nav = $('#nav');
+const onNav = () => nav.classList.toggle('scrolled', (window.scrollY || 0) > 40);
+addEventListener('scroll', onNav, { passive: true }); onNav();
+const menu = $('#mobileMenu'), menuBtn = $('#menuBtn');
+function closeMenu(){ menu.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); }
+menuBtn.addEventListener('click', () => { menu.hidden = false; menuBtn.setAttribute('aria-expanded', 'true'); });
+$('#menuClose').addEventListener('click', closeMenu);
+$$('a', menu).forEach(a => a.addEventListener('click', closeMenu));
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const el = $(a.getAttribute('href')); if (el) { e.preventDefault(); closeMenu(); goTo(el); } }));
+$$('.nav-dd').forEach(caixa => {
+  const btn = caixa.querySelector('.nav-dd-btn'), lista = caixa.querySelector('.nav-dd-list');
+  let t = 0;
+  const fechar = () => { clearTimeout(t); lista.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
+  const abrir = () => {
+    clearTimeout(t);
+    $$('.nav-dd').forEach(o => { if (o !== caixa) { o.querySelector('.nav-dd-list').hidden = true; o.querySelector('.nav-dd-btn').setAttribute('aria-expanded', 'false'); } });
+    lista.hidden = false; btn.setAttribute('aria-expanded', 'true');
+  };
+  btn.addEventListener('click', e => { if (fine && e.detail) abrir(); else if (lista.hidden) abrir(); else fechar(); });
+  if (fine) { caixa.addEventListener('pointerenter', abrir); caixa.addEventListener('pointerleave', () => { t = setTimeout(fechar, 160); }); }
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !lista.hidden) { fechar(); btn.focus(); } });
+  caixa.addEventListener('focusout', e => { if (!caixa.contains(e.relatedTarget)) fechar(); });
+  document.addEventListener('pointerdown', e => { if (!caixa.contains(e.target)) fechar(); });
+});
+
+/* ---------- revelação ao rolar (M01, uma vez, stagger de 60ms) ---------- */
+if (!reduce && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => { let i = 0; es.forEach(e => { if (e.isIntersecting) { e.target.style.transitionDelay = (i++ * 60) + 'ms'; e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .15 });
+  $$('.rv').forEach(el => io.observe(el));
+} else $$('.rv').forEach(el => el.classList.add('in'));
+
+/* ---------- modelos: o contorno neon acende onde o cursor está; ao entrar na tela, a luz percorre a borda uma vez ---------- */
+(function neon(){
+  const cards = $$('.pc'), todos = $$('.pc, .dif'); if (!cards.length) return;
+  const pos = (el, x, y) => { el.style.setProperty('--mx', x + 'px'); el.style.setProperty('--my', y + 'px'); };
+  todos.forEach(el => {
+    el.addEventListener('pointerenter', () => el.classList.add('hov'));
+    el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); el.classList.add('luz'); pos(el, e.clientX - r.left, e.clientY - r.top); });
+    el.addEventListener('pointerleave', () => el.classList.remove('luz', 'hov'));
+  });
+  if (reduce || !('IntersectionObserver' in window)) return;
+  const volta = el => {
+    if (el.matches(':hover')) return;
+    const w = el.offsetWidth, h = Math.min(el.offsetHeight, innerHeight), per = 2 * (w + h), t0 = performance.now(), dur = 1200;
+    el.classList.add('luz');
+    const passo = t => {
+      if (el.matches(':hover')) return;
+      const k = Math.min(1, (t - t0) / dur), q = 1 - Math.pow(1 - k, 3);
+      let d = (q * per + w / 2) % per, x, y;
+      if (d < w) { x = d; y = 0; } else if ((d -= w) < h) { x = w; y = d; } else if ((d -= h) < w) { x = w - d; y = h; } else { x = 0; y = h - (d - w); }
+      pos(el, x, y);
+      if (k < 1) requestAnimationFrame(passo); else el.classList.remove('luz');
+    };
+    requestAnimationFrame(passo);
+  };
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { io.unobserve(e.target); setTimeout(() => volta(e.target), 1200); } }), { threshold: .45 });
+  cards.forEach(el => io.observe(el));
+})();
+
+/* ---------- diferenciais: o ícone se aproxima do cursor e redesenha o traço ---------- */
+(function difs(){
+  $$('.dif').forEach(el => {
+    const c = $('.cir', el);
+    $$('.cir .ico *', el).forEach(p => p.setAttribute('pathLength', '1'));
+    if (reduce) return;
+    el.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(), lim = v => Math.max(-8, Math.min(8, v * .06)); c.style.transform = 'translate(' + lim(e.clientX - r.left - r.width / 2) + 'px,' + lim(e.clientY - r.top - r.height / 2) + 'px)'; });
+    el.addEventListener('pointerleave', () => { c.style.transform = ''; });
+  });
+})();
+
+/* ---------- como funciona: etapas como abas (setas do teclado navegam); os checks marcam um a um ---------- */
+(function etapas(){
+  const bs = $$('.cf-s'); if (!bs.length) return;
+  const linha = $('#cfLinha');
+  const marcar = p => { $$('.ck', p).forEach((c, j) => c.style.transitionDelay = (160 + j * 180) + 'ms'); p.classList.remove('in'); void p.offsetWidth; p.classList.add('in'); };
+  const ativar = (b, foco) => {
+    const i = bs.indexOf(b);
+    bs.forEach((o, k) => { const on = o === b; o.setAttribute('aria-selected', on ? 'true' : 'false'); o.tabIndex = on ? 0 : -1; o.classList.toggle('feito', k < i); $('#' + o.getAttribute('aria-controls')).hidden = !on; });
+    marcar($('#' + b.getAttribute('aria-controls')));
+    linha.style.transform = 'scaleX(' + (i / (bs.length - 1)) + ')';
+    if (foco) b.focus();
+  };
+  bs.forEach((b, i) => {
+    b.addEventListener('click', () => ativar(b));
+    b.addEventListener('keydown', e => { const d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ? -1 : 0; if (d) { e.preventDefault(); ativar(bs[(i + d + bs.length) % bs.length], true); } });
+  });
+  const p1 = $('#cfP1');
+  if (reduce || !('IntersectionObserver' in window)) { p1.classList.add('in'); return; }
+  const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { io.disconnect(); setTimeout(() => { if (!p1.hidden) marcar(p1); }, 900); } }, { threshold: .5 });
+  io.observe(p1);
+})();
+
+/* ---------- perguntas frequentes ---------- */
+$$('.qa-q').forEach(b => b.addEventListener('click', () => { const it = b.closest('.qa'), abrir = !it.classList.contains('open'); $$('.qa.open').forEach(o => { o.classList.remove('open'); o.querySelector('.qa-q').setAttribute('aria-expanded', 'false'); }); if (abrir) { it.classList.add('open'); b.setAttribute('aria-expanded', 'true'); } }));
+
+/* ---------- formulário: "Ainda não sei" no perfil trava a senioridade ---------- */
+(function trava(){
+  const perfil = $('#fPerfil'), nivel = $('#fNivel'), box = $('#fNivelBox'), dica = $('#hNivel');
+  if (!perfil || !nivel) return;
+  const aplicar = () => { const t = perfil.value === 'Ainda não sei'; nivel.disabled = t; if (t) nivel.value = ''; box.classList.toggle('travado', t); dica.hidden = !t; };
+  perfil.addEventListener('change', aplicar); aplicar();
+})();
+
+/* ---------- formulário (envio desligado) ---------- */
+const form = $('#form');
+const ICO = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>';
+function checar(id, eid, ok, msg){ const el = $(id), e = $(eid); el.setAttribute('aria-invalid', ok ? 'false' : 'true'); e.hidden = ok; e.innerHTML = ok ? '' : ICO + msg; return ok; }
+const regras = [
+  ['#fNome', '#eNome', () => $('#fNome').value.trim().length > 1, 'Informe o seu nome.'],
+  ['#fEmp', '#eEmp', () => $('#fEmp').value.trim().length > 1, 'Informe a empresa.'],
+  ['#fEmail', '#eEmail', () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#fEmail').value.trim()), 'Informe um e-mail válido.'],
+];
+regras.forEach(([id, eid, f, msg]) => $(id).addEventListener('input', () => { if ($(id).getAttribute('aria-invalid') === 'true') checar(id, eid, f(), msg); }));
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const ok = regras.map(([id, eid, f, msg]) => checar(id, eid, f(), msg));
+  const primeiro = regras.find((r, i) => !ok[i]);
+  if (primeiro) { $(primeiro[0]).focus(); return; }
+  // envio pelo e-mail do visitante: monta o pedido e abre o programa de e-mail
+  const DESTINO = 'comercial@rumosolucoes.com';
+  const val = id => ($(id).value || '').trim();
+  const fmt = (form.querySelector('input[name="formato"]:checked') || {}).value || '';
+  const linhas = [['Perfil', val('#fPerfil')], ['Senioridade', $('#fNivel').disabled ? 'A definir na conversa' : val('#fNivel')], ['Formato', fmt], ['Nome', val('#fNome')], ['Empresa', val('#fEmp')], ['E-mail', val('#fEmail')], ['Telefone', val('#fTel')]]
+    .filter(([, v]) => v).map(([k, v]) => k + ': ' + v);
+  const msg = val('#fMsg');
+  const NL = String.fromCharCode(10);
+  const corpo = linhas.join(NL) + (msg ? NL + NL + 'Mensagem:' + NL + msg : '');
+  location.href = 'mailto:' + DESTINO + '?subject=' + encodeURIComponent('Proposta de terceirização · ' + val('#fEmp')) + '&body=' + encodeURIComponent(corpo);
+  [...form.children].forEach(c => { if (c.id !== 'ok') c.hidden = true; });
+  $('#ok').hidden = false;
+});
+
+/* ---------- enxame de cursores: constrói cada seção quando ela entra na tela ---------- */
+(function enxame(){
+  const cv = $('#swarm');
+  const revelar = el => { el.style.clipPath = ''; el.removeAttribute('data-b'); };
+  const fimGeral = () => { document.documentElement.classList.remove('sw-on'); $$('[data-b]').forEach(revelar); };
+  if (reduce || !cv || !cv.getContext) { fimGeral(); cv && cv.remove(); return; }
+  window.__enxame = true;
+  const ctx = cv.getContext('2d');
+  const cor = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const C = { fg: cor('--fg'), bg: cor('--bg'), brand: cor('--brand'), chip: cor('--surface-raised'), sub: cor('--fg-subtle'), sunk: cor('--bg-sunken') };
+  const MONO = '500 11px "Geist Mono", ui-monospace, monospace';
+  const mob = innerWidth < 961;
+  let W = innerWidth, H = innerHeight;
+  const D = Math.min(2, devicePixelRatio || 1);
+  const medir = () => { W = innerWidth; H = innerHeight; cv.width = Math.round(W * D); cv.height = Math.round(H * D); };
+  medir(); addEventListener('resize', medir);
+
+  // seta do cursor com a ponta na origem; OFF alinha a ponta com a direção do movimento
+  const SETA = new Path2D('M0 0 L0 15.5 L4.2 11.6 L7.1 18 L9.6 16.9 L6.8 10.7 L12.4 10.7 Z');
+  const OFF = Math.atan2(-10, -5);
+  const NOMES = ['Dev Back-end', 'Dev Front-end', 'Analista de QA', 'DBA', 'Arquiteto', 'Scrum Master', 'Cloud', 'Dev Mobile'];
+  const lista = (mob ? NOMES.slice(0, 5) : NOMES).concat('Consultor Rumo');
+  const ags = lista.map((nome, i) => ({ nome, rumo: nome === 'Consultor Rumo', i,
+    x: W + 40 + i * 14, y: H * .55 + (i - 4) * 22, vx: 0, vy: 0, ang: 0, want: 0, tx: W + 40, ty: H * .5, k: 120,
+    tag: 0, tagAlvo: 0, job: null, fase: 'livre', t0: 0, beam: false, cx: 0, cy: 0, ch: 0 }));
+  const consultor = ags[ags.length - 1], equipe = ags.filter(a => !a.rumo);
+  let px = -1, py = -1;
+  if (fine) addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; }, { passive: true });
+
+  /* tarefas: cada elemento com data-b, agrupado pela seção (data-obra) que o contém */
+  $$('[data-b]').forEach(el => { if (!el.getClientRects().length) revelar(el); });
+  const obras = $$('[data-obra]').map(sec => ({ sec, aberta: false, t: 0 }));
+  const jobs = $$('[data-b]').map(el => ({ el, tipo: el.dataset.b, obra: obras.find(o => o.sec.contains(el)), estado: 0, linhas: [], chars: (el.textContent || '').trim().length, p: 0, feito: 0 }));
+  const heroObra = obras[0];
+  let guiaA = 0, iniciado = false;
+  const liberar = (a, t) => { const j = a.job; if (j) { revelar(j.el); j.estado = 2; j.feito = j.feito || t; } a.job = null; a.fase = 'livre'; a.beam = false; };
+  const concluirObra = (o, t) => { jobs.forEach(j => { if (j.obra === o && j.estado < 2) { revelar(j.el); j.estado = 2; j.feito = t; } }); ags.forEach(a => { if (a.job && a.job.obra === o) { a.job = null; a.fase = 'livre'; a.beam = false; } }); };
+  function concluirTudo(){ const t = performance.now(); obras.forEach(o => { o.aberta = true; concluirObra(o, t); }); fimGeral(); }
+  addEventListener('keydown', e => { if (e.key === 'Escape') concluirTudo(); });
+  const linhasDe = el => {
+    const base = el.getBoundingClientRect(), rg = document.createRange(), tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), out = [];
+    for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+      if (!(n.textContent || '').trim()) continue;
+      rg.selectNodeContents(n);
+      for (const r of rg.getClientRects()) {
+        if (r.width < .5) continue;
+        const mid = (r.top + r.bottom) / 2 - base.top;
+        const l = out.find(o => mid > o.top && mid < o.bottom);
+        if (l) { l.left = Math.min(l.left, r.left - base.left); l.right = Math.max(l.right, r.right - base.left); l.top = Math.min(l.top, r.top - base.top); l.bottom = Math.max(l.bottom, r.bottom - base.top); }
+        else out.push({ top: r.top - base.top, bottom: r.bottom - base.top, left: r.left - base.left, right: r.right - base.left });
+      }
+    }
+    return out.sort((a, b) => a.top - b.top);
+  };
+  // digitação: revela o texto linha a linha com um polígono e devolve a posição do caret
+  function digitar(j, a, p, r){
+    const ls = j.linhas;
+    if (!ls.length) { j.el.style.clipPath = 'inset(0 ' + (100 - p * 100) + '% 0 0)'; a.cx = r.left + r.width * p; a.cy = r.top; a.ch = r.height; return; }
+    let total = 0; for (const l of ls) total += l.right - l.left;
+    let o = p * total, i = 0;
+    while (i < ls.length - 1 && o > ls[i].right - ls[i].left) { o -= ls[i].right - ls[i].left; i++; }
+    const l = ls[i], x = l.left + Math.min(o, l.right - l.left);
+    const sup = i > 0 ? (ls[i - 1].bottom + l.top) / 2 : -20, inf = i < ls.length - 1 ? (l.bottom + ls[i + 1].top) / 2 : r.height + 20;
+    j.el.style.clipPath = 'polygon(-20px -20px, calc(100% + 20px) -20px, calc(100% + 20px) ' + sup + 'px, ' + x + 'px ' + sup + 'px, ' + x + 'px ' + inf + 'px, -20px ' + inf + 'px)';
+    a.cx = r.left + x; a.cy = r.top + l.top; a.ch = l.bottom - l.top;
+  }
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
+  Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 300))]).then(() => { iniciado = true; });
+
+  const heroEl = $('#hero'), painel = $('#panel'), formEl = $('#form');
+  const ang = a => { while (a > Math.PI) a -= Math.PI * 2; while (a < -Math.PI) a += Math.PI * 2; return a; };
+  let giro = 0, tPrev = performance.now();
+  const anel = (a, idx, n, cx, cy, raio, k) => { const e = giro + idx / n * Math.PI * 2; a.tx = cx + Math.cos(e) * raio; a.ty = cy + Math.sin(e) * raio; a.k = k; a.want = (Math.hypot(a.vx, a.vy) > 140 ? Math.atan2(a.vy, a.vx) : Math.atan2(cy - a.y, cx - a.x)) - OFF; };
+  const sair = (a, y) => { a.tx = W + 60; a.ty = y; a.k = 120; a.want = Math.atan2(a.vy, a.vx) - OFF; a.tagAlvo = 0; };
+  const construindoHero = () => iniciado && jobs.some(j => j.obra === heroObra && j.estado < 2);
+  // o hero nunca espera mais de 2,6 s, mesmo se o navegador segurar os quadros da animação
+  setTimeout(() => { if (jobs.some(j => j.obra === heroObra && j.estado < 2)) { heroObra.aberta = true; concluirObra(heroObra, performance.now()); } }, 2600);
+
+  function quadro(t){
+    const n = ags.length;
+    // abre a obra de cada seção quando ela entra na tela; se ficar parada demais, revela sem cursores
+    if (iniciado) obras.forEach(o => {
+      const r = o.sec.getBoundingClientRect();
+      if (!o.aberta && (o === heroObra || (r.top < H * .78 && r.bottom > 0))) { o.aberta = true; o.t = t; }
+      if (o.aberta && t - o.t > (o === heroObra ? 2400 : 3600)) concluirObra(o, t);
+      if (o.aberta && o !== heroObra && r.bottom < 0) concluirObra(o, t);
+    });
+    if (heroObra.aberta && heroEl.getBoundingClientRect().bottom < H * .2) concluirObra(heroObra, t);
+    // distribui as tarefas pendentes das seções abertas para os cursores livres mais próximos
+    const livres = ags.filter(a => !a.job);
+    for (const j of jobs) {
+      if (!livres.length) break;
+      if (j.estado !== 0 || !j.obra || !j.obra.aberta) continue;
+      const r = j.el.getBoundingClientRect();
+      if (r.bottom < -40 || r.top > H + 40) continue;
+      let m = 0, d = Infinity;
+      livres.forEach((a, i) => { const q = (a.x - r.left) ** 2 + (a.y - r.top) ** 2; if (q < d) { d = q; m = i; } });
+      const a = livres.splice(m, 1)[0];
+      j.estado = 1; a.job = j; a.fase = 'ir'; a.t0 = t;
+    }
+    // cursores com tarefa: ir, desenhar a caixa, digitar ou pintar
+    for (const a of ags) {
+      const j = a.job; if (!j) continue;
+      const r = j.el.getBoundingClientRect();
+      a.want = 0; a.tagAlvo = 1;
+      if (a.fase === 'ir') { a.tx = r.left; a.ty = r.top; a.k = 300; if (Math.hypot(a.x - r.left, a.y - r.top) < 12 || t - a.t0 > 320) { a.fase = 'caixa'; a.t0 = t; } }
+      else if (a.fase === 'caixa') {
+        const q = Math.min(1, (t - a.t0) / 220), e = ease(q); j.p = e;
+        a.tx = r.left + r.width * e; a.ty = r.top + r.height * e; a.k = 1100;
+        if (q >= 1) { if (j.tipo === 'text') { j.linhas = linhasDe(j.el); digitar(j, a, 0, r); j.el.removeAttribute('data-b'); a.fase = 'digita'; a.beam = true; a.t0 = t; } else { j.el.style.clipPath = 'inset(0 100% 0 0)'; j.el.removeAttribute('data-b'); a.fase = 'pinta'; a.t0 = t; } }
+      } else if (a.fase === 'digita') {
+        const dur = Math.min(520, Math.max(220, j.chars * 7)), q = Math.min(1, (t - a.t0) / dur);
+        digitar(j, a, q, r); a.tx = a.cx + 3; a.ty = a.cy + a.ch * .5; a.k = 1100;
+        if (q >= 1) liberar(a, t);
+      } else if (a.fase === 'pinta') {
+        const q = ease(Math.min(1, (t - a.t0) / 260));
+        j.el.style.clipPath = 'inset(0 ' + (100 - q * 100) + '% 0 0)'; a.tx = r.left + r.width * q; a.ty = r.top + r.height * .5; a.k = 900;
+        if (q >= 1) liberar(a, t);
+      }
+    }
+    if (!jobs.some(j => j.estado < 2)) document.documentElement.classList.remove('sw-on');
+    // cursores sem tarefa
+    const soltos = ags.filter(a => !a.job);
+    const rh = heroEl.getBoundingClientRect(), rf = painel.getBoundingClientRect();
+    if (rf.top < H * .8 && rf.bottom > H * .2 && !jobs.some(j => j.obra && j.obra.sec.contains(painel) && j.estado < 2)) {
+      // formulário: a equipe para nos cantos do painel e o Consultor Rumo vai até o campo em foco
+      const pts = [[rf.left - 14, rf.top - 14], [rf.right + 10, rf.top - 12], [rf.right + 12, rf.top + rf.height * .5], [rf.right + 10, rf.bottom + 8], [rf.left + rf.width * .5, rf.bottom + 14], [rf.left - 14, rf.bottom + 8], [rf.left - 16, rf.top + rf.height * .5], [rf.left + rf.width * .5, rf.top - 16]];
+      const mx = rf.left + rf.width / 2, my = rf.top + rf.height / 2;
+      soltos.filter(a => !a.rumo).forEach((a, i) => { const p = pts[i % pts.length]; a.tx = p[0]; a.ty = p[1]; a.k = 90; a.want = (Math.hypot(a.vx, a.vy) > 140 ? Math.atan2(a.vy, a.vx) : Math.atan2(my - a.y, mx - a.x)) - OFF; a.tagAlvo = 0; });
+      if (!consultor.job) {
+        const f = document.activeElement && formEl.contains(document.activeElement) ? document.activeElement.closest('.f, .send') : null;
+        if (f) { const r = f.getBoundingClientRect(); consultor.tx = r.left - 4; consultor.ty = r.top + Math.min(r.height * .5, 56); consultor.k = 200; consultor.want = 0 - OFF; }
+        else { consultor.tx = rf.left + 24; consultor.ty = rf.top - 10; consultor.k = 120; consultor.want = Math.atan2(1, 1) - OFF; }
+        consultor.tagAlvo = 1;
+      }
+    } else if (rh.bottom > H * .45 && !mob) {
+      // hero: em repouso, o enxame orbita o ponteiro ou fica sobre o bento
+      const temPonteiro = px >= 0 && py < rh.bottom && py > rh.top;
+      const rb = $('.bento').getBoundingClientRect();
+      const cx = temPonteiro ? px : rb.left + rb.width * .5, cy = temPonteiro ? py : rb.top - 40;
+      soltos.forEach((a, i) => { anel(a, i, soltos.length, cx, cy, 58, 38 + (a.i * 37 % 11) * 9); a.tagAlvo = a.rumo ? 1 : 0; });
+    } else soltos.forEach(a => sair(a, H * .5 + (a.i - n / 2) * 26));
+  }
+
+  function desenhar(t){
+    ctx.setTransform(D, 0, 0, D, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    // réguas enquanto o hero é construído (camada HUD, 3º nível)
+    guiaA += ((construindoHero() ? 1 : 0) - guiaA) * .12;
+    if (guiaA > .02) {
+      ctx.globalAlpha = guiaA * .96; ctx.fillStyle = C.sunk; ctx.fillRect(0, 0, W, 18); ctx.fillRect(0, 0, 18, H);
+      ctx.globalAlpha = guiaA; ctx.strokeStyle = 'rgba(255,255,255,.12)'; ctx.lineWidth = 1; ctx.beginPath();
+      for (let x = 24; x < W; x += 8) { const L = x % 64 === 0 ? 10 : 4; ctx.moveTo(x + .5, 18 - L); ctx.lineTo(x + .5, 18); }
+      const sy = scrollY;
+      for (let y = 24 - (sy % 8); y < H; y += 8) { const v = Math.round(y + sy), L = v % 64 === 0 ? 10 : 4; ctx.moveTo(18 - L, Math.round(y) + .5); ctx.lineTo(18, Math.round(y) + .5); }
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,.3)'; ctx.font = MONO;
+      for (let x = 128; x < W; x += 128) ctx.fillText(String(x), x + 4, 12);
+      ctx.globalAlpha = 1;
+    }
+    for (const j of jobs) {
+      if (j.estado === 0 || j.p < .02 || (j.feito && t - j.feito > 650)) continue;
+      const r = j.el.getBoundingClientRect(), w = r.width * j.p, h = r.height * j.p;
+      if (r.bottom < -40 || r.top > H + 40) continue;
+      const al = j.feito ? Math.max(0, 1 - (t - j.feito - 250) / 400) : 1; if (al <= 0) continue;
+      const l = Math.round(r.left) + .5, tp = Math.round(r.top) + .5;
+      if (!j.feito) { ctx.save(); ctx.globalAlpha = .12; ctx.strokeStyle = C.fg; ctx.setLineDash([2, 3]); ctx.beginPath(); ctx.moveTo(0, tp); ctx.lineTo(W, tp); ctx.moveTo(l, 0); ctx.lineTo(l, H); ctx.moveTo(l + w, 0); ctx.lineTo(l + w, H); ctx.moveTo(0, tp + h); ctx.lineTo(W, tp + h); ctx.stroke(); ctx.restore(); }
+      ctx.globalAlpha = al; ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = 1; ctx.strokeRect(l, tp, Math.round(w), Math.round(h));
+      for (const [hx, hy] of [[l, tp], [l + w, tp], [l, tp + h], [l + w, tp + h]]) { ctx.fillStyle = C.bg; ctx.fillRect(hx - 2.5, hy - 2.5, 5, 5); ctx.strokeRect(hx - 2.5, hy - 2.5, 5, 5); }
+      const txt = Math.round(w) + ' × ' + Math.round(h); ctx.font = MONO;
+      const cw = ctx.measureText(txt).width + 12, gx = l + w / 2 - cw / 2, gy = tp + h + 8;
+      ctx.fillStyle = C.chip; ctx.beginPath(); ctx.roundRect(gx, gy, cw, 18, 4); ctx.fill();
+      ctx.fillStyle = C.sub; ctx.textBaseline = 'middle'; ctx.fillText(txt, gx + 6, gy + 9.5); ctx.textBaseline = 'alphabetic';
+      ctx.globalAlpha = 1;
+    }
+    for (const a of ags) {
+      if (a.x < -40 || a.x > W + 40 || a.y < -40 || a.y > H + 40) continue;
+      const corA = a.rumo ? C.brand : C.fg;
+      if (a.fase === 'digita') { ctx.fillStyle = corA; ctx.fillRect(a.cx, a.cy, 1.5, a.ch); }
+      ctx.save(); ctx.translate(a.x, a.y);
+      if (a.beam) { ctx.strokeStyle = corA; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(-3, -8); ctx.lineTo(3, -8); ctx.moveTo(0, -8); ctx.lineTo(0, 8); ctx.moveTo(-3, 8); ctx.lineTo(3, 8); ctx.stroke(); }
+      else { ctx.rotate(a.ang); ctx.shadowColor = 'rgba(5,5,5,.6)'; ctx.shadowBlur = 4; ctx.shadowOffsetY = 1; ctx.fillStyle = corA; ctx.fill(SETA); ctx.shadowColor = 'transparent'; ctx.lineWidth = 1.2; ctx.lineJoin = 'round'; ctx.strokeStyle = C.bg; ctx.stroke(SETA); }
+      ctx.restore();
+      if (a.tag > .03) {
+        ctx.globalAlpha = a.tag; ctx.font = MONO;
+        const tw = ctx.measureText(a.nome).width, by = a.y + (a.beam ? 10 : 17);
+        let bx = a.x + (a.beam ? 7 : 10);
+        if (bx + tw + 14 > W - 8) bx = a.x - tw - 18;   // perto da borda direita, a etiqueta vai para a esquerda
+        ctx.fillStyle = a.rumo ? C.brand : C.chip; ctx.beginPath(); ctx.roundRect(bx, by, tw + 14, 20, 6); ctx.fill();
+        if (!a.rumo) { ctx.strokeStyle = 'rgba(255,255,255,.12)'; ctx.lineWidth = 1; ctx.stroke(); }
+        ctx.fillStyle = a.rumo ? C.bg : C.fg; ctx.textBaseline = 'middle'; ctx.fillText(a.nome, bx + 7, by + 10.5); ctx.textBaseline = 'alphabetic';
+        ctx.globalAlpha = 1;
+      }
+    }
+  }
+
+  function passo(t){
+    requestAnimationFrame(passo);
+    const dt = Math.min(.05, Math.max(.001, (t - tPrev) / 1000)); tPrev = t;
+    giro += dt * .6;
+    quadro(t);
+    let fora = true;
+    for (const a of ags) {
+      // mola com amortecimento crítico (sem overshoot), em dois subpassos
+      const k = Math.min(1200, a.k * 1.3), c = 2 * Math.sqrt(k) * .92, h = dt / 2;
+      for (let s = 0; s < 2; s++) { a.vx += ((a.tx - a.x) * k - a.vx * c) * h; a.vy += ((a.ty - a.y) * k - a.vy * c) * h; a.x += a.vx * h; a.y += a.vy * h; }
+      a.ang += ang(a.want - a.ang) * Math.min(1, dt * 9);
+      a.tag += (a.tagAlvo - a.tag) * Math.min(1, dt * 8);
+      if (a.x < W + 30) fora = false;
+    }
+    if (fora && !jobs.some(j => j.estado === 1)) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); return; }
+    desenhar(t);
+  }
+  requestAnimationFrame(passo);
+})();
+})();
+</script>
+</body></html>

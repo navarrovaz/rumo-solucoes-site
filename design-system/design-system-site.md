@@ -1,7 +1,7 @@
 # Design System: Site Rumo Soluções
 
 > **Papel:** guia de design vivo do site e dos produtos digitais da Rumo Soluções. Fonte de verdade para qualquer página, seção, componente, landing page ou peça web, consultado por designers, desenvolvedores e agentes do Rumo-cowork.
-> **Status:** v0.8.3 aprovada em 2026-11-19 (página de Terceirização revisada pelo usuário): primeira página de serviço publicada (12.3), neon verde e violeta nos cards de modelo de contratação (2.9), enxame de cursores que constrói a página e contorno neon que segue o cursor (M19, M20), itens do menu sem página apontando para a Home (evolução E38). v0.8.2 de 2026-11-16: listas de Serviços (Terceirização, Software, Aplicativos Mobile, Inteligência Artificial, Infraestrutura) e Produtos (PriceFleet, DataCar, SGAE, Genial) na navegação, com mapa do site atualizado (10.5, 12.1, evolução E37). v0.8.1 de 2026-11-16: guia alinhado à Home publicada, que é a versão oficial (navegação sem mega menu, rodapé, vidro, S12 Notícias, S17 e numeração da Home; S18 em revisão; evolução E36). v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
+> **Status:** v0.8.4 aprovada em 2026-11-23 (página de Inteligência Artificial revisada pelo usuário, 12.3): logos de Google Drive, Outlook e DeepSeek na faixa de tecnologias e regra para marcas de cor escura (2.7), interface do WhatsApp nas ilustrações de conversa (2.10) e exceção de loop para o celular do card de destaque (9.5), tudo na evolução E39, usados na página de Inteligência Artificial; o menu passa a apontar para ela. v0.8.3 aprovada em 2026-11-19 (página de Terceirização revisada pelo usuário): primeira página de serviço publicada (12.3), neon verde e violeta nos cards de modelo de contratação (2.9), enxame de cursores que constrói a página e contorno neon que segue o cursor (M19, M20), itens do menu sem página apontando para a Home (evolução E38). v0.8.2 de 2026-11-16: listas de Serviços (Terceirização, Software, Aplicativos Mobile, Inteligência Artificial, Infraestrutura) e Produtos (PriceFleet, DataCar, SGAE, Genial) na navegação, com mapa do site atualizado (10.5, 12.1, evolução E37). v0.8.1 de 2026-11-16: guia alinhado à Home publicada, que é a versão oficial (navegação sem mega menu, rodapé, vidro, S12 Notícias, S17 e numeração da Home; S18 em revisão; evolução E36). v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
 > **Referência em código:** Home · Desktop 1440 publicada em https://navarrovaz.github.io/rumo-solucoes-site/, com todos os efeitos deste guia funcionando.
 > **Contexto visual:** este arquivo não tem imagens. Para ver cada padrão, consulte o PDF `Designer Gráfico/output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (pasta Rumo-cowork do OneDrive; as saídas não estão no repositório) (42 páginas, sumário na página 2) e o Figma [Rumo · Site · Design System](https://www.figma.com/design/5t3Mwrd1SHHL1t9K7SGZKS) (time Marketing Rumo).
 > **Escopo:** site institucional rumosolucoes.com (marca mãe Rumo Soluções, com páginas de produto) e produtos digitais.
@@ -365,6 +365,11 @@ Os logos da faixa de tecnologias (S10b) aparecem na cor oficial de cada marca, p
 | `logo-claude` | `#D97757` | Claude |
 | `logo-gemini` | `#8E75B2` | Gemini |
 | `logo-redis` | `#DC382D` | Redis |
+| `logo-googledrive` | `#4285F4` | Google Drive [v0.8.4] |
+| `logo-outlook` | `#0078D4` | Outlook [v0.8.4] |
+| `logo-deepseek` | `#4D6BFE` | DeepSeek [v0.8.4] |
+
+**Faixa de tecnologias da página de IA [v0.8.4]:** no hero da página de Inteligência Artificial, a mesma faixa `.tech` mostra as ferramentas dos agentes (n8n, Google Drive, JSON, Gemini, ChatGPT, Outlook, DeepSeek, GitHub, AWS, Claude Code, GitHub Copilot e Cursor), lista definida pelo usuário (E39). Marcas cuja cor oficial é preta ou escura demais para o fundo (JSON, OpenAI, GitHub, GitHub Copilot, Cursor) aparecem em branco (`fg`), como a própria marca orienta para fundos escuros.
 
 
 ### 2.8 Wordmark em vidro [v0.8]
@@ -393,9 +398,29 @@ Regras:
 
 - Texto sobre o neon: `#050505` (verde 11,5:1; violeta 7,4:1). Sobre o preto, os dois passam de 7:1.
 - O verde não é status: não usar `success` nesses cards nem o neon verde para indicar estado.
-- Fora desses três cards, o site segue só no ciano.
+- Fora desses três cards, o site segue só no ciano. **Exceção [v0.8.4]:** na página de Inteligência Artificial, as três áreas de agentes usam a mesma trinca (Vendas e marketing em ciano, Operações e processos em verde, Inteligência e decisão em violeta), na borda animada do card de área selecionado e do agente aberto e no ícone e na seta do card de área (E39).
 
 ---
+
+### 2.10 Interface do WhatsApp nas ilustrações [v0.8.4]
+
+Para ilustrar conversas de agentes de IA, a página de Inteligência Artificial usa o modelo real do WhatsApp (tema claro) dentro de um celular ilustrado, por decisão do usuário (E39): o preto sobre preto não dava impacto e confundia a conversa com o texto da página. As cores valem só dentro do celular (`.wa`); fora dele o site segue a paleta Rumo.
+
+| Token | Valor | Uso |
+|---|---|---|
+| `wa-cabecalho` | `#008069` | Barra do contato e botão de enviar |
+| `wa-fundo` | `#EFEAE2` | Fundo da conversa |
+| `wa-saida` | `#D9FDD3` | Balão de quem envia (o cliente) |
+| `wa-entrada` | `#FFFFFF` | Balão recebido (o agente), avatar e campo de mensagem |
+| `wa-texto` | `#111B21` | Texto dos balões |
+| `wa-meta` | `#667781` | Horário e aviso de data |
+| `wa-check` | `#53BDEB` | Confirmação de leitura |
+
+Regras:
+
+- Nomes, pedidos e números das conversas são ilustrativos e o bloco leva a nota "Conversas ilustrativas".
+- O logo do WhatsApp não aparece; a interface é reproduzida só para o visitante reconhecer o canal.
+- O card de destaque que contém o celular usa o degradê ciano da marca (`rumo-400` → `brand` → `rumo-700`) com texto `on-brand`.
 
 ## 3. Tipografia
 
@@ -1000,7 +1025,7 @@ Molas (spring) só sem overshoot (amortecimento crítico), por exemplo em elemen
 
 - bounce, elástico, shake, wobble;
 - rotação de elementos de texto;
-- loops chamativos perto de texto de leitura;
+- loops chamativos perto de texto de leitura. **Exceção [v0.8.4]:** o celular com WhatsApp do card de destaque da página de IA percorre as conversas em loop, por pedido do usuário (E39); o loop pausa fora da tela e com o cursor sobre o card, e com movimento reduzido mostra uma conversa parada. Na mesma página, o card do agente aberto no acordeão tem uma luz neon girando pela borda, também por pedido do usuário (E39); com movimento reduzido a luz fica parada. Ainda na página de IA, os cards de área não selecionados dão micropulos contínuos (com leve quique) para indicar que são clicáveis, também por pedido do usuário (E39); param no hover, fora da tela e com movimento reduzido;
 - animar tudo ao mesmo tempo na mesma dobra;
 - scroll sequestrado que impede o usuário de sair da seção (sticky sim, travamento não);
 - cursor customizado no site inteiro (permitido só um rótulo contextual sobre mídias, como "Ver case", em desktop).
@@ -1229,6 +1254,8 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 ### 12.3 Página de serviço
 
 **Terceirização (`/servicos/terceirizacao/`), publicada na v0.8.3 (E38).** Ordem: S02 hero centralizado com bento de seis cards (foto de profissional real e autorizado, contorno neon da S17 no hover) → S10b clientes em marquee (M09, logos autorizados) → modelos de contratação em pilha fixa, cards pretos com um neon por card (2.9, M20) → S18 lista dos 16 perfis em quatro colunas, só texto → S10 seis diferenciais em 3 × 2 com contorno neon que segue o cursor (M20) → S05 como funciona em quatro etapas interativas (abas com setas do teclado) → S13 perguntas frequentes → S11 formulário de proposta (perfil, senioridade travada quando o perfil é "Ainda não sei", formato, contato e mensagem; o envio abre o e-mail do visitante com o pedido pronto até haver serviço de formulário, P12). A página inteira é construída pelo enxame de cursores (M19).
+
+**Inteligência Artificial (`/servicos/inteligencia-artificial/`), aprovada na v0.8.4 (E39).** Ordem, na lógica de venda definida pelo usuário: S02 hero (luz de cima, grade, marcas nos cantos, esfera de partículas com "AI" que se forma ao carregar, título embaixo à esquerda alinhado pelo topo com o texto e o CTA, faixa `.tech` com as ferramentas num bloco escuro com divisórias) → S03 frase de efeito e três números de mercado com fonte → S04 três cards de área que funcionam como abas (o selecionado com borda animada na cor da área, ciano, verde ou violeta; os outros esmaecidos e com micropulos) → S04 os agentes da área escolhida em acordeão de cards, o aberto com borda animada na cor da área → S05 como trabalhamos em quatro cards de etapa com "o que você recebe" → S14 consultoria com a ampulheta de pixels da Home por trás do card no padrão do CTA final da Home → S13 perguntas frequentes. Ícones no padrão da Terceirização (disco escuro com aro e ícone na cor do contexto). Números de mercado só com fonte citada; nada de soluções próprias (Sófi, recrutador) nem de números institucionais repetidos.
 
 Para as próximas páginas de serviço, o roteiro abaixo continua como ponto de partida. Antes de construir, o esboço da página inteira (ordem dos blocos e layout de cada um no grid de 12 colunas) precisa ser aprovado, com todo o conteúdo alinhado ao `.wrap` e pouca variação visual entre as seções (E36). O roteiro abaixo é ponto de partida, não template obrigatório.
 
@@ -1466,8 +1493,9 @@ Itens que mudam ou ampliam `rumo-cowork/Designer Gráfico/style/manual-de-design
 | E34 | Botões em pílula e padronização da página [v0.8] | Botões com `radius-md` em três tamanhos; logos da stack em 32px | Botões em pílula num tamanho só (52px; 40px no menu e no verso dos cards); títulos de seção em `h2`, subtítulos em `lead`, espaçamento `section-y` entre as seções. Sai o formulário do Diagnóstico da Home: os CTAs levam à futura página de contato | Pedido do usuário |
 | E35 | Base das imagens de serviço quase preta [v0.8] | Overlay sobre foto entre 40% e 70% (7.2) | Nos cards de serviço da S19, degradê preto de 0% no topo a 55% na metade, 88% a dois terços e 97% na base, para o título e o botão ficarem legíveis | Pedido do usuário: escurecer mais a parte inferior |
 | E36 | Guia alinhado ao site publicado [v0.8.1] | Mega menu com card de destaque (10.5); vidro em três casos (5.5); navegação que se esconde ao rolar; rodapé com redes sociais; S18 em abas na Home | A versão oficial é a publicada em https://navarrovaz.github.io/rumo-solucoes-site/. O guia passa a descrever a navegação, o rodapé e o vidro como estão no ar; o painel de Serviços e Produtos fica em aberto; a S18 fica em revisão (só tipos de profissionais e níveis de senioridade); páginas novas exigem esboço aprovado antes de construir. O rascunho v0.9 (página de Outsourcing recusada) não entra no guia | Decisão do usuário em 2026-11-16 |
-| E37 | Listas de Serviços e Produtos na navegação [v0.8.2] | Painel de Serviços e Produtos em aberto (E36) | Lista simples só com os nomes, aprovada pelo usuário em 2026-11-13 e estendida a Produtos; itens e endereços definidos pelo usuário. As subpáginas ainda não existem: os links apontam para os endereços do mapa (12.1). Na v0.8.3, só a Terceirização tem página; os demais itens apontam para a Home (E38) | Pedido do usuário em 2026-11-16 |
+| E37 | Listas de Serviços e Produtos na navegação [v0.8.2] | Painel de Serviços e Produtos em aberto (E36) | Lista simples só com os nomes, aprovada pelo usuário em 2026-11-13 e estendida a Produtos; itens e endereços definidos pelo usuário. As subpáginas ainda não existem: os links apontam para os endereços do mapa (12.1). Na v0.8.3, só a Terceirização tem página; os demais itens apontam para a Home (E38). Na v0.8.4, Inteligência Artificial também tem página (E39) | Pedido do usuário em 2026-11-16 |
 | E38 | Página de Terceirização publicada [v0.8.3] | Site só no ciano (2.3); nenhuma página de serviço; menu apontando para subpáginas que não existem (E37) | Primeira página de serviço (12.3). Cards de modelo de contratação pretos, cada um com um neon no lugar do ciano: ciano, verde `#3DDC97` e violeta `#9B8CFF` (2.9). Enxame de cursores que constrói a página (M19) e contorno neon que segue o cursor, sem loop contínuo (M20). Itens do menu sem página apontam para o card do serviço na Home (Software, Inteligência Artificial, Infraestrutura, Aplicativos Mobile) ou para a seção de serviços (produtos) até a subpágina existir | Pedido e aprovação do usuário em 2026-11-19 |
+| E39 | Ferramentas de IA na faixa de tecnologias [v0.8.4] | Faixa `.tech` só com a stack da Home (2.7) | Três cores oficiais novas (Google Drive, Outlook, DeepSeek) e marcas de cor escura em branco, para a faixa de ferramentas no hero da página de Inteligência Artificial. Na mesma versão, as cores reais do WhatsApp para ilustrar conversas (2.10) e o loop do celular no card de destaque e a luz neon girando no agente aberto e os micropulos dos cards de área não selecionados como exceções à 9.5. A borda animada do card de área selecionado e do agente aberto troca o brilho externo e usa uma cor por área, com a trinca da 2.9 | Pedido do usuário em 2026-11-23 |
 
 ---
 

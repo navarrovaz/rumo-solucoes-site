@@ -245,6 +245,18 @@
   --logo-claude: #D97757;
   --logo-gemini: #8E75B2;
   --logo-redis: #DC382D;
+  --logo-googledrive: #4285F4;
+  --logo-outlook: #0078D4;
+  --logo-deepseek: #4D6BFE;
+
+  /* Interface do WhatsApp nas ilustrações de conversa (seção 2.10, v0.8.4): só dentro do celular ilustrado */
+  --wa-cabecalho: #008069;
+  --wa-fundo: #EFEAE2;
+  --wa-saida: #D9FDD3;
+  --wa-entrada: #FFFFFF;
+  --wa-texto: #111B21;
+  --wa-meta: #667781;
+  --wa-check: #53BDEB;
 }
 
 /* ============ WORDMARK EM VIDRO (guia, seção 2.8). Uso restrito à S19 (.vb) ============ */

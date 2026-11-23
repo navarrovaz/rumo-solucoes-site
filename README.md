@@ -1,6 +1,6 @@
 # Rumo Soluções · Novo site
 
-Proposta da nova Home do site da Rumo Soluções, construída a partir do design system do site (v0.8.3).
+Proposta da nova Home do site da Rumo Soluções, construída a partir do design system do site (v0.8.4).
 
 **Ver online:** https://navarrovaz.github.io/rumo-solucoes-site/
 
