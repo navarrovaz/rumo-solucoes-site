@@ -39,7 +39,7 @@ head = r'''<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta n
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="../../design-system/tokens.css">
 <style>
-/* Inteligência Artificial (Rumo AI): hero de referência aigentx e blocagem de referência taskxen, no escuro da Rumo, grid de 12 colunas do .wrap (1440px), acento ciano (2.5). Valores em design-system/tokens.css · design system v0.8.5 */
+/* Inteligência Artificial (Rumo AI): hero de referência aigentx e blocagem de referência taskxen, no escuro da Rumo, grid de 12 colunas do .wrap (1440px), acento ciano (2.5). Valores em design-system/tokens.css · design system v0.8.6 */
 :root{color-scheme:dark}
 /*CSS_BASE*/
 
@@ -1980,6 +1980,386 @@ js = js.replace("/* ---------- abertura: os números contam ao entrar na tela --
   if (reduce || !('IntersectionObserver' in window)) { desenhar(0); return; }
   new IntersectionObserver(es => { rodando = es[0].isIntersecting; }).observe(card);
   requestAnimationFrame(laco);
+})();
+
+/* ---------- abertura: os números contam ao entrar na tela ---------- */""")
+
+# ================== v24: demonstração num card dark: WhatsApp Web e RD Station CRM em sequência, em tela cheia, entre os números e as áreas ==================
+css += r"""
+/* ---------- v24 · demonstração: card dark com as telas do WhatsApp Web e do CRM, uma por vez ---------- */
+.demo-card{border-radius:var(--radius-panel);background:linear-gradient(180deg,var(--color-ink-925),var(--color-ink-950));padding:40px}
+.demo-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:28px}
+.demo-top > div:first-child{display:flex;flex-direction:column;gap:12px}
+.demo-top p{color:var(--fg-muted);font-size:var(--text-lead);line-height:var(--text-lead--line-height);max-width:640px}
+.demo-tabs{display:flex;gap:4px;padding:4px;border-radius:var(--radius-pill);box-shadow:inset 0 0 0 1px var(--border-strong)}
+.demo-tabs span{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;border-radius:var(--radius-pill);font-size:var(--text-small);color:var(--fg-subtle);transition:background-color var(--dur-base) var(--ease-out),color var(--dur-base) var(--ease-out)}
+.demo-tabs span::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5;transition:background-color var(--dur-base),opacity var(--dur-base)}
+.demo-tabs span.on{background:rgba(255,255,255,.08);color:var(--fg)}
+.demo-tabs span.on::before{background:var(--brand);opacity:1}
+.palco{position:relative;height:680px}
+.tela{position:absolute;inset:0;opacity:0;transform:scale(.985);visibility:hidden;transition:opacity var(--dur-slow) var(--ease-out),transform var(--dur-slow) var(--ease-out),visibility var(--dur-instant) linear var(--dur-slow)}
+.tela.on{opacity:1;transform:none;visibility:visible;transition:opacity var(--dur-slow) var(--ease-out),transform var(--dur-slow) var(--ease-out)}
+.demo-card small.nota{display:block;margin-top:16px;font-size:var(--text-caption);color:var(--fg-subtle)}
+
+/* WhatsApp Web (seção 2.10) */
+.wweb{display:grid;grid-template-columns:minmax(300px,34%) minmax(0,1fr);border-radius:var(--radius-lg);overflow:hidden;background:var(--wa-entrada);color:var(--wa-texto);box-shadow:var(--shadow-float);font-size:var(--text-small);line-height:1.4}
+.wweb .ico{width:20px;height:20px;color:var(--wa-meta)}
+.ww-side{display:flex;flex-direction:column;min-height:0;box-shadow:inset -1px 0 0 rgba(17,27,33,.1)}
+.ww-sh{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 16px}
+.ww-sh b{font-size:var(--text-h4);font-weight:600;color:var(--wa-texto)}
+.ww-sh .acoes{display:flex;gap:18px}
+.ww-busca{margin:0 12px 8px;height:36px;border-radius:var(--radius-md);display:flex;align-items:center;gap:14px;padding:0 14px;background:linear-gradient(rgba(17,27,33,.05),rgba(17,27,33,.05)),var(--wa-entrada);color:var(--wa-meta)}
+.ww-busca .ico{width:16px;height:16px}
+.ww-chips{display:flex;gap:8px;padding:0 12px 10px}
+.ww-chips span{padding:5px 12px;border-radius:var(--radius-pill);background:linear-gradient(rgba(17,27,33,.05),rgba(17,27,33,.05)),var(--wa-entrada);color:var(--wa-meta)}
+.ww-chips span.on{background:rgba(0,128,105,.12);color:var(--wa-cabecalho)}
+.ww-lista{list-style:none;margin:0;padding:0;overflow:hidden}
+.ww-lista li{display:flex;align-items:center;gap:14px;padding:0 0 0 14px;height:72px;transition:background-color var(--dur-fast) var(--ease-out)}
+.ww-lista li.on{background:rgba(17,27,33,.07)}
+.ww-av{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:rgba(17,27,33,.12)}
+.ww-av svg{width:40px;height:40px;margin-top:10px;fill:var(--wa-entrada);stroke:none}
+.ww-li{flex:1;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:center;gap:2px;padding-right:14px;box-shadow:inset 0 -1px 0 rgba(17,27,33,.08)}
+.ww-li .l1,.ww-li .l2{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ww-li .l1 b{font-weight:400;font-size:var(--text-body);color:var(--wa-texto);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ww-li .l1 time{font-size:var(--text-caption);color:var(--wa-meta);flex:none}
+.ww-li .l2 span{color:var(--wa-meta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ww-li .l2 i{flex:none;min-width:20px;height:20px;padding:0 6px;border-radius:var(--radius-pill);display:grid;place-items:center;font-style:normal;font-size:var(--text-mono-micro);font-weight:600;background:var(--wa-cabecalho);color:var(--wa-entrada);transform:scale(0);transition:transform var(--dur-fast) var(--ease-out)}
+.ww-lista li.nova .l2 i{transform:scale(1)}
+.ww-lista li.nova .l1 time{color:var(--wa-cabecalho)}
+.ww-lista li.nova .l2 span{color:var(--wa-texto)}
+.ww-main{display:flex;flex-direction:column;min-width:0;min-height:0}
+.ww-ch{flex:none;display:flex;align-items:center;gap:14px;height:60px;padding:0 16px;background:linear-gradient(rgba(17,27,33,.04),rgba(17,27,33,.04)),var(--wa-entrada);box-shadow:inset 0 -1px 0 rgba(17,27,33,.08)}
+.ww-ch .ww-av{width:40px;height:40px}
+.ww-ch .ww-av svg{width:34px;height:34px;margin-top:8px}
+.ww-ch .quem{flex:1;min-width:0;display:flex;flex-direction:column}
+.ww-ch .quem b{font-weight:400;font-size:var(--text-body);color:var(--wa-texto)}
+.ww-ch .quem small{font-size:var(--text-caption);color:var(--wa-meta);min-height:1.2em}
+.ww-ch .quem small.dig{color:var(--wa-cabecalho)}
+.ww-ch .acoes{display:flex;gap:22px}
+.ww-conv{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:16px 8% 12px;overflow:hidden;background-color:var(--wa-fundo);background-image:radial-gradient(rgba(17,27,33,.07) 1px,transparent 1.4px);background-size:20px 20px}
+.ww-dia{align-self:center;margin-bottom:8px;padding:5px 12px;border-radius:var(--radius-md);background:var(--wa-entrada);color:var(--wa-meta);font-size:var(--text-caption);box-shadow:0 1px 1px rgba(17,27,33,.12)}
+.ww-b{position:relative;max-width:65%;padding:6px 9px 8px;border-radius:var(--radius-md);color:var(--wa-texto);box-shadow:0 1px 1px rgba(17,27,33,.12);animation:wwEntra var(--dur-fast) var(--ease-out)}
+.ww-b.c{align-self:flex-start;background:var(--wa-entrada)}
+.ww-b.a{align-self:flex-end;background:var(--wa-saida)}
+.ww-b.c.pri{border-top-left-radius:0;margin-top:8px}
+.ww-b.a.pri{border-top-right-radius:0;margin-top:8px}
+.ww-b .hr{float:right;display:inline-flex;align-items:center;gap:3px;margin:6px 0 -4px 12px;font-size:var(--text-mono-micro);color:var(--wa-meta)}
+.ww-b .hr svg{width:16px;height:11px;fill:none;stroke:var(--wa-meta);stroke-width:1.6;transition:stroke var(--dur-fast)}
+.ww-b.lido .hr svg{stroke:var(--wa-check)}
+.ww-doc{display:flex;align-items:center;gap:10px;min-width:240px;padding:10px;margin-bottom:2px;border-radius:var(--radius-sm);background:rgba(17,27,33,.05)}
+.ww-doc em{flex:none;width:30px;height:36px;border-radius:var(--radius-xs);display:grid;place-items:center;font-style:normal;font-size:var(--text-mono-micro);font-weight:600;color:var(--wa-entrada);background:var(--color-error-700)}
+.ww-doc b{display:block;font-weight:400}
+.ww-doc small{color:var(--wa-meta);font-size:var(--text-caption)}
+.ww-pe{flex:none;display:flex;align-items:center;gap:16px;min-height:62px;padding:10px 16px;background:linear-gradient(rgba(17,27,33,.04),rgba(17,27,33,.04)),var(--wa-entrada)}
+.ww-pe .ico{width:24px;height:24px}
+.ww-campo{flex:1;min-width:0;min-height:42px;max-height:66px;padding:10px 14px;border-radius:var(--radius-lg);background:var(--wa-entrada);color:var(--wa-meta);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.ww-campo.esc{color:var(--wa-texto)}
+.ww-campo.esc span::after,.rd-in.esc::after{content:"";display:inline-block;width:1px;height:1.1em;margin-left:1px;vertical-align:-2px;background:currentColor}
+.ww-env{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;transition:background-color var(--dur-fast)}
+.ww-env .mic{display:block}.ww-env .env{display:none}
+.ww-env.on{background:var(--wa-cabecalho)}
+.ww-env.on .mic{display:none}.ww-env.on .env{display:block;color:var(--wa-entrada)}
+@keyframes wwEntra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* RD Station CRM (seção 2.11): funil de negociações */
+.rdc{display:flex;flex-direction:column;border-radius:var(--radius-lg);overflow:hidden;background:var(--rd-fundo);color:var(--rd-texto);box-shadow:var(--shadow-float);font-size:var(--text-small);line-height:1.4}
+.rdc .ico{width:18px;height:18px;color:var(--rd-meta)}
+.rd-nav{flex:none;display:flex;align-items:center;gap:28px;height:56px;padding:0 20px;background:var(--rd-superficie);box-shadow:inset 0 -1px 0 var(--rd-controle)}
+.rd-nav nav{display:flex;gap:24px;height:100%}
+.rd-nav nav span{display:flex;align-items:center;height:100%;color:var(--rd-meta)}
+.rd-nav nav span.on{color:var(--rd-texto);font-weight:600;box-shadow:inset 0 -2px 0 var(--rd-primaria)}
+.rd-nav .dir{margin-left:auto;display:flex;align-items:center;gap:18px}
+.rd-nav .eu{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--rd-nova);color:var(--rd-superficie);font-size:var(--text-mono-micro);font-weight:600}
+.rd-bar{flex:none;display:flex;align-items:center;gap:10px;padding:16px 20px 8px}
+.rd-vis{display:flex;border-radius:var(--radius-sm);box-shadow:inset 0 0 0 1px var(--rd-controle);overflow:hidden}
+.rd-vis span{width:34px;height:32px;display:grid;place-items:center}
+.rd-vis span.on{background:var(--rd-primaria)}
+.rd-vis span.on .ico{color:var(--rd-superficie)}
+.rd-sel{display:flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:var(--radius-sm);background:var(--rd-superficie);box-shadow:inset 0 0 0 1px var(--rd-controle);color:var(--rd-texto);white-space:nowrap}
+.rd-sel .ico{width:14px;height:14px}
+.rd-sel.flt{color:var(--rd-primaria);box-shadow:inset 0 0 0 1px var(--rd-primaria)}
+.rd-sel.flt .ico{color:var(--rd-primaria)}
+.rd-bar .dir{margin-left:auto;display:flex;align-items:center;gap:12px}
+.rd-criar{display:flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:var(--radius-sm);background:var(--rd-primaria);color:var(--rd-superficie);font-weight:600;transition:transform var(--dur-instant) var(--ease-out)}
+.rd-criar .ico{width:14px;height:14px;color:var(--rd-superficie)}
+.rdc .pres{transform:scale(.94)}
+.rd-qtd{flex:none;padding:4px 20px 12px;color:var(--rd-meta);font-size:var(--text-caption)}
+.rd-cols{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:0 20px 20px}
+.rd-col{display:flex;flex-direction:column;gap:8px;min-height:0;padding:10px;border-radius:var(--radius-md);background:var(--rd-coluna)}
+.rd-ch{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:2px 2px 4px}
+.rd-ch b{font-size:var(--text-caption);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-ch span{flex:none;padding:2px 6px;border-radius:var(--radius-xs);background:var(--rd-controle);font-size:var(--text-mono-micro);color:var(--rd-meta)}
+.rd-cards{display:flex;flex-direction:column;gap:8px}
+.rd-card{position:relative;display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:var(--radius-sm);background:var(--rd-superficie);box-shadow:0 1px 2px rgba(33,36,41,.12);transition:transform var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out)}
+.rd-card .tg{display:flex;align-items:center;gap:6px;font-size:var(--text-mono-micro);color:var(--rd-meta)}
+.rd-card .tg::before{content:"";width:8px;height:8px;border-radius:var(--radius-xs);background:var(--rd-nova)}
+.rd-card .tg.and::before{background:var(--rd-primaria)}
+.rd-card b{font-size:var(--text-caption);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-card small{font-size:var(--text-mono-micro);color:var(--rd-meta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-card .vl{display:flex;align-items:center;gap:6px;font-size:var(--text-mono-micro);color:var(--rd-meta)}
+.rd-card .vl .ico{width:12px;height:12px}
+.rd-card .tf{display:flex;align-items:center;justify-content:center;gap:4px;height:24px;border-radius:var(--radius-xs);background:var(--rd-controle);font-size:var(--text-mono-micro);font-weight:600;color:var(--rd-texto);transition:transform var(--dur-instant) var(--ease-out)}
+.rd-card .tf .ico{width:12px;height:12px;color:var(--rd-texto)}
+.rd-card.novo{animation:rdNovo var(--dur-slow) var(--ease-out)}
+.rd-card.pega{box-shadow:0 18px 32px -10px rgba(33,36,41,.35),0 0 0 2px var(--rd-primaria);z-index:3}
+.rd-card.solto{transition:none}
+.rd-ph{border-radius:var(--radius-sm);box-shadow:inset 0 0 0 1px var(--rd-primaria);background:rgba(22,199,209,.08)}
+.rd-gav{position:absolute;top:0;right:0;bottom:0;width:380px;display:flex;flex-direction:column;background:var(--rd-superficie);box-shadow:-24px 0 48px -24px rgba(33,36,41,.35);transform:translateX(104%);transition:transform var(--dur-base) var(--ease-out);z-index:4}
+.rd-gav.on{transform:none}
+.rd-gh{display:flex;justify-content:space-between;align-items:center;height:56px;padding:0 20px;box-shadow:inset 0 -1px 0 var(--rd-controle)}
+.rd-gh b{font-size:var(--text-body);font-weight:600}
+.rd-gc{flex:1;display:flex;flex-direction:column;gap:14px;padding:20px}
+.rd-gc label{display:flex;flex-direction:column;gap:6px;font-size:var(--text-caption);color:var(--rd-meta)}
+.rd-in{min-height:36px;display:flex;align-items:center;padding:0 12px;border-radius:var(--radius-sm);box-shadow:inset 0 0 0 1px var(--rd-controle);color:var(--rd-texto);font-size:var(--text-small);transition:box-shadow var(--dur-fast)}
+.rd-in.esc{box-shadow:inset 0 0 0 1px var(--rd-primaria)}
+.rd-gp{display:flex;justify-content:flex-end;gap:10px;padding:16px 20px;box-shadow:inset 0 1px 0 var(--rd-controle)}
+.rd-gp span{height:36px;display:flex;align-items:center;padding:0 16px;border-radius:var(--radius-sm);font-weight:600}
+.rd-gp .cnc{color:var(--rd-meta)}
+.rd-gp .slv{background:var(--rd-primaria);color:var(--rd-superficie);transition:transform var(--dur-instant) var(--ease-out)}
+.rd-toast{position:absolute;left:50%;bottom:24px;display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:var(--radius-md);background:var(--rd-texto);color:var(--rd-superficie);box-shadow:0 12px 32px -12px rgba(33,36,41,.6);transform:translate(-50%,16px);opacity:0;transition:opacity var(--dur-base) var(--ease-out),transform var(--dur-base) var(--ease-out);z-index:5}
+.rd-toast.on{opacity:1;transform:translate(-50%,0)}
+.rd-toast .ico{width:18px;height:18px;color:var(--rd-primaria)}
+.ia-cur{position:absolute;left:0;top:0;display:flex;align-items:flex-start;gap:4px;pointer-events:none;opacity:0;z-index:6;transition:transform var(--dur-base) var(--ease-out),opacity var(--dur-base)}
+.ia-cur.on{opacity:1}
+.ia-cur svg{width:20px;height:20px;fill:var(--brand);stroke:var(--color-ink-950);stroke-width:1.2;stroke-linejoin:round}
+.ia-cur span{margin-top:14px;padding:4px 10px;border-radius:var(--radius-pill);background:var(--color-ink-950);color:var(--fg);font-size:var(--text-mono-micro);font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.ia-cur span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand)}
+@keyframes rdNovo{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+@media (max-width:960px){
+  .demo-card{padding:24px}
+  .demo-top{flex-direction:column;align-items:flex-start}
+  .wweb{grid-template-columns:minmax(0,1fr)}.ww-side{display:none}.ww-conv{padding-inline:12px}.ww-b{max-width:82%}
+  .rd-nav nav span:not(.on),.rd-sel:not(.flt){display:none}
+  .rd-cols{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:12px}.rd-col.opc{display:none}.rd-bar{padding-inline:12px}.rd-qtd{padding-inline:12px}.rd-nav{gap:16px;padding:0 12px}
+  .rd-gav{width:100%}
+}
+@media (max-width:640px){.rd-vis,.rd-bar .dir > .ico{display:none}.palco{height:600px}.ww-doc{min-width:0}.ww-ch .acoes{display:none}.demo-card{padding:16px}}
+"""
+
+AV = '<span class="ww-av" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="13" r="8"/><path d="M3 40c0-10 8-15 17-15s17 5 17 15z"/></svg></span>'
+IC = lambda d: svg(d)
+IC_NOVA = IC('<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>')
+IC_MENU = IC('<circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/>')
+IC_STATUS = IC('<circle cx="12" cy="12" r="9" stroke-dasharray="4 3"/><circle cx="12" cy="12" r="4"/>')
+IC_BUSCA = IC('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>')
+IC_MAIS = IC('<path d="M12 5v14"/><path d="M5 12h14"/>')
+IC_EMOJI = IC('<circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/><path d="M9 9.5h.01"/><path d="M15 9.5h.01"/>')
+IC_MIC = '<svg class="ico mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>'
+IC_ENV = '<svg class="ico env" viewBox="0 0 24 24"><path d="M4 12 20 4l-4 16-4-7z"/><path d="m12 13 8-9"/></svg>'
+IC_GRADE = IC('<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>')
+IC_SINO = IC('<path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/>')
+IC_FUNIL = IC('<path d="M5 4h4v16H5z"/><path d="M15 4h4v10h-4z"/>')
+IC_LISTA = IC('<path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><path d="M4 6h.01"/><path d="M4 12h.01"/><path d="M4 18h.01"/>')
+IC_BAIXO = IC('<path d="m6 9 6 6 6-6"/>')
+IC_FILTRO = IC('<path d="M4 5h16l-6 7v6l-4 2v-8z"/>')
+IC_ESTRELA = IC('<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>')
+IC_PESSOA = IC('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>')
+IC_CAIXA = IC('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2"/>')
+IC_X = IC('<path d="M6 6l12 12"/><path d="M18 6 6 18"/>')
+IC_OK = IC('<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>')
+SETA_CUR = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 1.5 17 9l-6.5 1.6L7.4 17z"/></svg>'
+
+# conversas ilustrativas: c = cliente (balão branco), a = agente de IA (balão verde, a tela é da empresa); d = documento enviado pelo agente
+WCHATS = [
+ ('Carlos Mendes', '09:38', [
+   ('c', 'Olá! Quanto custa o plano para empresas?'),
+   ('a', 'Olá, Carlos! Depende do tamanho do time. Quantas pessoas vão usar?'),
+   ('c', 'Umas 30, no comercial.'),
+   ('a', 'Para 30 pessoas, o plano Equipe atende bem. Posso agendar uma conversa com um consultor amanhã às 10h?'),
+   ('c', 'Pode sim.'),
+   ('a', 'Agendado! Mandei o convite para o seu e-mail.')]),
+ ('Ana Souza', '09:42', [
+   ('c', 'Oi, meu pedido ainda não chegou e já é a segunda vez.'),
+   ('a', 'Sinto muito, Ana. Localizei o pedido 4821: ele saiu ontem e chega amanhã até as 18h.'),
+   ('a', 'Para compensar a espera, liberei frete grátis na sua próxima compra.'),
+   ('c', 'Nossa, obrigada pela atenção!'),
+   ('a', 'Eu que agradeço. Aviso você assim que ele sair para entrega.')]),
+ ('Juliana Prado', '09:53', [
+   ('c', 'Posso cancelar o contrato antes de completar um ano?'),
+   ('a', 'Pode, Juliana. Pela cláusula 9, basta avisar com 30 dias de antecedência e não há multa.'),
+   ('a', 'Quer que eu envie o contrato com a cláusula marcada?'),
+   ('c', 'Quero, por favor.'),
+   ('d', 'Contrato de serviço.pdf|4 páginas · PDF')]),
+]
+WFIXAS = [('Marcos Vieira', 'Ontem', 'Obrigado, recebi a nota fiscal.'), ('Fernanda Lima', 'Ontem', 'Perfeito, até amanhã!'), ('Roberto Alves', 'Segunda-feira', 'Pode confirmar o endereço?'), ('Patrícia Gomes', 'Domingo', 'Combinado.')]
+_ult = lambda msgs: msgs[-1][1].split('|')[0]
+_li = lambda k, n, t, p: ('<li data-k="%s"%s>' % (k, ' class="on"' if k == '0' else '') + AV + '<div class="ww-li"><div class="l1"><b>%s</b><time>%s</time></div><div class="l2"><span>%s</span><i>1</i></div></div></li>' % (n, t, p))
+wlista = ''.join(_li(str(k), n, t, _ult(m)) for k, (n, t, m) in enumerate(WCHATS)) + ''.join(_li('f', n, t, p) for n, t, p in WFIXAS)
+
+# funil do CRM: negociações ilustrativas em cada etapa (valor em reais)
+ETAPAS_RD = ['Sem contato', 'Contato feito', 'Identificação do interesse', 'Apresentação', 'Proposta enviada']
+NEG = [[('Henrique Monteiro', 'Monteiro Logística', 0, 'Nova')],
+       [('Carla Siqueira', 'Siqueira Consultoria', 1200, 'Nova')],
+       [('Nina Vasconcelos', 'Vasconcelos Móveis', 2800, 'Em andamento')],
+       [('Marcos Reis', 'Reis Software', 6000, 'Em andamento')],
+       [('Lúcia Ferraz', 'Ferraz Engenharia', 9400, 'Em andamento')]]
+real = lambda v: 'R$ ' + ('{:,.2f}'.format(v)).replace(',', 'X').replace('.', ',').replace('X', '.')
+def rd_card(n, e, v, t, extra=''):
+    return ('<div class="rd-card%s" data-v="%d"><span class="tg%s">%s</span><b>%s</b><small>%s</small><span class="vl">%s1 %s%s</span><span class="tf">%sCriar tarefa</span></div>'
+            % (extra, v, ' and' if t != 'Nova' else '', t, n, e, IC_ESTRELA, IC_PESSOA, IC_CAIXA + ' ' + real(v), IC_MAIS))
+rd_cols = ''.join('<div class="rd-col%s" data-c="%d"><div class="rd-ch"><b>%s (<i>%d</i>)</b><span>%s</span></div><div class="rd-cards">%s</div></div>'
+                  % ('' if c in (0, 3) else ' opc', c, ETAPAS_RD[c], len(NEG[c]), real(sum(x[2] for x in NEG[c])), ''.join(rd_card(*x) for x in NEG[c])) for c in range(5))
+CAMPOS_RD = [('Nome da negociação', 'Carlos Mendes · Plano Equipe'), ('Contato', 'Carlos Mendes'), ('Origem', 'WhatsApp'), ('Qualificação', '30 usuários no time comercial'), ('Valor estimado', 'R$ 4.500,00')]
+rd_campos = ''.join('<label>%s<span class="rd-in" data-txt="%s"></span></label>' % (r, t) for r, t in CAMPOS_RD)
+
+import json as _json
+WDADOS = _json.dumps([{'n': n, 't': t, 'm': [[q, x] for q, x in m]} for n, t, m in WCHATS], ensure_ascii=False)
+NOVO_RD = _json.dumps(rd_card('Carlos Mendes', 'Plano Equipe · 30 usuários', 4500, 'Nova', ' novo'), ensure_ascii=False)
+
+demo = r"""<!-- S06 · Destaque Rumo AI: um agente de IA atendendo no WhatsApp e registrando a venda no CRM, em loop -->
+<section class="sec" id="demonstracao" aria-labelledby="dmT">
+  <div class="wrap">
+    <div class="demo-card rv">
+      <div class="demo-top">
+        <div><span class="micro-l" id="dmT">Na prática</span><p>Um agente de IA atende o cliente no WhatsApp e registra a venda no CRM, sem ninguém da equipe tocar no teclado.</p></div>
+        <div class="demo-tabs" aria-hidden="true"><span class="on" data-t="wa">WhatsApp</span><span data-t="crm">CRM</span></div>
+      </div>
+      <div class="palco" id="palco" aria-hidden="true">
+        <div class="wweb tela on" id="wweb">
+          <aside class="ww-side">
+            <div class="ww-sh"><b>Conversas</b><span class="acoes">""" + IC_STATUS + IC_NOVA + IC_MENU + r"""</span></div>
+            <div class="ww-busca">""" + IC_BUSCA + r"""<span>Pesquisar ou começar uma nova conversa</span></div>
+            <div class="ww-chips"><span class="on">Tudo</span><span>Não lidas</span><span>Favoritas</span><span>Grupos</span></div>
+            <ul class="ww-lista" id="wwLista">""" + wlista + r"""</ul>
+          </aside>
+          <div class="ww-main">
+            <div class="ww-ch">""" + AV + r"""<div class="quem"><b id="wwNome">Carlos Mendes</b><small id="wwStatus">online</small></div><span class="acoes">""" + IC_BUSCA + IC_MENU + r"""</span></div>
+            <div class="ww-conv" id="wwConv"><span class="ww-dia">Hoje</span></div>
+            <div class="ww-pe">""" + IC_MAIS + IC_EMOJI + r"""<div class="ww-campo" id="wwCampo"><span>Digite uma mensagem</span></div><span class="ww-env" id="wwEnv">""" + IC_MIC + IC_ENV + r"""</span></div>
+          </div>
+        </div>
+        <div class="rdc tela" id="rdc">
+          <div class="rd-nav">""" + IC_GRADE + r"""<nav><span class="on">Negociações</span><span>Empresas</span><span>Contatos</span><span>Tarefas</span><span>Análises</span></nav><span class="dir">""" + IC_BUSCA + IC_SINO + r"""<span class="eu">EC</span></span></div>
+          <div class="rd-bar"><span class="rd-vis"><span class="on">""" + IC_FUNIL + r"""</span><span>""" + IC_LISTA + r"""</span></span><span class="rd-sel">Funil padrão """ + IC_BAIXO + r"""</span><span class="rd-sel">Todos os status """ + IC_BAIXO + r"""</span><span class="rd-sel">Mais recentes """ + IC_BAIXO + r"""</span><span class="rd-sel flt">""" + IC_FILTRO + r"""Filtros (0)</span><span class="dir">""" + IC_MENU + r"""<span class="rd-criar" id="rdCriar">""" + IC_MAIS + r"""Criar</span></span></div>
+          <div class="rd-qtd"><span id="rdQtd">5</span> negociações</div>
+          <div class="rd-cols" id="rdCols">""" + rd_cols + r"""</div>
+          <aside class="rd-gav" id="rdGav"><div class="rd-gh"><b>Nova negociação</b>""" + IC_X + r"""</div><div class="rd-gc">""" + rd_campos + r"""</div><div class="rd-gp"><span class="cnc">Cancelar</span><span class="slv" id="rdSalvar">Salvar</span></div></aside>
+          <div class="rd-toast" id="rdToast">""" + IC_OK + r"""<span>Tarefa criada: reunião com consultor amanhã, 10:00</span></div>
+          <div class="ia-cur" id="iaCur">""" + SETA_CUR + r"""<span>Agente de IA</span></div>
+        </div>
+      </div>
+      <small class="nota">Conversas e dados ilustrativos.</small>
+    </div>
+  </div>
+</section>
+
+"""
+agentes = agentes.replace('<!-- S04 · Serviços: as três áreas;', demo + '<!-- S04 · Serviços: as três áreas;', 1)
+assert 'id="demonstracao"' in agentes
+
+js = js.replace("/* ---------- abertura: os números contam ao entrar na tela ---------- */", r"""/* ---------- demonstração: conversa no WhatsApp e registro no CRM, em sequência e em loop; pausa fora da tela ---------- */
+(function demo(){
+  const palco = $('#palco'); if (!palco) return;
+  const D = """ + WDADOS + r""", NOVO = """ + NOVO_RD + r""";
+  const wa = $('#wweb'), rdc = $('#rdc'), abas = $$('.demo-tabs span');
+  const conv = $('#wwConv'), nome = $('#wwNome'), st = $('#wwStatus'), campo = $('#wwCampo'), env = $('#wwEnv');
+  const lis = $$('#wwLista li[data-k]').filter(l => l.dataset.k !== 'f');
+  const CHK = '<svg viewBox="0 0 16 11"><path d="m1 6 3 3 6-7"/><path d="m6 9 1 1 6-8"/></svg>';
+  let visivel = false;
+  const dorme = ms => new Promise(r => setTimeout(r, ms));
+  const espera = async ms => { let t = 0; while (t < ms) { while (!visivel) await dorme(200); const d = Math.min(50, ms - t); await dorme(d); t += d; } };
+  const mostrar = qual => { wa.classList.toggle('on', qual === 'wa'); rdc.classList.toggle('on', qual === 'crm'); abas.forEach(a => a.classList.toggle('on', a.dataset.t === qual)); };
+
+  /* WhatsApp */
+  const hora = (base, i) => { const [h, m] = base.split(':').map(Number), tot = h * 60 + m + Math.floor(i / 2); return String(Math.floor(tot / 60) % 24).padStart(2, '0') + ':' + String(tot % 60).padStart(2, '0'); };
+  let ultimo = '';
+  const balao = (q, x, h) => {
+    const b = document.createElement('div'), lado = q === 'c' ? 'c' : 'a';
+    b.className = 'ww-b ' + lado + (ultimo !== lado ? ' pri' : ''); ultimo = lado;
+    const meta = '<span class="hr">' + h + (lado === 'a' ? CHK : '') + '</span>';
+    if (q === 'd') { const [n, s] = x.split('|'); b.innerHTML = '<div class="ww-doc"><em>PDF</em><div><b>' + n + '</b><small>' + s + '</small></div></div>' + meta; }
+    else b.innerHTML = x + meta;
+    conv.appendChild(b);
+    while (conv.scrollHeight > conv.clientHeight + 2 && conv.children.length > 2) conv.children[1].remove();
+    return b;
+  };
+  const abrir = k => {
+    lis.forEach((l, i) => l.classList.toggle('on', i === k)); lis[k].classList.remove('nova');
+    nome.textContent = D[k].n; st.textContent = 'online'; st.classList.remove('dig');
+    conv.innerHTML = '<span class="ww-dia">Hoje</span>'; ultimo = '';
+  };
+  const previa = (k, x) => { lis[k].querySelector('.l2 span').textContent = x.split('|')[0]; };
+  async function conversa(k){
+    abrir(k);
+    const ms = D[k].m;
+    for (let i = 0; i < ms.length; i++) {
+      const [q, x] = ms[i], h = hora(D[k].t, i);
+      if (q === 'c') {
+        await espera(300); st.textContent = 'digitando…'; st.classList.add('dig');
+        await espera(450 + x.length * 7); st.textContent = 'online'; st.classList.remove('dig');
+        balao(q, x, h); previa(k, x); await espera(400);
+      } else {
+        if (q !== 'd') {
+          campo.classList.add('esc'); env.classList.add('on');
+          const sp = campo.firstElementChild;
+          for (let j = 2; j <= x.length + 1; j += 2) { sp.textContent = x.slice(0, j); await espera(15); }
+          await espera(150);
+        } else await espera(500);
+        campo.classList.remove('esc'); env.classList.remove('on'); campo.firstElementChild.textContent = 'Digite uma mensagem';
+        const b = balao(q, x, h); previa(k, x);
+        await espera(350); b.classList.add('lido'); await espera(250);
+      }
+    }
+  }
+  const avisar = async k => { previa(k, D[k].m[0][1]); lis[k].classList.add('nova'); await espera(600); };
+
+  /* CRM: o cursor do agente cria a negociação, preenche os campos, move o card no funil e agenda a tarefa */
+  const cur = $('#iaCur'), gav = $('#rdGav'), toast = $('#rdToast'), qtd = $('#rdQtd'), cols = $$('#rdCols .rd-col');
+  const real = v => 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+  const somar = () => { let n = 0; cols.forEach(c => { const cs = $$('.rd-card', c); n += cs.length; c.querySelector('.rd-ch i').textContent = cs.length; c.querySelector('.rd-ch span').textContent = real(cs.reduce((s, x) => s + +x.dataset.v, 0)); }); qtd.textContent = n; };
+  const centro = (el, fx = .5, fy = .5) => { const a = rdc.getBoundingClientRect(), b = el.getBoundingClientRect(); return [b.left - a.left + b.width * fx, b.top - a.top + b.height * fy]; };
+  let cx = 0, cy = 0;
+  const ir = async (x, y) => { cx = x; cy = y; cur.style.transform = 'translate(' + x + 'px,' + y + 'px)'; await espera(450); };
+  const irEl = (el, fx, fy) => ir(...centro(el, fx, fy));
+  const clicar = async el => { el.classList.add('pres'); await espera(150); el.classList.remove('pres'); await espera(200); };
+  const limparCRM = () => {
+    $$('#rdCols .rd-card.ia, #rdCols .rd-ph').forEach(e => e.remove());
+    $$('.rd-in', gav).forEach(e => { e.textContent = ''; e.classList.remove('esc'); });
+    gav.classList.remove('on'); toast.classList.remove('on'); cur.classList.remove('on'); somar();
+    cur.style.transition = 'none'; const a = rdc.getBoundingClientRect(); cx = a.width * .55; cy = a.height * .6; cur.style.transform = 'translate(' + cx + 'px,' + cy + 'px)'; void cur.offsetWidth; cur.style.transition = '';
+  };
+  async function crm(){
+    limparCRM();
+    await espera(500); cur.classList.add('on'); await espera(200);
+    const criar = $('#rdCriar'); await irEl(criar); await clicar(criar);
+    gav.classList.add('on'); await espera(350);
+    for (const f of $$('.rd-in', gav)) {
+      await irEl(f, .15, .5);
+      f.classList.add('esc'); const t = f.dataset.txt;
+      for (let j = 2; j <= t.length + 1; j += 2) { f.textContent = t.slice(0, j); await espera(15); }
+      await espera(100); f.classList.remove('esc');
+    }
+    const salvar = $('#rdSalvar'); await irEl(salvar); await clicar(salvar);
+    gav.classList.remove('on');
+    const tmp = document.createElement('div'); tmp.innerHTML = NOVO; const card = tmp.firstElementChild; card.classList.add('ia');
+    const dest0 = cols[0].querySelector('.rd-cards'); dest0.prepend(card); somar(); await espera(600);
+    await irEl(card, .5, .3); card.classList.add('pega'); await espera(150);
+    const ph = document.createElement('div'); ph.className = 'rd-ph'; ph.style.height = card.offsetHeight + 'px';
+    cols[3].querySelector('.rd-cards').prepend(ph);
+    const a = card.getBoundingClientRect(), b = ph.getBoundingClientRect(), dx = b.left - a.left, dy = b.top - a.top;
+    card.style.transform = 'translate(' + dx + 'px,' + dy + 'px) rotate(2deg)';
+    await ir(cx + dx, cy + dy);
+    card.classList.add('solto'); card.style.transform = ''; ph.replaceWith(card); card.classList.remove('pega');
+    const tg = card.querySelector('.tg'); tg.textContent = 'Em andamento'; tg.classList.add('and');
+    void card.offsetWidth; card.classList.remove('solto'); somar(); await espera(350);
+    const tf = card.querySelector('.tf'); await irEl(tf); await clicar(tf);
+    toast.classList.add('on'); await espera(1800); toast.classList.remove('on');
+    cur.classList.remove('on'); await espera(500);
+  }
+
+  const parado = () => { abrir(0); D[0].m.forEach(([q, x], i) => { const b = balao(q, x, hora(D[0].t, i)); b.classList.add('lido'); b.style.animation = 'none'; }); };
+  if (reduce || !('IntersectionObserver' in window)) { parado(); return; }
+  new IntersectionObserver(es => { visivel = es[0].isIntersecting; }, { threshold: .25 }).observe(palco);
+  (async function laco(){
+    for (;;) {
+      mostrar('wa'); await conversa(0); await espera(900);
+      mostrar('crm'); await crm();
+      mostrar('wa'); await espera(500);
+      for (let k = 1; k < D.length; k++) { await avisar(k); await conversa(k); await espera(1400); }
+      await avisar(0);
+    }
+  })();
 })();
 
 /* ---------- abertura: os números contam ao entrar na tela ---------- */""")

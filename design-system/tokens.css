@@ -249,7 +249,7 @@
   --logo-outlook: #0078D4;
   --logo-deepseek: #4D6BFE;
 
-  /* Interface do WhatsApp nas ilustrações de conversa (seção 2.10, v0.8.4): só dentro do celular ilustrado */
+  /* Interface do WhatsApp nas ilustrações de conversa (seção 2.10, v0.8.4 e v0.8.6): só dentro do celular ou da tela do WhatsApp Web */
   --wa-cabecalho: #008069;
   --wa-fundo: #EFEAE2;
   --wa-saida: #D9FDD3;
@@ -257,6 +257,16 @@
   --wa-texto: #111B21;
   --wa-meta: #667781;
   --wa-check: #53BDEB;
+
+  /* Interface do RD Station CRM na demonstração da página de IA (seção 2.11, v0.8.6): só dentro da tela do CRM */
+  --rd-primaria: #16C7D1;
+  --rd-fundo: #FBFCFC;
+  --rd-superficie: #FFFFFF;
+  --rd-coluna: #EDEFF2;
+  --rd-controle: #E2E5E9;
+  --rd-nova: #4C6CBB;
+  --rd-texto: #212429;
+  --rd-meta: #636E7C;
 }
 
 /* ============ WORDMARK EM VIDRO (guia, seção 2.8). Uso restrito à S19 (.vb) ============ */

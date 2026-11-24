@@ -1,7 +1,7 @@
 # Design System: Site Rumo Soluções
 
 > **Papel:** guia de design vivo do site e dos produtos digitais da Rumo Soluções. Fonte de verdade para qualquer página, seção, componente, landing page ou peça web, consultado por designers, desenvolvedores e agentes do Rumo-cowork.
-> **Status:** v0.8.5 de 2026-11-24: perguntas frequentes no modelo da página de IA em todas as páginas (S13) e faixa de tecnologias da Home no bloco com divisórias da página de IA (S10b), evolução E40. v0.8.4 aprovada em 2026-11-23 (página de Inteligência Artificial revisada pelo usuário, 12.3): logos de Google Drive, Outlook e DeepSeek na faixa de tecnologias e regra para marcas de cor escura (2.7), interface do WhatsApp nas ilustrações de conversa (2.10) e exceção de loop para o celular do card de destaque (9.5), tudo na evolução E39, usados na página de Inteligência Artificial; o menu passa a apontar para ela. v0.8.3 aprovada em 2026-11-19 (página de Terceirização revisada pelo usuário): primeira página de serviço publicada (12.3), neon verde e violeta nos cards de modelo de contratação (2.9), enxame de cursores que constrói a página e contorno neon que segue o cursor (M19, M20), itens do menu sem página apontando para a Home (evolução E38). v0.8.2 de 2026-11-16: listas de Serviços (Terceirização, Software, Aplicativos Mobile, Inteligência Artificial, Infraestrutura) e Produtos (PriceFleet, DataCar, SGAE, Genial) na navegação, com mapa do site atualizado (10.5, 12.1, evolução E37). v0.8.1 de 2026-11-16: guia alinhado à Home publicada, que é a versão oficial (navegação sem mega menu, rodapé, vidro, S12 Notícias, S17 e numeração da Home; S18 em revisão; evolução E36). v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
+> **Status:** v0.8.6 de 2026-11-24: demonstração da página de IA num card dark, com o WhatsApp Web em tela cheia e o RD Station CRM em sequência (2.10, 2.11, S06), evolução E41. v0.8.5 de 2026-11-24: perguntas frequentes no modelo da página de IA em todas as páginas (S13) e faixa de tecnologias da Home no bloco com divisórias da página de IA (S10b), evolução E40. v0.8.4 aprovada em 2026-11-23 (página de Inteligência Artificial revisada pelo usuário, 12.3): logos de Google Drive, Outlook e DeepSeek na faixa de tecnologias e regra para marcas de cor escura (2.7), interface do WhatsApp nas ilustrações de conversa (2.10) e exceção de loop para o celular do card de destaque (9.5), tudo na evolução E39, usados na página de Inteligência Artificial; o menu passa a apontar para ela. v0.8.3 aprovada em 2026-11-19 (página de Terceirização revisada pelo usuário): primeira página de serviço publicada (12.3), neon verde e violeta nos cards de modelo de contratação (2.9), enxame de cursores que constrói a página e contorno neon que segue o cursor (M19, M20), itens do menu sem página apontando para a Home (evolução E38). v0.8.2 de 2026-11-16: listas de Serviços (Terceirização, Software, Aplicativos Mobile, Inteligência Artificial, Infraestrutura) e Produtos (PriceFleet, DataCar, SGAE, Genial) na navegação, com mapa do site atualizado (10.5, 12.1, evolução E37). v0.8.1 de 2026-11-16: guia alinhado à Home publicada, que é a versão oficial (navegação sem mega menu, rodapé, vidro, S12 Notícias, S17 e numeração da Home; S18 em revisão; evolução E36). v0.8 aprovada em 2026-11-13 (Home em código revisada pelo usuário): serviços na Home com o símbolo da Rumo em vidro 3D como fio condutor (S19, E31), wordmark do arquivo do usuário em Plus Jakarta Sans com degradê prateado (2.8). v0.7 de 2026-11-12: Home reorganizada pela estratégia de posicionamento (S18 Especialistas; S05 e S10 saem da Home; evolução E27), containers no preto com borda neon (E28), logos da stack nas cores originais (E29) e manifesto travado com fundo ciano (E30). v0.6 de 2026-11-09: governança do design system (tokens em `design-system/tokens.css`, verificador automático e registro de pendências, evolução E26). v0.5 aprovada em 2026-10-23 (Home em código revisada pelo usuário): site só no preto infinito, textura de linhas + grão em movimento, spotlight que acompanha o cursor, CTA em todo card de serviço, faixa de tecnologias, avaliações do Google e perguntas frequentes (evoluções E19 a E25). v0.4 aprovada em 2026-10-22. Promovido a guia de contexto em `style/` em 2026-10-23. Evoluções E01 a E25 aplicadas ao manual de design (seção 18 deste documento).
 > **Referência em código:** Home · Desktop 1440 publicada em https://navarrovaz.github.io/rumo-solucoes-site/, com todos os efeitos deste guia funcionando.
 > **Contexto visual:** este arquivo não tem imagens. Para ver cada padrão, consulte o PDF `Designer Gráfico/output/2026-10-22-design-system-site/Rumo-Solucoes-Design-System-Site-v0.4.pdf` (pasta Rumo-cowork do OneDrive; as saídas não estão no repositório) (42 páginas, sumário na página 2) e o Figma [Rumo · Site · Design System](https://www.figma.com/design/5t3Mwrd1SHHL1t9K7SGZKS) (time Marketing Rumo).
 > **Escopo:** site institucional rumosolucoes.com (marca mãe Rumo Soluções, com páginas de produto) e produtos digitais.
@@ -402,16 +402,16 @@ Regras:
 
 ---
 
-### 2.10 Interface do WhatsApp nas ilustrações [v0.8.4]
+### 2.10 Interface do WhatsApp nas ilustrações [v0.8.4, v0.8.6]
 
-Para ilustrar conversas de agentes de IA, a página de Inteligência Artificial usa o modelo real do WhatsApp (tema claro) dentro de um celular ilustrado, por decisão do usuário (E39): o preto sobre preto não dava impacto e confundia a conversa com o texto da página. As cores valem só dentro do celular (`.wa`); fora dele o site segue a paleta Rumo.
+Para ilustrar conversas de agentes de IA, a página de Inteligência Artificial usa o modelo real do WhatsApp (tema claro), por decisão do usuário (E39): o preto sobre preto não dava impacto e confundia a conversa com o texto da página. Desde a v0.8.6 (E41) a interface é a do WhatsApp Web em tela cheia (`.wweb`: lista de conversas à esquerda, conversa à direita), como um mockup fiel (7.5); o branco é a própria tela, nunca um card branco vazio (1.5). As cores valem só dentro da tela; fora dela o site segue a paleta Rumo.
 
 | Token | Valor | Uso |
 |---|---|---|
 | `wa-cabecalho` | `#008069` | Barra do contato e botão de enviar |
 | `wa-fundo` | `#EFEAE2` | Fundo da conversa |
-| `wa-saida` | `#D9FDD3` | Balão de quem envia (o cliente) |
-| `wa-entrada` | `#FFFFFF` | Balão recebido (o agente), avatar e campo de mensagem |
+| `wa-saida` | `#D9FDD3` | Balão de quem envia. Na tela cheia, a tela é da empresa: o verde é o agente de IA |
+| `wa-entrada` | `#FFFFFF` | Balão recebido (na tela cheia, o cliente), painéis, avatar e campo de mensagem |
 | `wa-texto` | `#111B21` | Texto dos balões |
 | `wa-meta` | `#667781` | Horário e aviso de data |
 | `wa-check` | `#53BDEB` | Confirmação de leitura |
@@ -420,7 +420,29 @@ Regras:
 
 - Nomes, pedidos e números das conversas são ilustrativos e o bloco leva a nota "Conversas ilustrativas".
 - O logo do WhatsApp não aparece; a interface é reproduzida só para o visitante reconhecer o canal.
-- O card de destaque que contém o celular usa o degradê ciano da marca (`rumo-400` → `brand` → `rumo-700`) com texto `on-brand`.
+- A tela fica num card dark (`ink-925` → `ink-950`, sem contorno, `radius-panel`, padding 40px) junto com o título da seção e o seletor "WhatsApp · CRM" [v0.8.6, E41]. O degradê ciano do card antigo saiu.
+- A conversa roda em loop: "digitando…" no cabeçalho antes da mensagem do cliente, a resposta do agente digitada no campo, tiques cinza que ficam azuis e o selo de não lida antes de abrir a próxima conversa. Pausa fora da tela; com movimento reduzido, a primeira conversa aparece pronta.
+
+### 2.11 Interface do RD Station CRM na demonstração [v0.8.6]
+
+Na mesma demonstração da página de IA, depois da conversa de vendas, a tela passa para o funil de negociações do RD Station CRM (hoje RD Vendas), integração confirmada pelo usuário em 2026-11-24 e registrada em `rumo-cowork/knowledge/rumo.md` (5.4). Um cursor com a etiqueta "Agente de IA" (seta `brand`, etiqueta `ink-950`, no padrão dos cursores da M19) cria a negociação, preenche os campos, arrasta o card de "Sem contato" para "Apresentação" e cria a tarefa da reunião (E41). Cores lidas das telas que a própria RD Station publica; valem só dentro da tela (`.rdc`).
+
+| Token | Valor | Uso |
+|---|---|---|
+| `rd-primaria` | `#16C7D1` | Botão Criar, Salvar, aba ativa, filtro, etiqueta "Em andamento" |
+| `rd-fundo` | `#FBFCFC` | Fundo da tela |
+| `rd-superficie` | `#FFFFFF` | Barra do topo, cards, painel lateral |
+| `rd-coluna` | `#EDEFF2` | Fundo das colunas do funil |
+| `rd-controle` | `#E2E5E9` | Contornos, botão "Criar tarefa", total da coluna |
+| `rd-nova` | `#4C6CBB` | Etiqueta "Nova" e avatar do usuário |
+| `rd-texto` | `#212429` | Textos e aviso de tarefa criada |
+| `rd-meta` | `#636E7C` | Textos secundários e ícones |
+
+Regras:
+
+- O logo da RD Station não aparece; a interface é reproduzida só para o visitante reconhecer o CRM.
+- Negociações, empresas e valores são ilustrativos, cobertos pela nota "Conversas e dados ilustrativos".
+- Em telas estreitas, só as colunas "Sem contato" e "Apresentação" aparecem.
 
 ## 3. Tipografia
 
@@ -1190,7 +1212,7 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 | **S03b** | Faixa de prova (alternativa) | Stats reais + selos | Escura | Contadores (M04) |
 | **S04** | Serviços em bento | O grid | Escura | Spotlight |
 | **S05** | Narrativa sticky | Etapas | Escura | Rota (M05), índice mono |
-| **S06** | Destaque Rumo AI | Título + demonstração | Escura | Luz direcional, dot grid |
+| **S06** | Destaque Rumo AI [v0.8.6] | Título + demonstração. Na página de IA: card dark com o WhatsApp Web e o RD Station CRM em tela cheia, um por vez, em loop (2.10, 2.11) | Escura | Luz direcional, dot grid |
 | **S07** | Produtos | Cards de produto | Escura | Acento por card |
 | **S08** | Cases | Carrossel ou grid de cases | Escura ou clara | Hover de card |
 | **S09** | Pessoas e cultura | Fotografia real | Escura | Fade radial |
@@ -1255,7 +1277,7 @@ Seções reutilizáveis para montar as páginas. Cada uma tem um protagonista.
 
 **Terceirização (`/servicos/terceirizacao/`), publicada na v0.8.3 (E38).** Ordem: S02 hero centralizado com bento de seis cards (foto de profissional real e autorizado, contorno neon da S17 no hover) → S10b clientes em marquee (M09, logos autorizados) → modelos de contratação em pilha fixa, cards pretos com um neon por card (2.9, M20) → S18 lista dos 16 perfis em quatro colunas, só texto → S10 seis diferenciais em 3 × 2 com contorno neon que segue o cursor (M20) → S05 como funciona em quatro etapas interativas (abas com setas do teclado) → S13 perguntas frequentes → S11 formulário de proposta (perfil, senioridade travada quando o perfil é "Ainda não sei", formato, contato e mensagem; o envio abre o e-mail do visitante com o pedido pronto até haver serviço de formulário, P12). A página inteira é construída pelo enxame de cursores (M19).
 
-**Inteligência Artificial (`/servicos/inteligencia-artificial/`), aprovada na v0.8.4 (E39).** Ordem, na lógica de venda definida pelo usuário: S02 hero (luz de cima, grade, marcas nos cantos, esfera de partículas com "AI" que se forma ao carregar, título embaixo à esquerda alinhado pelo topo com o texto e o CTA, faixa `.tech` com as ferramentas num bloco escuro com divisórias) → S03 frase de efeito e três números de mercado com fonte → S04 três cards de área que funcionam como abas (o selecionado com borda animada na cor da área, ciano, verde ou violeta; os outros esmaecidos e com micropulos) → S04 os agentes da área escolhida em acordeão de cards, o aberto com borda animada na cor da área → S05 como trabalhamos em quatro cards de etapa com "o que você recebe" → S14 consultoria com a ampulheta de pixels da Home por trás do card no padrão do CTA final da Home → S13 perguntas frequentes. Ícones no padrão da Terceirização (disco escuro com aro e ícone na cor do contexto). Números de mercado só com fonte citada; nada de soluções próprias (Sófi, recrutador) nem de números institucionais repetidos.
+**Inteligência Artificial (`/servicos/inteligencia-artificial/`), aprovada na v0.8.4 (E39).** Ordem, na lógica de venda definida pelo usuário: S02 hero (luz de cima, grade, marcas nos cantos, esfera de partículas com "AI" que se forma ao carregar, título embaixo à esquerda alinhado pelo topo com o texto e o CTA, faixa `.tech` com as ferramentas num bloco escuro com divisórias) → S03 frase de efeito e três números de mercado com fonte → S06 demonstração "Na prática" (v0.8.6, E41): card dark com o WhatsApp Web e o RD Station CRM em sequência → S04 três cards de área que funcionam como abas (o selecionado com borda animada na cor da área, ciano, verde ou violeta; os outros esmaecidos e com micropulos) → S04 os agentes da área escolhida em acordeão de cards, o aberto com borda animada na cor da área → S05 como trabalhamos em quatro cards de etapa com "o que você recebe" → S14 consultoria com a ampulheta de pixels da Home por trás do card no padrão do CTA final da Home → S13 perguntas frequentes. Ícones no padrão da Terceirização (disco escuro com aro e ícone na cor do contexto). Números de mercado só com fonte citada; nada de soluções próprias (Sófi, recrutador) nem de números institucionais repetidos.
 
 Para as próximas páginas de serviço, o roteiro abaixo continua como ponto de partida. Antes de construir, o esboço da página inteira (ordem dos blocos e layout de cada um no grid de 12 colunas) precisa ser aprovado, com todo o conteúdo alinhado ao `.wrap` e pouca variação visual entre as seções (E36). O roteiro abaixo é ponto de partida, não template obrigatório.
 
@@ -1497,6 +1519,7 @@ Itens que mudam ou ampliam `rumo-cowork/Designer Gráfico/style/manual-de-design
 | E38 | Página de Terceirização publicada [v0.8.3] | Site só no ciano (2.3); nenhuma página de serviço; menu apontando para subpáginas que não existem (E37) | Primeira página de serviço (12.3). Cards de modelo de contratação pretos, cada um com um neon no lugar do ciano: ciano, verde `#3DDC97` e violeta `#9B8CFF` (2.9). Enxame de cursores que constrói a página (M19) e contorno neon que segue o cursor, sem loop contínuo (M20). Itens do menu sem página apontam para o card do serviço na Home (Software, Inteligência Artificial, Infraestrutura, Aplicativos Mobile) ou para a seção de serviços (produtos) até a subpágina existir | Pedido e aprovação do usuário em 2026-11-19 |
 | E39 | Ferramentas de IA na faixa de tecnologias [v0.8.4] | Faixa `.tech` só com a stack da Home (2.7) | Três cores oficiais novas (Google Drive, Outlook, DeepSeek) e marcas de cor escura em branco, para a faixa de ferramentas no hero da página de Inteligência Artificial. Na mesma versão, as cores reais do WhatsApp para ilustrar conversas (2.10) e o loop do celular no card de destaque e a luz neon girando no agente aberto e os micropulos dos cards de área não selecionados como exceções à 9.5. A borda animada do card de área selecionado e do agente aberto troca o brilho externo e usa uma cor por área, com a trinca da 2.9 | Pedido do usuário em 2026-11-23 |
 | E40 | Perguntas frequentes e faixa de tecnologias padronizadas [v0.8.5] | Cada página com o seu acordeão (Home em duas colunas com fios, IA em lista com fios) e faixa da Home solta de ponta a ponta | S13 no modelo da página de IA (cabeçalho à esquerda, lista de ponta a ponta com fios) em todas as páginas e S10b em bloco escuro com células e divisórias, igual ao hero da página de IA | Pedido do usuário em 2026-11-24 |
+| E41 | Demonstração da página de IA [v0.8.6] | WhatsApp só dentro de um celular ilustrado, num card de degradê ciano (2.10); nenhum card branco sobre o preto (1.5) | Card dark com o WhatsApp Web em tela cheia (mockup fiel, 7.5) e, em sequência, o RD Station CRM com o cursor do agente operando o funil; tokens `rd-*` (2.11) | Pedido do usuário em 2026-11-24: destacar a demonstração num card dark e mostrar a IA mexendo no CRM; integração com a RD Station confirmada por ele |
 
 ---
 
